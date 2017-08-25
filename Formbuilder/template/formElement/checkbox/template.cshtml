@@ -1,0 +1,10 @@
+﻿@using Formbuilder.Models
+@{
+
+    Column col = Model;
+}
+<div class="checkbox">
+    <label>
+        <input id="@col.columnName" name="@col.columnName" type="checkbox"> @col.columnText
+    </label>
+</div>

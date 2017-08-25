@@ -1,0 +1,6 @@
+﻿@using Formbuilder.Models
+@{
+
+    Column col = Model;
+}
+<input type="text" class="form-control" id="@col.columnName" name="@col.columnName" placeholder="@col.columnText">

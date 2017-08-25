@@ -1,0 +1,6 @@
+﻿@using Formbuilder.Models
+@{
+
+    Column col = Model;
+}
+<textarea id="@col.columnName" name="@col.columnName" placeholder="@col.columnText" class="form-control" rows="3"></textarea>

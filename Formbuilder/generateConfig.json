@@ -1,0 +1,399 @@
+﻿[
+  {
+    "columns": [
+      {
+        "columnName": "Phot",
+        "controlType": "图片控件",
+        "columnText": "照片"
+      },
+      {
+        "columnName": "ApplyPosition",
+        "controlType": "文本框",
+        "columnText": "申请职位"
+      },
+
+      {
+        "columnName": "AvailabilityDate",
+        "controlType": "日期框",
+        "columnText": "可到任日期"
+      },
+      {
+        "columnName": "UserName",
+        "controlType": "文本框",
+        "columnText": "姓名"
+      },
+      {
+        "columnName": "Gender",
+        "controlType": "文本框",
+        "columnText": "性别"
+      },
+      {
+        "columnName": "Birthday",
+        "controlType": "日期框",
+        "columnText": "出生日期"
+      },
+      {
+        "columnName": "Hometown",
+        "controlType": "文本框",
+        "columnText": "籍贯"
+      },
+      {
+        "columnName": "Nation",
+        "controlType": "下拉框",
+        "columnText": "民族"
+      },
+      {
+        "columnName": "WorkDate",
+        "controlType": "日期框",
+        "columnText": "参加工作日期"
+      },
+      {
+        "columnName": "GraduateInstitution",
+        "controlType": "文本框",
+        "columnText": "毕业学校"
+      },
+      {
+        "columnName": "Majo",
+        "controlType": "文本框",
+        "columnText": "专业"
+      },
+      {
+        "columnName": "DegreeOfEducation",
+        "controlType": "下拉框",
+        "columnText": "文化程度"
+      },
+      {
+        "columnName": "MaritalStatus",
+        "controlType": "下拉框",
+        "columnText": "婚姻状况"
+      },
+      {
+        "columnName": "PoliticalLandscape",
+        "controlType": "下拉框",
+        "columnText": "政治面貌"
+      },
+      {
+        "columnName": "OriginalWorkUnit",
+        "controlType": "文本框",
+        "columnText": "原工作单位"
+      },
+      {
+        "columnName": "OriginalTelephone",
+        "controlType": "文本框",
+        "columnText": "原单位联系电话"
+      },
+      {
+        "columnName": "OriginalUnitSalary",
+        "controlType": "文本框",
+        "columnText": "原单位薪酬"
+      },
+      {
+        "columnName": "HomeAndCode",
+        "controlType": "文本框",
+        "columnText": "家庭地址及邮政编码"
+      },
+      {
+        "columnName": "Email",
+        "controlType": "文本框",
+        "columnText": "邮箱"
+      },
+      {
+        "columnName": "MailingAndCode",
+        "controlType": "文本框",
+        "columnText": "通讯地址及邮政编码"
+      },
+      {
+        "columnName": "MobileNumber",
+        "controlType": "文本框",
+        "columnText": "移动电话"
+      },
+      {
+        "columnName": "EmergencyContact",
+        "controlType": "文本框",
+        "columnText": "紧急联系人"
+      },
+      {
+        "columnName": "RelationshipWithMe",
+        "controlType": "文本框",
+        "columnText": "与本人关系"
+      },
+      {
+        "columnName": "Contact",
+        "controlType": "文本框",
+        "columnText": "联系电话"
+      },
+      {
+        "columnName": "MyIdNumber",
+        "controlType": "文本框",
+        "columnText": "本人身份证号码"
+      },
+      {
+        "columnName": "Domici",
+        "controlType": "文本框",
+        "columnText": "户籍所在地"
+      },
+      {
+        "columnName": "FileLocation",
+        "controlType": "文本框",
+        "columnText": "档案所有地"
+      },
+      {
+        "columnName": "FileAgency",
+        "controlType": "文本框",
+        "columnText": "档案代理机构"
+      },
+      {
+        "columnName": "ResearchWWritings",
+        "controlType": "文本域",
+        "columnText": "科研成果或著作"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-主信息
+    "tableName": "X6_Recruitment_InterviewRegistration"
+  }, //面试登记-主信息
+  {
+    "columns": [
+      {
+        "columnName": "UserName",
+        "controlType": "文本框",
+        "columnText": "姓名"
+      },
+      {
+        "columnName": "RelationshipWithMe",
+        "controlType": "文本框",
+        "columnText": "与本人关系"
+      },
+
+      {
+        "columnName": "ContactNumber",
+        "controlType": "文本框",
+        "columnText": "联系电话"
+      },
+      {
+        "columnName": "UnitOfWork",
+        "controlType": "文本框",
+        "columnText": "工作单位、职位"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：在保利系统任职的亲友
+    "tableName": "X6_Recruitment_InterviewRegistration_RelativesFriends"
+  }, //在保利系统任职的亲友
+  {
+    "columns": [
+      {
+        "columnName": "StartWDay",
+        "controlType": "日期框",
+        "columnText": "起讫日期(年/月/日)"
+      },
+      {
+        "columnName": "School",
+        "controlType": "文本框",
+        "columnText": "学校"
+      },
+      {
+        "columnName": "Majo",
+        "controlType": "文本框",
+        "columnText": "专业"
+      },
+
+      {
+        "columnName": "Educat",
+        "controlType": "文本框",
+        "columnText": "学历"
+      },
+      {
+        "columnName": "AcademicDegree",
+        "controlType": "文本框",
+        "columnText": "学位"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-教育经历
+    "tableName": "X6_Recruitment_InterviewRegistration_EduExperienceList"
+  }, //面试登记-教育经历
+  {
+    "columns": [
+      {
+        "columnName": "TimeWDay",
+        "controlType": "日期框",
+        "columnText": "时间(年/月/日)"
+      },
+      {
+        "columnName": "UnitName",
+        "controlType": "文本框",
+        "columnText": "单位名称"
+      },
+      {
+        "columnName": "JobContent",
+        "controlType": "文本框",
+        "columnText": "工作内容、职务"
+      },
+
+      {
+        "columnName": "FinalMonthlySalary",
+        "controlType": "文本框",
+        "columnText": "最后月薪"
+      },
+      {
+        "columnName": "ReasonsForLeaving",
+        "controlType": "文本框",
+        "columnText": "离职原因"
+      },
+      {
+        "columnName": "ReferencesTelephone",
+        "controlType": "文本框",
+        "columnText": "证明人电话"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-工作经历
+    "tableName": "X6_Recruitment_InterviewRegistration_WorkExperienceList"
+  }, //面试登记-工作经历
+  {
+
+    "columns": [
+      {
+        "columnName": "QualificationName",
+        "controlType": "文本框",
+        "columnText": "资格名称"
+      },
+      {
+        "columnName": "AcquisitionTime",
+        "controlType": "日期框",
+        "columnText": "取得时间"
+      },
+      {
+        "columnName": "CertificateNumber",
+        "controlType": "文本框",
+        "columnText": "证书编号"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-职称/资格证书
+    "tableName": "X6_Recruitment_InterviewRegistration_TitleList"
+  }, //面试登记-职称/资格证书
+  {
+
+    "columns": [
+      {
+        "columnName": "UserName",
+        "controlType": "文本框",
+        "columnText": "姓名"
+      },
+      {
+        "columnName": "Birthday",
+        "controlType": "日期框",
+        "columnText": "出生日期"
+      },
+      {
+        "columnName": "WorkDate",
+        "controlType": "日期框",
+        "columnText": "参加工作日期"
+      },
+      {
+        "columnName": "Hometown",
+        "controlType": "文本框",
+        "columnText": "籍贯"
+      },
+      {
+        "columnName": "Nation",
+        "controlType": "文本框",
+        "columnText": "民族"
+      },
+      {
+        "columnName": "PoliticalLandscape",
+        "controlType": "文本框",
+        "columnText": "政治面貌"
+      },
+      {
+        "columnName": "GraduateWProfessional",
+        "controlType": "文本框",
+        "columnText": "毕业院校及专业"
+      },
+      {
+        "columnName": "Education",
+        "controlType": "文本框",
+        "columnText": "学历"
+      },
+      {
+        "columnName": "UnitWPosition",
+        "controlType": "文本框",
+        "columnText": "工作单位及职务"
+      },
+      {
+        "columnName": "Contact",
+        "controlType": "文本框",
+        "columnText": "联系电话"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-家庭主要成员情况-配偶情况
+    "tableName": "X6_Recruitment_InterviewRegistration_Spouse"
+  }, //面试登记-家庭主要成员情况-配偶情况
+  {
+
+    "columns": [
+      {
+        "columnName": "Relation",
+        "controlType": "文本框",
+        "columnText": "关系"
+      },
+      {
+        "columnName": "UserName",
+        "controlType": "文本框",
+        "columnText": "姓名"
+      },
+      {
+        "columnName": "Birthday",
+        "controlType": "日期框",
+        "columnText": "出生日期"
+      },
+      {
+        "columnName": "PoliticalLandscape",
+        "controlType": "文本框",
+        "columnText": "政治面貌"
+      },
+      {
+        "columnName": "UnitWPosition",
+        "controlType": "文本框",
+        "columnText": "工作单位及职务"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-家庭主要成员情况-其他成员
+    "tableName": "X6_Recruitment_InterviewRegistration_OtherMembers"
+  }, //面试登记-家庭主要成员情况-其他成员
+  {
+
+    "columns": [
+      {
+        "columnName": "AreChronicOccultOrDiseases",
+        "controlType": "复选框",
+        "columnText": "是否有慢性疾病、隐性疾病或重大疾病？"
+      },
+      {
+        "columnName": "HasBeenLegalOrCriminal",
+        "controlType": "复选框",
+        "columnText": "是否曾有法律纠纷或任何犯罪记录？"
+      },
+      {
+        "columnName": "HaveEverDismissedOr",
+        "controlType": "复选框",
+        "columnText": "是否曾有被违纪辞退、除名或开除？"
+      }
+    ],
+    //一行放几列
+    "columnsInRowNumber": 2,
+    //表名：面试登记-其他信息
+    "tableName": "X6_Recruitment_InterviewRegistration_OtherInfo"
+  } //面试登记-其他信息
+]

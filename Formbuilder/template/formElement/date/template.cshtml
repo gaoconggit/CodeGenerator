@@ -1,0 +1,11 @@
+﻿@using Formbuilder.Models
+@{
+
+    Column col = Model;
+    //日期控件
+}
+<div class="input-group date">
+    <input id="@col.columnName" name="@col.columnName" class="form-control" type="text" value="" placeholder="@col.columnText" />
+    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+</div>
