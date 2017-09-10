@@ -1,0 +1,33 @@
+﻿@using Formbuilder.Models
+@{
+    List<List<FormElement>> list = Model.FormElementTable;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="table-responsive">
+        <table id="RelativesFriendsTable" class="table table-striped table-bordered table-hover table-condensed text-center">
+            <caption class="caption">
+                在保利中的亲友
+                <hr />
+                <button id="RelativesFriends-Add" class="btn btn-default pull-right" type="button">添加</button>
+            </caption>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>与本人关系</th>
+                    <th>联系电话</th>
+                    <th>工作单位、职位</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="/Content/Page/JSClass/RelativesFriends.js"></script>
+</body>
+</html>

@@ -11,3 +11,16 @@ g:\users\kim.gao\documents\visual studio 2015\Projects\Formbuilder\Formbuilder\b
 g:\users\kim.gao\documents\visual studio 2015\Projects\Formbuilder\Formbuilder\bin\Debug\System.Web.Razor.dll
 g:\users\kim.gao\documents\visual studio 2015\Projects\Formbuilder\Formbuilder\bin\Debug\RazorEngine.xml
 g:\users\kim.gao\documents\visual studio 2015\Projects\Formbuilder\Formbuilder\bin\Debug\System.Web.Razor.xml
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\generateConfig.json
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\Formbuilder.exe.config
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\Formbuilder.exe
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\Formbuilder.pdb
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\RazorEngine.dll
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\SyntacticSugar.dll
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\System.Web.Razor.dll
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\RazorEngine.xml
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\System.Web.Razor.xml
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\obj\Debug\Formbuilder.exe
+C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\obj\Debug\Formbuilder.pdb

@@ -79,9 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="html\" />
+    <Folder Include="Models\Crud\" />
+    <Folder Include="template\CRUD\CSharp\" />
+    <Folder Include="template\CRUD\css\" />
+    <Folder Include="template\CRUD\js\" />
+    <Folder Include="template\CRUD\sql\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="template\form.cshtml" />
+    <None Include="template\formElement\form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="template\formElement\checkbox\template.cshtml" />
@@ -90,6 +95,9 @@
     <None Include="template\formElement\select\template.cshtml" />
     <None Include="template\formElement\textarea\template.cshtml" />
     <None Include="template\formElement\text\template.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="template\CRUD\html\template.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions />

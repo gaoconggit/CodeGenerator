@@ -33,7 +33,6 @@ namespace Formbuilder
             //2.获取html
             //2.1根据配置拆分
             var list_afterChunk = config.columns.Chunk(config.columnsInRowNumber);
-
             //2.2声明行数据容器
             List<List<FormElement>> list = new List<List<FormElement>>();
             foreach (var info in list_afterChunk)
@@ -48,9 +47,8 @@ namespace Formbuilder
                 list.Add(row_temp);
             }
             //3.渲染razor模板
-            string templatePath = FileSugar.MergeUrl(globalProperty.templateDic, "form.cshtml");
+            string templatePath = FileSugar.MergeUrl(globalProperty.templateDic, "formElement", "form.cshtml");
             var tempCode = RazorEngineExtension.RazorPars(templatePath, FileSugar.FileToString(templatePath), new { FormElementTable = list });
-
             //4.将生成的form字符串写入html文件
             FileSugar.WriteFile($"../../html/{config.tableName}.html", tempCode);
         }
