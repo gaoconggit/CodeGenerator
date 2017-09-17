@@ -1,0 +1,19 @@
+﻿[
+  {
+    "pageName": "",
+    "tableName": "",
+    "columns": [
+      {
+        "columnName": "Name",
+        "columnText": "姓名",
+        "controlType": "文本框"
+
+      },
+      {
+        "columnName": "Birthday",
+        "columnText": "生日",
+        "controlType": "日期框"
+      }
+    ]
+  }
+]

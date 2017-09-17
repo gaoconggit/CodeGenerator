@@ -1,6 +1,7 @@
 ﻿using Formbuilder.CommonMethod;
 using Formbuilder.Ex;
 using Formbuilder.Models;
+using Formbuilder.Models.Form;
 using Newtonsoft.Json;
 using RazorHelp;
 using SyntacticSugar;
@@ -17,40 +18,28 @@ namespace Formbuilder
 
         static void Main(string[] args)
         {
+            //表单生成
+            FormHelper.StartGenerateForm();
 
-            //1.解析配置
-            string configPath = FileSugar.MergeUrl(System.Environment.CurrentDirectory, "generateConfig.json");
-            string code = FileSugar.FileToString(configPath);
-            List<generateConfig_Model> config = JsonConvert.DeserializeObject<List<generateConfig_Model>>(code);
-            foreach (var item in config)
-            {
-                generate(item);
-            }
-        }
+            //crud生成
+            //配置内容：
+            //页面名称、表格名称、需显示字段Code、字段翻译、字段控件类型
 
-        public static void generate(generateConfig_Model config)
-        {
-            //2.获取html
-            //2.1根据配置拆分
-            var list_afterChunk = config.columns.Chunk(config.columnsInRowNumber);
-            //2.2声明行数据容器
-            List<List<FormElement>> list = new List<List<FormElement>>();
-            foreach (var info in list_afterChunk)
-            {
-                List<FormElement> row_temp = new List<FormElement>();
-                //遍历当前行
-                foreach (var item_info in info)
-                {
-                    row_temp.Add(new generateHelp().generateHtmlByType(item_info));//取列
-                }
-                //生成行html
-                list.Add(row_temp);
-            }
-            //3.渲染razor模板
-            string templatePath = FileSugar.MergeUrl(globalProperty.templateDic, "formElement", "form.cshtml");
-            var tempCode = RazorEngineExtension.RazorPars(templatePath, FileSugar.FileToString(templatePath), new { FormElementTable = list });
-            //4.将生成的form字符串写入html文件
-            FileSugar.WriteFile($"../../html/{config.tableName}.html", tempCode);
+
+            //1.html生成
+
+            //2.js生成
+
+            //3.css生成
+
+
+            //4.asp.net后台代码生成
+
+
+            //5.把生成的文件添加进csprj
+
+           
         }
+       
     }
 }

@@ -64,22 +64,24 @@
     <Compile Include="CommonMethod\globalProperty.cs" />
     <Compile Include="enums\ControlType.cs" />
     <Compile Include="Ex\IEnumerable_Chunk.cs" />
-    <Compile Include="Models\FormElement.cs" />
-    <Compile Include="Models\generateConfig_Model.cs" />
+    <Compile Include="Models\Crud\CrudModel.cs" />
+    <Compile Include="Models\Form\FormElement.cs" />
+    <Compile Include="Models\Form\FormHelper.cs" />
+    <Compile Include="Models\Form\GenerateFormConfig_Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RazorHelp\RazorEngineExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="generateConfig.json">
+    <None Include="generateCrud.json" />
+    <None Include="generateFormConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="html\" />
-    <Folder Include="Models\Crud\" />
     <Folder Include="template\CRUD\CSharp\" />
     <Folder Include="template\CRUD\css\" />
     <Folder Include="template\CRUD\js\" />
@@ -100,7 +102,11 @@
     <None Include="template\CRUD\html\template.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties generateCrud_1json__JSONSchema="http://json.schemastore.org/config" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

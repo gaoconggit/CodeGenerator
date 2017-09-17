@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Formbuilder.Models
 {
-    public class generateConfig_Model
+    public class GenerateFormConfig_Model
     {
         public int columnsInRowNumber { get; set; }
         public string tableName { get; set; }
