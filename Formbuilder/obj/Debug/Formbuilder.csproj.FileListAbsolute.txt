@@ -24,3 +24,16 @@ C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Deb
 C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\obj\Debug\Formbuilder.exe
 C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\obj\Debug\Formbuilder.pdb
 C:\Users\Administrator\Desktop\代码生成器\CodeGenerator\Formbuilder\bin\Debug\generateFormConfig.json
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\Formbuilder.exe.config
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\obj\Debug\Formbuilder.exe
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\obj\Debug\Formbuilder.pdb
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\generateFormConfig.json
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\Formbuilder.exe
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\Formbuilder.pdb
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\RazorEngine.dll
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\SyntacticSugar.dll
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\System.Web.Razor.dll
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\RazorEngine.xml
+C:\Users\Kim.gao\Desktop\新建文件夹\CodeGenerator\Formbuilder\bin\Debug\System.Web.Razor.xml

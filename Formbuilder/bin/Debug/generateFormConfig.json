@@ -3,7 +3,7 @@
     "columns": [
       {
         "columnName": "Phot",
-        "controlType": "图片控件",
+        "controlType": "文本框",
         "columnText": "照片"
       },
       {
@@ -21,131 +21,6 @@
         "columnName": "UserName",
         "controlType": "文本框",
         "columnText": "姓名"
-      },
-      {
-        "columnName": "Gender",
-        "controlType": "文本框",
-        "columnText": "性别"
-      },
-      {
-        "columnName": "Birthday",
-        "controlType": "日期框",
-        "columnText": "出生日期"
-      },
-      {
-        "columnName": "Hometown",
-        "controlType": "文本框",
-        "columnText": "籍贯"
-      },
-      {
-        "columnName": "Nation",
-        "controlType": "下拉框",
-        "columnText": "民族"
-      },
-      {
-        "columnName": "WorkDate",
-        "controlType": "日期框",
-        "columnText": "参加工作日期"
-      },
-      {
-        "columnName": "GraduateInstitution",
-        "controlType": "文本框",
-        "columnText": "毕业学校"
-      },
-      {
-        "columnName": "Majo",
-        "controlType": "文本框",
-        "columnText": "专业"
-      },
-      {
-        "columnName": "DegreeOfEducation",
-        "controlType": "下拉框",
-        "columnText": "文化程度"
-      },
-      {
-        "columnName": "MaritalStatus",
-        "controlType": "下拉框",
-        "columnText": "婚姻状况"
-      },
-      {
-        "columnName": "PoliticalLandscape",
-        "controlType": "下拉框",
-        "columnText": "政治面貌"
-      },
-      {
-        "columnName": "OriginalWorkUnit",
-        "controlType": "文本框",
-        "columnText": "原工作单位"
-      },
-      {
-        "columnName": "OriginalTelephone",
-        "controlType": "文本框",
-        "columnText": "原单位联系电话"
-      },
-      {
-        "columnName": "OriginalUnitSalary",
-        "controlType": "文本框",
-        "columnText": "原单位薪酬"
-      },
-      {
-        "columnName": "HomeAndCode",
-        "controlType": "文本框",
-        "columnText": "家庭地址及邮政编码"
-      },
-      {
-        "columnName": "Email",
-        "controlType": "文本框",
-        "columnText": "邮箱"
-      },
-      {
-        "columnName": "MailingAndCode",
-        "controlType": "文本框",
-        "columnText": "通讯地址及邮政编码"
-      },
-      {
-        "columnName": "MobileNumber",
-        "controlType": "文本框",
-        "columnText": "移动电话"
-      },
-      {
-        "columnName": "EmergencyContact",
-        "controlType": "文本框",
-        "columnText": "紧急联系人"
-      },
-      {
-        "columnName": "RelationshipWithMe",
-        "controlType": "文本框",
-        "columnText": "与本人关系"
-      },
-      {
-        "columnName": "Contact",
-        "controlType": "文本框",
-        "columnText": "联系电话"
-      },
-      {
-        "columnName": "MyIdNumber",
-        "controlType": "文本框",
-        "columnText": "本人身份证号码"
-      },
-      {
-        "columnName": "Domici",
-        "controlType": "文本框",
-        "columnText": "户籍所在地"
-      },
-      {
-        "columnName": "FileLocation",
-        "controlType": "文本框",
-        "columnText": "档案所有地"
-      },
-      {
-        "columnName": "FileAgency",
-        "controlType": "文本框",
-        "columnText": "档案代理机构"
-      },
-      {
-        "columnName": "ResearchWWritings",
-        "controlType": "文本域",
-        "columnText": "科研成果或著作"
       }
     ],
     //一行放几列

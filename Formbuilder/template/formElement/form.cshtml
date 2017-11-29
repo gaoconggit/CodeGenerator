@@ -1,9 +1,7 @@
 ﻿@using Formbuilder.Models
 @{
     List<List<FormElement>> list = Model.FormElementTable;
-
-}
-<form class="form-horizontal">
+}<form class="form-horizontal">
     @foreach (List<FormElement> item_row in list)
     {
         <div class="form-group">
@@ -11,11 +9,12 @@
             @foreach (FormElement item_col in item_row)
             {
                 <label for="@item_col.col.columnName" class="col-sm-1 control-label col-md-1">@item_col.col.columnText</label>
-                <div class="col-sm-4 col-md-4">
-                    @item_col.elementHtml
+                <div class="col-sm-4 col-md-4">@item_col.elementHtml
                 </div>
             }
             <div class="col-sm-1 col-md-1"></div>
         </div>
     }
 </form>
+
+

@@ -11,7 +11,6 @@ namespace RazorHelp
     {
         public static string RazorPars(string buildTemplatePath, string content, object model)
         {
-           
             string finallyThisIsMyParsedTemplate;
             PreCompile(buildTemplatePath, content);
             finallyThisIsMyParsedTemplate = Engine.Razor.Run(buildTemplatePath, null, model);

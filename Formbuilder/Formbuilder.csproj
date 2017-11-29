@@ -81,7 +81,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="html\" />
     <Folder Include="template\CRUD\CSharp\" />
     <Folder Include="template\CRUD\css\" />
     <Folder Include="template\CRUD\js\" />
@@ -100,6 +99,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="template\CRUD\html\template.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="html\X6_Recruitment_InterviewRegistration.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_EduExperienceList.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_OtherInfo.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_OtherMembers.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_RelativesFriends.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_Spouse.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_TitleList.html" />
+    <Content Include="html\X6_Recruitment_InterviewRegistration_WorkExperienceList.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
