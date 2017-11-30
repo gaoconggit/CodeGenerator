@@ -1,0 +1,25 @@
+﻿@{
+    string value = Model.value;
+    string regTip = Model.regTip;
+    string category = Model.category;
+
+}
+@using SyntacticSugar
+@if (category == "Boolean")
+{
+    <select style="width:370px" name="attr.Value">
+        <option value="true" @((value == "true").IIF("selected=selected", ""))>true</option>
+        <option value="false" @((value == "false").IIF("selected=selected", ""))>false</option>
+    </select>
+}
+else if (category == "Object")
+{
+    <input style="width:370px" name="attr.Value" @regTip value="@value" />
+}
+else if (category == "function" || category == "Event")
+{
+    <textarea style="width:370px" name="attr.Value">@value</textarea>
+}
+else {
+
+}

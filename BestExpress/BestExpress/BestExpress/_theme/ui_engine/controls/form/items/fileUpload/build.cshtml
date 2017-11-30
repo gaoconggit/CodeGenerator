@@ -1,0 +1,73 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+
+    var specialEvents = new string[] { "callBack", "preinit" };
+    var id = attrList["name"];
+    var name = attrList["name"];
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var fileInputName = PubControlHelper.GetControlAttributeByBuild(attrList, "fileInputName");
+    var allowSize = PubControlHelper.GetControlAttributeByBuild(attrList, "allowSize");
+    var text = PubControlHelper.GetControlAttributeByBuild(attrList, "text", "上传");
+}
+
+
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+<!------------------@(name) BEGIN------------------>
+<div  type="button" id="@id" class="@showClass"></div>
+
+<script>
+    $(function () {
+        var buttonText={ browseButton: '@text',
+            uploadButton: $layoutPageLanguage.jsdotjsSubmit,
+            cancelButton: $layoutPageLanguage.jsdotjsClear,
+            uploadFileTooltip: $layoutPageLanguage.jsdotjsUpload,
+            cancelFileTooltip: $layoutPageLanguage.jsdotjsDelete};
+        $('#@id').jqxFileUpload({width:'@width',height:'@height',fileInputName:'@fileInputName', browseTemplate: 'success', uploadTemplate: 'primary',  cancelTemplate: 'danger',localization:buttonText,multipleFilesUpload:true  });
+        $("#@name").on("select",function(event){
+            @(GetEvent("click", eventList))
+          });
+        $("#@name").on("uploadStart",function(event){
+            //获取文件名
+            var fileName = event.args.file;
+            var extStart=fileName.lastIndexOf(".");
+            //判断是文件还是图片
+            var ext=fileName.substring(extStart,fileName.length).toUpperCase();
+            if(ext!=".BMP"&&ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){//上传文件
+                $('#@id').jqxFileUpload({ uploadUrl: '/File/UploadFile?allowSize='+@allowSize });
+            }
+            else{//上传图片
+                $('#@id').jqxFileUpload({ uploadUrl: '/File/UploadImage?allowSize='+@allowSize });
+            }
+             @(GetEvent("preinit", eventList))
+           })
+         $("#@name").on("uploadEnd",function(event){
+            var args = event.args;
+            var msg=$.convert.strToJson( $(args.response).html());
+            
+            @(GetEvent("callBack", eventList))
+           })
+    })
+ 
+</script>
+
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+  }
+}
+<!------------------@(name) END------------------>

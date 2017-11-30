@@ -1,0 +1,20 @@
+/*可以在这里添加你自己的css*/
+.windowbox {
+ width:inherit;
+ display:inline-block;
+ border:1px solid #ff6a00;
+ border-radius:2px;
+ padding:10px
+}
+.hide {
+ display:none
+}
+.windowTest {
+ display:block !important
+}
+.windowbox p {
+ text-align:center
+}
+    .windowbox p input {
+     margin:10px
+    }

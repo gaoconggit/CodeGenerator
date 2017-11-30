@@ -1,0 +1,18 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string id = "";
+    if (model.Any(it => it.key == "id"))
+    {
+        id = model.Single(it => it.key == "id").value;
+    }
+    string callBack = "null";
+    if (model.Any(it => it.key == "callBack"))
+    {
+        callBack = "function(msg){{ {0} }}";
+        callBack = callBack.ToFormat( model.Single(it => it.key == "callBack").value);
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+uiEngineFillForm("@id",0,@(callBack)) 

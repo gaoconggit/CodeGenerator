@@ -1,0 +1,54 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string formId = "";
+    string apiId = "0";
+    string callBack = "";
+    string isRead = "true";
+    string preAction = "";
+    if (model.Any(it => it.key == "formId"))
+    {
+        formId = model.Single(it => it.key == "formId").value;
+    }
+    if (model.Any(it => it.key == "apiId"))
+    {
+        apiId = model.Single(it => it.key == "apiId").value;
+    }
+    if (model.Any(it => it.key == "callBack"))
+    {
+        callBack = model.Single(it => it.key == "callBack").value;
+    }
+    if (model.Any(it => it.key == "isRead"))
+    {
+        isRead = model.Single(it => it.key == "isRead").value;
+    }
+    if (model.Any(it => it.key == "preAction"))
+    {
+        preAction = model.Single(it => it.key == "preAction").value;
+    }
+    var actionName = "";
+    var api = PubGet.GetApiUrl(apiId.TryToInt());
+    if (api.ApiActionType == 10)
+    {
+        actionName=  "\""+PubGet.GetApiUrl(apiId.TryToInt()).ActionName+ "\"";
+    }
+    else {
+        actionName = "$.action.url(\"" + PubGet.GetApiUrl(apiId.TryToInt()).ActionName + "\",\"HidUrlAction\")";
+
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+@using Best.Infrastructure.DAL
+@using Best.Entities.Tables
+@if (isRead=="true") {
+  @: $(function(){ 
+}
+         @preAction
+         uiEngineSubmit("@(formId)",@actionName,function(msg){
+           @callBack
+         });
+@if (isRead == "true")
+{
+    @: });
+}

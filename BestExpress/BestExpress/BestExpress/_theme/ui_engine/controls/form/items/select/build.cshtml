@@ -1,0 +1,118 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit" };
+    var id = attrList["name"];
+    var name = attrList["name"];
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyattr = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, "readonly=readonly", "");
+
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    string defaultKey = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultKey");
+    string defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+    string innerHtml = PubControlHelper.GetControlAttributeByBuild(attrList, "innerHtml");
+    string pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+    string apiKey = PubControlHelper.GetControlAttributeByBuild(attrList, "apiKey");
+    string apiValue = PubControlHelper.GetControlAttributeByBuild(attrList, "apiValue");
+    var parsReadElement = PubControlHelper.GetControlAttributeByBuild(attrList, "parsReadElement");
+    var hasDefault = defaultKey != "" || defaultValue != "";
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset", name = name });
+}
+@using RazorEngine;
+@using RazorEngine.Templating;
+@using Best.Site.Areas.BestPalace.Controllers
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+<!------------------@(name) BEGIN------------------>
+<select  @onlyattr data-status="loading" id="@name" name="@name" class="@class_.AppendString(showClass," ",false)" style="@style">
+    @if (hasDefault)
+    {
+        <option value="@defaultKey">@defaultValue</option>
+    }
+
+    @if (innerHtml.IsValuable())
+    {
+        @innerHtml
+    }
+</select>
+
+<script>
+    $(function () {
+
+        @foreach (var item in EventManager.GetInstance.GetEeventList) {
+            var isSpecialEvent=item.Name.IsIn(specialEvents);
+            if (isSpecialEvent){
+                switch (item.Name)
+                {
+                    case "preinit":
+                        @: @(GetEvent(item.Name,eventList))
+                                        break;
+                }
+            }
+            else {
+                @: $("#@name").on("@item.Name", function () {
+                                        @: @(GetEvent(item.Name, eventList))
+                                        @:
+                                        @:});
+
+            }
+        }
+
+
+
+
+    })
+    @finallyThisIsMyParsedTemplate
+
+    function loadSelect@(name)() {
+        @if (Model.api != null && Model.api != "")
+     {
+         @:$.ajax({
+                         @:         url: "@Model.api",
+                     @:         success: function (msg)
+                                     @:         {
+
+
+                                 @:             uiEngineHelper.bindSelect("#@name",msg.responseInfo,"@apiKey","@apiValue");
+                                 if (hasDefault) {
+                                 @:            $("#@(name)").prepend("<option value=\"@defaultKey\" selected='true'>@defaultValue</option>");
+            }
+                                 @:             @(GetEvent("callBack", eventList))
+                                 @:             $("#@(name)").removeAttr("data-status");
+                                 @:         },
+                         @:         error:jqxError,
+                         @:         data:@pars,
+                         @:         dataType:"json"
+                         @:   })
+                 }
+     else
+     {
+         @: $("#@(name)").removeAttr("data-status");
+             }
+    }
+    @if (parsReadElement.IsValuable())
+    {
+        @: $.action.elementValueReady("#@parsReadElement",function(){ loadSelect@(name)();});
+    }
+    else {
+        @:   loadSelect@(name)();
+        }
+</script>
+
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+  }
+}
+<!------------------@(name) END------------------>

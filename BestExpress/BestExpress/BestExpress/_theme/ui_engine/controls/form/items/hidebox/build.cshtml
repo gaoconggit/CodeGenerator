@@ -1,0 +1,73 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var txtVal = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var id = txtVal;
+    var name = txtVal;
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+    var pars= PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+    var parsReadElement = PubControlHelper.GetControlAttributeByBuild(attrList, "parsReadElement");
+
+    var eventList = (Dictionary<string, string>)Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit" };
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset", name = name });
+}
+<!------------------@(name) BEGIN------------------>
+<input type="hidden" id="@name" class="@class_" name="@name" value="@defaultValue" width="@width" height="@height" style="@style" />
+
+<script type="text/javascript">
+    @finallyThisIsMyParsedTemplate
+
+    @(GetEvent("preinit", eventList))
+
+@if (Model.api != null && Model.api != "")
+{
+  @:$(function(){
+        if (parsReadElement.IsValuable())
+    {
+    @: $.action.elementValueReady("#@parsReadElement",function(){ loadApi();});
+        }
+    else {
+       @:  loadApi();
+        }
+    @:function loadApi(){
+            @:$.ajax({
+                @:         url: "@Model.api",
+                @:         success: function (msg)
+                    @:         {
+                    @:
+                    @:             $("#@name").val(JSON.stringify(msg.responseInfo));
+                    @:             @(GetEvent("callBack", eventList))
+                    @:         },
+                @:         error:jqxError,
+                @:         data:@pars.ToHtmlDecode(),
+                @:         dataType:"json"
+                    @:   })
+            @:}
+      @: })
+    }
+else {
+          @(GetEvent("callBack", eventList))
+}
+</script>
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+    if (eventList.ContainsKey(eventName))
+    {
+        @: @eventList[eventName].ToHtmlDecode()
+    }
+}
+<!------------------@(name) END------------------>

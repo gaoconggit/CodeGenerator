@@ -1,0 +1,23 @@
+﻿@using System;
+@using System.Linq;
+@using System.Collections;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using SyntacticSugar
+@{
+    var model = (List<SysBest_ElementAttr>)Model;
+    var languagePars = PubControlHelper.GetControlAttribute(model, "languagePars", "{}");
+
+}
+
+<table class="editTable">
+    <tr>
+        <td class="first">多语言：</td>
+        <td>
+            <textarea style="margin: 0px; width: 415px; height: 71px;" name="attr.Value" placeholder="{LanguageField='xxId',LanguageField='1'}]">@languagePars</textarea>
+            <input name="attr.Key" type="hidden" value="languagePars" />
+        </td>
+    </tr>
+
+</table>
+

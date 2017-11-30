@@ -1,0 +1,77 @@
+﻿@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit", "setValue", "getValue" };
+    var id = attrList["name"];
+    var name = attrList["name"];
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyattr = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, "readonly=readonly", "");
+
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height", "inherit");
+    var attr = PubControlHelper.GetControlAttributeByBuild(attrList, "attr");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width", "inherit");
+    var defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+
+    var styleStr2 = "width:" + width + ";height:" + height + ";";
+
+
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset", name = name });
+}
+@using RazorEngine;
+@using RazorEngine.Templating;
+@using Best.Site.Areas.BestPalace.Controllers
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+<!------------------@(name) BEGIN------------------>
+<input id="@name" name="@name" @attr @onlyattr type="text" value="@defaultValue"  style="@styleStr2 @style" class="@class_.AppendString(showClass," ",false)" />
+ 
+<script>
+   $(function () { 
+ 
+        @foreach (var item in EventManager.GetInstance.GetEeventList) {
+            var isSpecialEvent=item.Name.IsIn(specialEvents);
+            if (isSpecialEvent){
+                switch (item.Name)
+                {
+                    case "callBack":
+                        @: @(GetEvent(item.Name,eventList)) 
+                        break;
+                    case "preinit":
+                        @: @(GetEvent(item.Name,eventList)) 
+                        break;
+                }
+            }
+            else {
+                @: $("#@name").on("@item.Name", function () {
+                @: @(GetEvent(item.Name, eventList)) 
+                @:
+                @:});
+
+            }
+        }
+   
+
+   
+ 
+   })
+
+  @finallyThisIsMyParsedTemplate
+</script> 
+
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+  }
+}
+<!------------------@(name) END------------------>

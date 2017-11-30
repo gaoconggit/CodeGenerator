@@ -1,0 +1,102 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var txtVal = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var id = txtVal;
+    var name = txtVal;
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyPara = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, ",readonly:true", "");
+
+    var eventList = (Dictionary<string, string>)Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit" };
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset_editor", name = name });
+}
+<!------------------@(name) BEGIN------------------>
+<script type="text/javascript" charset="utf-8" src="/_theme/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/_theme/ueditor/ueditor.all.min.js"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="/_theme/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script id="@id"  name="@id" type="text/plain" style="@("".AppendString("width:"+width,";",false).AppendString("height:"+height,";",false))" class="@showClass">
+    <p>
+        @if (defaultValue.IsValuable())
+        {
+            @defaultValue
+        }
+    </p>
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        @foreach (var item in EventManager.GetInstance.GetEeventList) {
+              var isSpecialEvent = item.Name.IsIn(specialEvents);
+              if (isSpecialEvent){
+                  switch (item.Name)
+                  {
+                      case "callBack":
+                          @: @(GetEvent(item.Name,eventList))
+                                  break;
+                      case "preinit":
+                          @: @(GetEvent(item.Name,eventList))
+                                  break;
+                  }
+              }
+          }
+
+        var tools = [[
+            //'fullscreen', 隐藏全屏按钮  2016-07-22 wing 明细也全屏后 返回全屏的按钮被明细页面关闭层遮盖
+            'source',
+            'undo', //撤销
+            'redo', //重做
+            'bold', //加粗
+            'indent', //首行缩进
+            'fontfamily', //字体
+            'fontsize', //字号
+            'paragraph', //段落格式
+            'italic', //斜体
+            'underline', //下划线
+            'strikethrough', //删除线
+            'superscript', //上标
+            'subscript', //下标
+            'touppercase', //字母大写
+            'tolowercase', //字母小写
+            'justifyleft', //居左对齐
+            'justifyright', //居右对齐
+            'justifycenter', //居中对齐
+            'justifyjustify', //两端对齐
+        ]];
+
+        var editor = UE.getEditor('@id', {
+            toolbars: tools,
+            autoHeightEnabled: true,
+            autoFloatEnabled: true @onlyPara
+         
+        });
+    });
+
+    @finallyThisIsMyParsedTemplate
+
+</script>
+
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+    if (eventList.ContainsKey(eventName))
+    {
+        @: @eventList[eventName]
+    }
+}
+<!------------------@(name) END------------------>

@@ -1,0 +1,38 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string url = "";
+    string idList = "[]";
+    if (model.Any(it => it.key == "url"))
+    {
+        url = model.Single(it => it.key == "url").value;
+    }
+    if (model.Any(it => it.key == "idList"))
+    {
+        var value = model.Single(it => it.key == "idList").value;
+        if (value.IsValuable())
+        {
+            idList = value.Split(',').ModelToJson();
+        }
+    }
+
+
+
+    string parList = "[]";
+    if (model.Any(it => it.key == "qid"))
+    {
+        var value = model.Single(it => it.key == "qid").value;
+        if (value.IsValuable()) {
+            parList = value.Split(',').ModelToJson();
+        }
+    }
+
+    string m = "#";
+    if (model.Any(it => it.key == "#"))
+    {
+        m = model.Single(it => it.key == "#").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+ uiEngineRedirect("@url",@idList,@parList,"@m");

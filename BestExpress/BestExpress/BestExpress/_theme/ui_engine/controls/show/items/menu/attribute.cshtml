@@ -1,0 +1,60 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var html = PubControlHelper.GetControlAttribute(model, "html");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var index_ = PubControlHelper.GetControlAttribute(model, "index");
+}
+<table class="editTable">
+    
+    <tr>
+        <td class="first">Html：</td>
+        <td>
+            <textarea style="margin: 0px; height: 270px; width: 415px;" name="attr.Value">@html</textarea>
+            <input name="attr.Key" type="hidden" value="html" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Width:</td>
+        <td>
+            <input name="attr.Value" value="@width" type="text" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Height:</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">选中索引:</td>
+        <td>
+            <input name="attr.Value" value="@index_" type="text" />
+            <input name="attr.Key" type="hidden" value="index" />
+        </td>
+    </tr>
+</table>
+

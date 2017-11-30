@@ -1,0 +1,88 @@
+﻿@using System;
+@using System.Linq;
+@using System.Collections;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    var model = (List<SysBest_ElementAttr>)Model;
+    <!-- 全局属性 -->
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    <!-- 行(row)属性 -->
+    var rowVal = PubControlHelper.GetControlAttribute(model, "rowVal");
+    <!-- 列(cell)属性 -->
+    var cellVal = PubControlHelper.GetControlAttribute(model, "cellVal");
+    var cellWidth = PubControlHelper.GetControlAttribute(model, "cellWidth");
+    var cellHeight = PubControlHelper.GetControlAttribute(model, "cellHight");
+    var cellAlign = PubControlHelper.GetControlAttribute(model, "cellAlign");
+    var cellPadding = PubControlHelper.GetControlAttribute(model, "cellPadding");
+    var cellClass = PubControlHelper.GetControlAttribute(model, "cellClass");
+    var cellStyle = PubControlHelper.GetControlAttribute(model, "cellStyle");
+}
+
+<table class="editTable">
+    <tr>
+        <td class="first">宽度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@width" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">行数：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@rowVal" tip="请填写数字" reg="^\d*$" />
+            <input name="attr.Key" type="hidden" value="rowVal" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列数：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellVal" tip="请填写数字" reg="^\d*$" />
+            <input name="attr.Key" type="hidden" value="cellVal" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列宽：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellWidth" tip="请填写数字" reg="^\d*$" />
+            <input name="attr.Key" type="hidden" value="cellWidth" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列高：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellHeight" tip="请填写数字" reg="^\d*$" />
+            <input name="attr.Key" type="hidden" value="cellHeight" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列位置：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellAlign" />
+            <input name="attr.Key" type="hidden" value="cellAlign" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列间距：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellPadding" />
+            <input name="attr.Key" type="hidden" value="cellPadding" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列Class:</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellClass" />
+            <input name="attr.Key" type="hidden" value="cellClass" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列Style:</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cellStyle" />
+            <input name="attr.Key" type="hidden" value="cellStyle" />
+        </td>
+    </tr>
+</table>
+

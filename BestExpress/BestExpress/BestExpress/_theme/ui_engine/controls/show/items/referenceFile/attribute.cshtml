@@ -1,0 +1,50 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using SyntacticSugar
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var fileUrl = PubControlHelper.GetControlAttribute(model, "fileUrl");
+    var type = PubControlHelper.GetControlAttribute(model, "type");
+    var fileTime = PubControlHelper.PubGet();
+    var ranNum = RandomSugar.GetRandomNum(20);
+}
+<script>
+   
+    $(function () {
+      $("#eleName").val('file@(ranNum)');
+    })
+
+</script>
+<table class="editTable">
+    <tr>
+        <td class="first">FileUrl：</td>
+        <td>
+            <select name="attr.Value" >
+                @foreach (var item in fileTime)
+                {
+                <option @((fileUrl==item.fileurl).IIF("selected=selected","")) value="@item.fileurl">@item.fileurl</option>
+                }
+                <option  @((fileUrl== "/_theme/go/go.js").IIF("selected=selected","")) >/_theme/go/go.js</option>
+                <option  @((fileUrl== "/_theme/go/goext-style1.js").IIF("selected=selected","")) >/_theme/go/goext-style1.js</option>
+                <option  @((fileUrl== "/_theme/go/goext-style2.js").IIF("selected=selected","")) >/_theme/go/goext-style2.js</option>
+            </select>
+            <br />
+            <font  color="red">页面不能重复引用</font>
+            <input name="attr.Key" type="hidden" value="fileUrl" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Type:</td>
+        <td>
+            <select name="attr.Value" onchange="$(this).val($(this).find('option:selected').val())">
+                <option value="js">js</option>
+                <option value="css">css</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="type" />
+</td>
+    </tr>
+   
+</table>

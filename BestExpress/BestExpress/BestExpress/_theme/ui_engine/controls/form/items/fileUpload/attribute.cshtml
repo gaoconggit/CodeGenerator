@@ -1,0 +1,53 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var fileInputName = PubControlHelper.GetControlAttribute(model, "fileInputName");
+    var allowSize= PubControlHelper.GetControlAttribute(model, "allowSize");
+    var text = PubControlHelper.GetControlAttribute(model, "text", "上传");
+}
+<table class="editTable">
+   
+    <tr>
+        <td class="first">height：</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">width：</td>
+        <td>
+            <input name="attr.Value" value="@width" type="text" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+
+    <tr>
+        <td class="first">控件名称:</td>
+        <td>
+            <input name="attr.Value" value="@fileInputName" type="text" />
+            <input name="attr.Key" type="hidden" value="fileInputName" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">限制大小:</td>
+        <td>
+            <input name="attr.Value" value="@allowSize" type="text" />
+            <input name="attr.Key" type="hidden" value="allowSize" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">上传文本：</td>
+        <td>
+            <input name="attr.Value" value="@text" type="text" />
+            <input name="attr.Key" type="hidden" value="text" />
+        </td>
+    </tr>
+
+</table>

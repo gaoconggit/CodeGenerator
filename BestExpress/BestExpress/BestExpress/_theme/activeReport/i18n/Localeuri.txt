@@ -1,0 +1,70 @@
+sidebar=Sidebar
+toc=TOC
+tocfull=Table of Contents
+firstPage=First
+lastPage=Last
+prevPage=Prev
+nextPage=Next
+print=Print
+backToParent=Back to Parent
+params=Parameters
+saveas=Save As...
+	
+pdfDocument=PDF Document
+wordDocument=Word Document
+imageFile=Image File
+mhtDocument=MHTML Web Archives
+excelWorkbook=Excel Workbook
+
+yes=Yes
+no=No
+true=True
+false=False
+null=Null
+null-label=Null value
+on=On
+off=Off
+selectAll=(select all)
+enterValue=Enter value
+clearAllOptions=Reset all
+blank=Blank
+empty=Empty
+
+back=Back
+refreshReport=View report
+
+search=Search
+matchCase=Match case
+wholePhrase=Whole phrase
+more=More...
+noResults=No results
+clear=Clear
+findLabel=Find:
+
+errorPane.Details=Show details
+errorPane.HideDetails=Hide details
+errorPane.DismissAll=Dismiss all
+errorPane.ErrorPaneTitle=An error(s) occured
+
+# errors
+error.ExpectValue=Value expected
+error.ValidationFailed=Validation failed
+error.HasOutstandingDependencies=Has outstanding dependencies.
+error.ExpectNumericValue=Not a numeric value
+error.ExpectBooleanValue=Not a boolean value
+error.ExpectDateValue=Invalid date value
+error.NotSupported=Operation is not supported.
+error.NotFound=Not Found.
+error.ReportNotFound=Unable to open report '{0}'.
+error.InvalidReportToken=Invalid report token.
+error.InvalidDocumentToken=Invalid document token.
+error.RequestFailed=Your request failed.
+error.RequestRejected=Your request was rejected.
+error.RequestCancelled=Your request was cancelled.
+error.InvalidRequestId=Invalid request id.
+error.InvalidDrillthroughLink=Invalid drillthrough link '{0}'.
+error.InvalidDrillthroughParameters=Invalid drillthrough parameters.
+error.InvalidResponse=Invalid response.
+error.InvalidParameters=Invalid report parameters
+error.DocumentNotInCache=The document is not present in the cache. Please refresh the report. 
+error.JsVersionsMismatch=The version of GrapeCity.ActiveReports.Viewer.Html.js or GrapeCity.ActiveReports.Viewer.Html.min.js does not match the version of ActiveReports installed on the server side. Please update the javascript files in your application.

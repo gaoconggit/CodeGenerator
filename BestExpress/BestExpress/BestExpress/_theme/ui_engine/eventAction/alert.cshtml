@@ -1,0 +1,22 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string message = "";
+    string title = "";
+    string url = "";
+    if (model.Any(it => it.key == "message"))
+    {
+        message = model.Single(it => it.key == "message").value;
+    }
+    if (model.Any(it => it.key == "title"))
+    {
+        title = model.Single(it => it.key == "title").value;
+    }
+    if (model.Any(it => it.key == "url"))
+    {
+        url = model.Single(it => it.key == "url").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+ uiEngineAlert("@message","@title","@url");

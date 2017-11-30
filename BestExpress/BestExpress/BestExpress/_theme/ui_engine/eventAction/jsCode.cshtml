@@ -1,0 +1,12 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string code = "";
+    if (model.Any(it => it.key == "code"))
+    {
+        code = model.Single(it => it.key == "code").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+@code

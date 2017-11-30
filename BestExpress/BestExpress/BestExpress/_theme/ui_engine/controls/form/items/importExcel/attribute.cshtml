@@ -1,0 +1,80 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var fileInputName = PubControlHelper.GetControlAttribute(model, "fileInputName");
+    var text = PubControlHelper.GetControlAttribute(model, "text", "导入");
+    var xmlConfig = PubControlHelper.GetControlAttribute(model, "xmlConfig");
+    var allowSize = PubControlHelper.GetControlAttribute(model, "allowSize");
+    var useTransaction = PubControlHelper.GetControlAttribute(model, "useTransaction", "true");
+    var importType = PubControlHelper.GetControlAttribute(model, "importType", "0");
+}
+<table class="editTable">
+    <tr>
+        <td class="first">宽度:</td>
+        <td>
+            <input name="attr.Value" value="@width" type="text" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">高度:</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+
+    <tr>
+        <td class="first">控件名称:</td>
+        <td>
+            <input name="attr.Value" value="@fileInputName" type="text" />
+            <input name="attr.Key" type="hidden" value="fileInputName" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">上传文本:</td>
+        <td>
+            <input name="attr.Value" value="@text" type="text" />
+            <input name="attr.Key" type="hidden" value="text" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">配置文件:</td>
+        <td>
+            <input name="attr.Value" value="@xmlConfig" type="text" placeholder="请输入配置文件名，含后缀(*.xml)" />
+            <input name="attr.Key" type="hidden" value="xmlConfig" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">限制大小:</td>
+        <td>
+            <input name="attr.Value" value="@allowSize" type="text" placeholder="最大限制：默认20" />
+            <input name="attr.Key" type="hidden" value="allowSize" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">使用事务:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((useTransaction == "true").IIF("selected=selected", "")) value="true">是</option>
+                <option @((useTransaction == "false").IIF("selected=selected", "")) value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="useTransaction" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">导入类型:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((importType == "0").IIF("selected=selected", "")) value="0">添加&更新</option>
+                <option @((importType == "1").IIF("selected=selected", "")) value="1">添加</option>
+                <option @((importType == "2").IIF("selected=selected", "")) value="2">更新</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="importType" />
+        </td>
+    </tr>
+</table>

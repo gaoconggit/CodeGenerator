@@ -1,0 +1,22 @@
+﻿@{
+    List<SysBest_ElementAttr> model = Model;
+    var class_ = "";
+}
+@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+
+@if (model.Any(it => it.Key == "class"))
+{
+    class_ = model.Single(it => it.Key == "class").Value;
+}
+<table class="editTable">
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+</table>

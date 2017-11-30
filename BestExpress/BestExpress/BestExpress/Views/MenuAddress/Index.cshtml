@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "地址管理";
+    ViewBag.page = "menuAddressManger";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<string> areaNameList = ViewBag.areaList;
+    ViewBag.LogoIndex = 2;
+}
+@section header{
+
+
+    <link href="~/Content/menuAddress.css" rel="stylesheet" />
+    <link href="~/_theme/ico/url.ico" rel="shortcut icon" type="image/x-icon" />
+}
+
+@section footer{
+    <div id="divEdit"></div>
+    <script src="~/Scripts/menuAddress.js"></script>
+}
+
+@section nav{
+    <ul>
+        <li class="click"> <img src="~/_theme/admin/img/home.png" />地址管理</li>
+        <li>></li>
+        <li class="current">菜单地址</li>
+    </ul>
+}
+
+<div id="ownerPanel">
+    <div id="panel">
+        <div id="toggleResponsivePanel">
+        </div>
+    </div>
+    <!-- 左边布局 -->
+    <div id="jqxResponsivePanel">
+        <!-- 树形菜单 -->
+        <div id="jqxMenu"></div>
+    </div>
+    <!-- 右边布局 -->
+    <div id="content">
+        <!-- 按钮组 -->
+        <div id="buttons">
+            <button class="btn" title="新增" id="add_btn">新&nbsp;增</button>
+            <button class="btn" title="编辑" id="edit_btn">编&nbsp;辑</button>
+            <button class="btn" title="删除" id="del_btn">删&nbsp;除</button>
+            <button class="btn" title="管理元素" id="managementElement_btn">管理元素</button>
+            <button class="btn" title="管理备份" id="managementBak_btn">管理备份</button>
+            <button class="btn" title="生成" id="build_btn">生成</button>
+            <button class="btn" title="生成多语言" id="build_languages_btn">生成多语言</button>
+        </div>
+        <!-- Grid表格 -->
+        <div id="jqxgrid"></div>
+    </div>
+</div>
+
+<!-- 新增/修改表单 -->
+<div id="editbox" class="hide">
+    <div class="savetable">
+        <form id="frmtable" class="form">
+            <table class="tabs">
+                @Html.Hidden("id", null)
+                @Html.Hidden("menuId", null)
+                <tr>
+                    <td align="right">
+                        区&nbsp;&nbsp;&nbsp;域:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("areaName", null)
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        控制器:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("controllerName", null)
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        方&nbsp;&nbsp;&nbsp;法:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("actionName", null)
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        参&nbsp;&nbsp;&nbsp;数:
+                    </td>
+                    <td align="left">
+                        <span class="input-group-addon">?</span>
+                        @Html.TextBox("parameters", null, new { @style = "width:130px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        排序号:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("sort", null)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <br />
+                        <button type="button" id="save">保存</button>
+                        &nbsp;&nbsp;
+                        <button type="button" id="cancel">取消</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<!-- 选择语言表单 -->
+<div id="selectbox" class="hide">
+    <div class="savetable">
+        <form id="languagetable" class="form">
+            <table class="tabs">
+                @Html.Hidden("menuAddreessId", null)
+                @Html.Hidden("languageId", null)
+                <!-- 选择类型，1表示管理元素，2表示管理备份 -->
+                @Html.Hidden("selectType", null)
+                <tr>
+                    <td align="right">
+                        语言:
+                    </td>
+                    <td align="left">
+                        <div id="languageDrop"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <br />
+                        <button type="button" id="saveChoice">管&nbsp;理</button>
+                        &nbsp;&nbsp;
+                        <button type="button" id="cancelChoice">取&nbsp;消</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+<!-- 选择语言和area-->
+<div id="selectboxByBuild" class="hide">
+    <div class="savetable">
+        <form id="languagetable" class="form">
+            <table class="tabs">
+                @Html.Hidden("languageId", null)
+                <!-- 选择类型，1表示管理元素，2表示管理备份 -->
+                <tr>
+                    <td align="right">
+                        area:
+                    </td>
+                    <td align="left">
+                        <select style="" id="selAreaName" name="areaName">
+                            <option value=""></option>
+                            @*@if (areaNameList.IsValuable())
+                                {
+                                    foreach (var it in areaNameList)
+                                    {
+                                        <option value="@it">@it</option>
+                                    }
+                                }*@
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        语言:
+                    </td>
+                    <td align="left">
+                        <div id="languageDrop2"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <br />
+                        <button type="button" id="saveBuild">生&nbsp;成</button>
+                        &nbsp;&nbsp;
+                        <button type="button" id="cancelBuild">取&nbsp;消</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

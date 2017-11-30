@@ -1,0 +1,345 @@
+﻿[
+  {
+    "key": "fillForm",
+    "category": "1",
+    "value": "填充表单",
+    "paras": [
+      {
+        "key": "id",
+        "required": true,
+        "description": "val为json的元素Id"
+      },
+      {
+        "key": "callBack",
+        "category": "textarea",
+        "required": true,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "key": "submitForm",
+    "value": "提交表单",
+    "category": "1",
+    "paras": [
+      {
+        "key": "formId",
+        "required": true,
+        "description": "表单选择器"
+      },
+      {
+        "key": "apiText",
+        "eventCode": "$quickFactory('data-api',this,'apiText','apiId')",
+        "description": "提交地址"
+      },
+      {
+        "key": "apiId",
+        "category": "hidden",
+        "description": "提交地址"
+      },
+      {
+        "key": "isRead",
+        "description": "true为页面加载完成后执行默认false"
+      },
+      {
+        "key": "callBack",
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "回调事件"
+      },
+      {
+        "key": "preAction",
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "执行前操作"
+      }
+    ]
+  },
+  {
+    "key": "gridDelete",
+    "value": "表格批量删除",
+    "category": "1",
+    "paras": [
+      {
+        "key": "gridId",
+        "required": true,
+        "description": "Grid Id"
+      },
+      {
+        "key": "apiText",
+        "eventCode": "$quickFactory('data-api',this,'apiText','apiId')",
+        "description": "提交地址"
+      },
+      {
+        "key": "apiId",
+        "category": "hidden",
+        "description": "提交地址"
+      },
+      {
+        "key": "callBack",
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "回调事件"
+      }
+    ]
+  },
+    {
+    "key": "gridUpdateStatus",
+    "value": "表格批量更新",
+    "category": "1",
+    "paras": [
+      {
+        "key": "gridId",
+        "required": true,
+        "description": "Grid Id"
+      },
+      {
+        "key": "apiText",
+        "eventCode": "$quickFactory('data-api',this,'apiText','apiId')",
+        "description": "提交地址"
+      },
+      {
+        "key": "apiId",
+        "category": "hidden",
+        "description": "提交地址"
+      },
+      {
+        "key": "message",
+        "category": "textarea",
+        "description": "提示消息"
+      },
+       {
+        "key": "value",
+        "description": "更新的值"
+      },
+      {
+        "key": "callBack",
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "回调事件"
+      }
+    ]
+  },
+  {
+    "key": "setValue",
+    "category": "1",
+    "value": "给单个控件赋值",
+    "paras": [
+      {
+        "key": "id",
+        "required": true,
+        "description": "控件ID"
+      },
+      {
+        "key": "value",
+        "required": true,
+        "description": "值"
+      }
+    ]
+  },
+  {
+    "key": "getValue",
+    "category": "1",
+    "value": "获取单个控件赋值",
+    "paras": [
+      {
+        "key": "id",
+        "required": true,
+        "description": "控件ID"
+      }
+    ]
+  },
+  {
+    "key": "submitValidate",
+    "value": "表单验证",
+    "category": "1",
+    "paras": [
+      {
+        "key": "rule1",
+        "category": "textarea",
+        "description": "正则或函数"
+      },
+      {
+        "key": "tip1",
+        "description": "错误提醒"
+      },
+      {
+        "key": "rule2",
+        "category": "textarea",
+        "description": "正则或函数"
+      },
+      {
+        "key": "tip2",
+        "description": "错误提醒"
+      },
+      {
+        "key": "rule3",
+        "category": "textarea",
+        "description": "正则或函数"
+      },
+      {
+        "key": "tip3",
+        "description": "错误提醒"
+      }
+    ]
+  },
+  {
+    "key": "alert",
+    "value": "弹出提示",
+    "category": "2",
+    "paras": [
+      {
+        "key": "message",
+        "required": true,
+        "description": "消息内容"
+      },
+      {
+        "key": "title",
+        "required": true,
+        "description": "消息标题"
+      },
+      {
+        "key": "url",
+        "required": false,
+        "description": "提示完，跳转地址(可空)"
+      }
+    ]
+  },
+  {
+    "key": "window",
+    "value": "弹出层",
+    "category": "2",
+    "paras": [
+      {
+        "key": "id",
+        "required": true,
+        "description": "弹出层的选择器"
+      },
+      {
+        "key": "width",
+        "required": true
+      },
+      {
+        "key": "type",
+        "required": true,
+        "description": "打开窗口open关闭则填写close"
+      },
+      {
+        "key": "title",
+        "required": true,
+        "description": "消息标题"
+      },
+      {
+        "key": "okClick",
+        "required": false,
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "确定是否关闭弹出框"
+      },
+      {
+        "key": "valiFun",
+          "required": false,
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "验证是否弹出框,return true;弹出"
+
+      },
+      {
+        "key": "callBack",
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "回调事件"
+      }
+    ]
+  },
+  {
+    "key": "linkTwo",
+    "category": "3",
+    "value": "二级联动"
+  },
+  {
+    "key": "redirect",
+    "value": "跳转",
+    "category": "4",
+    "paras": [
+      {
+        "key": "url",
+        "required": true,
+        "description": "跳转地址"
+      },
+      {
+        "key": "idList",
+        "required": false,
+        "description": "填写控件id以逗号隔开"
+      },
+      {
+        "key": "qid",
+        "required": false,
+        "description": "页面参数key多个以逗号隔开"
+      },
+      {
+        "key": "#",
+        "required": false,
+        "description": "页面标记ID"
+      }
+    ]
+  },
+  {
+    "key": "jsCode",
+    "value": "js 代码",
+    "category": "5",
+    "paras": [
+      {
+        "key": "code",
+        "category": "textarea",
+        "description": "code"
+      }
+    ]
+  },
+  {
+    "key": "ajax",
+    "value": "ajax",
+    "category": "5",
+    "paras": [
+      {
+        "key": "url",
+        "description": "url"
+      },
+      {
+        "key": "data",
+        "description": "data"
+      },
+      {
+        "key": "success",
+        "category": "textarea",
+        "eventCode": "$quickFactory('select-event',this)",
+        "description": "success"
+      }
+    ]
+
+  },
+  {
+    "key": "reloadGird",
+    "value": "刷新Grid",
+    "category": "6",
+    "paras": [
+      {
+        "key": "gridId",
+        "category": "textarea",
+        "description": "表格的ID"
+      }
+    ]
+  },
+  {
+    "key": "getTreeEventItem",
+    "value": "获取treer的事件触发对象",
+    "category": "6",
+    "paras": [
+      {
+        "key": "id",
+        "description": "tree Id"
+      }
+    ]
+  }
+
+]

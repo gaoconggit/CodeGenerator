@@ -1,0 +1,611 @@
+<div id="div_body" class="layout_area_body">
+            <table data-sort="sortDisabled">
+                <tbody>
+                    <tr class="firstRow">
+                        <td valign="middle" colspan="1" rowspan="1" style="word-break: break-all;" align="center" width="26">
+                            选择人员
+                        </td>
+
+<div id="DepartmentBox" class="hide " style=";">
+                                <div class="windowbox">
+                                    <div>
+                                        <span data-id="randId_a855b2205bfd4a16a9d1d67882f5b9a3" style="margin: 0 5px;padding: 0 2px;cursor:pointer; display:inline-block;  color:red; padding-bottom:5px; border:1px #ccc solid" data-categorykey="show" data-hassource="True" data-key="tree" onclick="window.parent.$pubPage.pubMehtod.editControlAttr(this)"><img style="position:relative; top:5px;" src="/_theme/ui_engine/controls/show/items/tree/icon.png"/> 编辑属性</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+DateStart:getvalue(),DateEnd:getvalue(),StartTime:getvalue(),EndTime:getvalue(),Hours:getvalue(),LeaveType_1:getvalue(),DataStart:getvalue(),DataStart:getvalue(),
+
+
+ <connectionStrings>
+    <add name="ConnectionString" connectionString="server=192.168.0.111\SQL2008;uid=sa;pwd=landa;database=best" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+
+
+    for (var i = 22; i <= 27; i++) {
+        var num = i - 22;
+        $excel(3, i, 23, { key: "rowGroup", value: ["(", 29 + num, "+", 15 + num, "+(", 8 + num, "+", 15 + num, ")/2)/12"] });
+    }
+
+(D9*(H9-1)+F9*(12-H9+1))
+D9*(H9-1)*E9+F9*(12-H9+1)
+
+
+ for (var i = 3; i <= 19; i++) {
+        i = i + 1;
+        $excel(10, i, 1, { key: "rowGroup", value: [4, "*(", 4, "*(", 8, "-1)*", 5, "+ ", 6, "*(12-", 8, "+1))*", 7] });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+var selector = {
+    $btn_Delete: function () { return $("#btn_Delete"); },
+    $btn_Submit: function () { return $("#btn_Submit"); }
+};
+$(function () {
+    $("[groupid],.select-all").click(function () {
+        var th = $(this);
+        var val = th.attr("value");
+        if (val == "1") {
+            selector.$btn_Submit().show();
+        } else {
+            selector.$btn_Submit().hide();
+        }
+    })
+})
+
+
+200000 {TreeId:200000}  href='/salary/salarycalculation/index?VGUID="+row.VGUID+"&Salary=1'>计算</a>
+
+
+
+
+window.location.href = "/Personnel/MaintenanceContactInfo/Index?VGUID="+$.request.queryString().VGUID+"&status="+$.request.queryString().status+";
+
+"{0}?id={1}&name={2}".ejq_format($.action.url("Index",null,"P","A"),"a",2)
+"/A/P/Index?id=a&name=2"
+
+
+encodeURI("{ApplyStatus:2}")
+
+SelectOverTimeBill
+
+
+
+
+function xxx(){
+  var st=getxxx();
+  if(STATS_DATE==){
+   $("input:text").css("border",0)
+    xx.hide()
+  }
+}
+
+WelfareType
+
+FixPhoneNum固定电话
+公司邮箱:CompanyEmail
+手机号码:MobilePhoneNum
+紧急联系人:EmergencyContact
+当前住址:ResidenceAddress
+个人邮箱:PersonalEmail
+
+http://192.168.0.119:1002/tfs/
+
+<a onclick=$.response.open($.action.url('index',null,'edituser','authorize'),{Id:'"+ row.Id +"'}) ></a></div>";
+
+
+
+
+<a href='/authorize/edituser/index?Id="+row.Id+"'>"+value+"</a></div>";
+
+
+
+
+/Attendance/EditShift/index?
+
+ uiEngineAlert("保存成功","",window.close);
+     window.opener.$("#SelectCompany").jqxGrid('updatebounddata', 'filter');
+
+location.href = "/Personnel/EntryBillDetail/Index";
+
+
+window.location.href="/Personnel/RewardAndPunishmentInfo/Index?Type=add"
+
+SELECT TypeName AS [Key],ltrim(VGUID) AS [Value] FROM X6_List_WelfareType where 1=1 --
+SELECT top 10000 (TypeName )as TypeName,VGUID FROM X6_Welfare_TypeSetting 
+
+
+font-family: arial, 宋体, sans-serif, tahoma, &#39;Microsoft YaHei&#39;; 
+
+提示信息按钮修改为“确定”按钮背景颜色修改为红色
+
+<span style="top:-4px;">—</span>
+
+
+#48b8e8
+ $(".layout_area").hide();
+ $(".navPanel").hide();
+
+
+
+AuditUserId AuditUserId    <a href="a.txt">down</a>  EducationProve 学历证明
+  
+
+
+var $page = function () {
+
+    this.init = function () {
+        addEvent();
+        EmployeeStatus();
+    };
+    var selector = this.selector =
+        {
+            $EmployeeStatus: function () { return $("#EmployeeStatus"); },
+        }
+
+    function addEvent() {
+       
+    }
+};
+
+$(function () {
+    var page = new $page();
+    page.init();
+});
+function EmployeeStatus() {
+    var page = new $page();
+    var ws = getValue_EmployeeStatus();
+    if (ws == "4") {
+        page.selector.$EmployeeStatus().attr("readonly", "readonly");
+    }
+}
+
+
+
+
+
+{"BasicInfoVGUID":$.request.queryString().VGUID}
+
+   <table>
+                 <tr ng-repeat="cl in msg">
+                   <td>
+                        <table class="area_from"> 
+                                <a href="{{cl.EducationProve}}">打开</a>
+                      </table>
+					</td>
+                  </tr>
+            </table> 
+            
+
+
+zh-cn中文    http://www.cnblogs.com/suoning/p/5683047.html
+
+UPDATE  dbo.SysBest_Menu SET IsDeleted=1 where  id<>'/'
+
+
+
+
+
+var vguid = $.request.queryString().VGUID;
+if(vguid != null && vguid != ""){
+   loadAndBindComboOverTimeBill(vguid);
+}
+
+
+
+$.ajax({
+   url:"/Selfservice/OverTimeBillSaveApply/Select_WF_Easy_BillAudit",
+   data:{VGUID:$.request.queryString().VGUID},
+   success:function(msg){
+        if(msg.responseInfo.length>0){
+        setValue_ComboOverTimeBill(msg.responseInfo[0].BillId)
+        }
+   },error:jqxError
+})
+
+
+
+
+darkgray
+
+
+
+setValue_ComboOverTimeBill(obj.responseInfo)
+
+
+
+$.ajax({
+   url:"/Personnel/DimissionDetail/GetDimissionName",
+   data:{VGUID:$.request.queryString().VGUID},
+   success:function(msg){
+        if(msg.isSuccess==true){
+        setValue_ComboOverTimeBill(msg.responseInfo)
+        }
+   },error:jqxError
+})
+
+
+
+
+
+
+/Authorize/User/GetUserInfoSource账号列表插件
+
+
+
+
+$("#a").html("")   $("aa").attr("href",msg.aa
+
+msg.responseInfo[0].EducationProve
+
+离职
+$.ajax({
+   url:"/Personnel/DimissionDetail/GetDimissionName",
+   data:{VGUID:$.request.queryString().VGUID},
+   success:function(msg){
+        if(msg.isSuccess==true){
+        setValue_ComboOverTimeBill(msg.responseInfo)
+        }
+   },error:jqxError
+})
+
+
+$pageLanguage        jqxGridOther
+
+window.location.href = "/Personnel/PerDetail/Index?VGUID=" $.request.queryString().VGUID "&status=1&AreaWorkExperienceList";
+
+
+
+
+
+var beginTime = dt.AddDays(1 - dt.Day).GetDateTimeFormats('M')[0].TryToDate();
+           var beginTime2 = DateTime.Now.AddDays(30);
+                var endTime = DateTime.Now;
+                var endTime2 = dt.AddDays(1 - dt.Day).AddMonths(1).AddDays(-1).GetDateTimeFormats('M')[0].TryToDate();
+
+
+
+  Guid vguid = Guid.NewGuid();
+           parsObj.VGUID = vguid;
+           db.Insert<X6_Personnel_BasicInfo>(parsObj,false);
+           model.responseInfo = vguid.TryToString(); 
+
+
+
+
+
+<span data-id="randId_676163c88de141a291f9c99fe9c8578b" style="margin: 0 5px;padding: 0 2px;cursor:pointer; display:inline-block;  color:red; padding-bottom:5px; border:1px #ccc solid" data-categorykey="show" data-hassource="" data-key="filter" onclick="window.parent.$pubPage.pubMehtod.editControlAttr(this)"><img style="position:relative; top:5px;" src="/_theme/ui_engine/controls/show/items/filter/icon.png"/> 编辑属性</span>
+
+{'filterField':'Sex','filterValue':'3'},
+ {'filterField':'EmploymentTypeId','filterValue':'13'},
+ {'filterField':'Household','filterValue':'15'},
+ {'filterField':'EducationLevel','filterValue':'12'},
+ {'filterField':'MaritalStatus','filterValue':'17'},
+ {'filterField':'postLevel','filterValue':'21'},
+ {'filterField':'IsSelfForTax','filterValue':'22'},
+ {'filterField':'IsPay','filterValue':'20'}
+
+
+setTimeout(function(){ loadSelectPositionId()},1000);
+
+{"treeid":$("#DepartmentId").val()}
+
+
+PositionMaintenance
+
+
+uiEngineHelper.bindSelectByUrl( "/Organizational/MaintenanceBasicInfo/GetPositionDropData",{ TreeId: selectItem.value },"PositionId","TreeId","PostName")
+
+
+
+return "<div class='row25 text-center' >"+"<img src='"+value+"' width=60 height=60 />"+"</div></a>";
+
+
+$("#Position").removeAttr("data-status");
+
+
+
+  "treeid":$("#DepartmentId").val()
+
+
+
+维护基本信息
+uiEngineHelper.bindSelectByUrl( "/Organizational/PositionMaintenance/GetPositionDropData",{ TreeId: selectItem.value },"PositionId","TreeId","PostName")
+
+
+return "<div class='text-center' style='position: relative;top: 13px;'> 
+
+
+
+
+
+setValue_hidPosition($.convert.strToJson(getValue_hidSource())[0].PositionId);
+loadSelectPositionId();
+
+
+
+
+
+return "<div class='row80 text-center'><a onclick=$.response.open($.action.url('index',null,'AttenGroupPackSave','Attendance'),{VGUID:'"+row.VGUID+"'}) >"+value+"</a></div>";
+
+
+
+
+ var array = $("#SelectOverTimeBill").jqxGrid('getselectedrowindexes');
+           var isTreeId = false;
+           var pars = [];
+           $(array).each(function (i, v) {
+               var value = $("#SelectOverTimeBill").jqxGrid('getcell', v, "VGUID")
+               if (value == null) {
+                   value = $("#SelectOverTimeBill").jqxGrid('getcell', v, "Id")
+                   if (!$.valiData.isNumber(value)) {
+                       value = $("#SelectOverTimeBill").jqxGrid('getcell', v, "TreeId");
+                       isTreeId = true;
+                   }
+               }
+
+               pars.push(value.value);
+           })
+           if (pars == null || pars.length == 0) {
+               jqxAlert("请勾选您要操作的数据！"); return;
+           }
+
+
+
+
+ window.location.href =  "{0}?VGUID={1}&status=1".ejq_format($.action.url("Index",null,"PerDetail","Personnel"),$.request.queryString().VGUID );
+
+
+
+$pageLanguage.
+
+
+
+加班单扣小时数不为负数
+$("#SubHours").bind("input propertychange", function () {
+    if (isNaN(parseFloat($(this).val())) || parseFloat($(this).val()) < 0) $(this).val("");
+})
+
+
+Code of Business Conduct	领取 未领取 未到离职日期操作无效	   
+
+line-height: normal;
+
+
+
+
+****************************
+
+ if($.request.queryString().add == "1"){
+                                                  $("#EmployeeStatus").prepend("<option value=\"0\">未入职员工</option>");
+                                              }
+                                              if ($.request.queryString().add == "2") {
+                                                  $("#EmployeeStatus").prepend("<option value=\"6\">临时员工</option>");
+                                              }
+  if ($.request.queryString().add == "1") {
+                                                  $("#EmployeeStatus").prepend("<option value=\"0\">Offered</option>");
+                                              }
+                                              if ($.request.queryString().add == "2") {
+                                                  $("#EmployeeStatus").prepend("<option value=\"6\">Temporary</option>");
+                                              }
+
+
+
+Salary Adjusted to
+
+068023     X6_V_Personnel_Tran
+
+
+
+ 
+string sql = "  exec usp_X6_Birthday @Departments,@Month," + PubGet.GetSysLanguageID();
+    
+var departmentIds = pars.GetTryValue("DepartmentIds");
+ 
+          var month = pars.GetTryValue("Month");
+        
+   var dbPars = new { Departments = departmentIds, Month = month };
+   
+        var data = db.SqlQueryJson(sql, dbPars);
+       
+       string sqlGetCount = "EXEC usp_X6_Birthday @Departments,@Month," + PubGet.GetSysLanguageID() + ",false";
+                var count = db.GetInt(sqlGetCount, dbPars);
+         
+       model.responseInfo = data;
+        
+        model.totalRows = count; 
+
+
+
+
+         var departmentIds = pars.GetTryValue("DepartmentIds");
+           var month = pars.GetTryValue("Month");
+  var dbPars = new { DepartmentIds = departmentIds, Month=month};
+string sql = "  exec usp_X6_Birthday @DepartmentIds,@Month," + PubGet.GetSysLanguageID();    
+           var data = db.SqlQueryJson(sql, dbPars);
+         string sqlGetCount = "EXEC usp_X6_Birthday @DepartmentIds,@Month," + PubGet.GetSysLanguageID() + ",false";
+           var count = db.GetInt(sqlGetCount, dbPars);
+                model.responseInfo = data;
+                model.totalRows = count; 
+
+
+
+
+
+
+
+ 
+
+workingYears="工龄分析表"
+
+
+
+EXEC usp_X6_Personnel_BasicInfo'','',2
+
+EntryDate =entryDate, LastWorkDate = lastWorkDate
+
+            
+
+usp_X6_Personnel_ChangeInfo '','','',2
+
+
+
+隐藏行
+/function setHiddenRow(mytable, iRow) {
+//    if ($("#OT").text() == "") {
+//        mytable.rows[iRow].style.display = mytable.rows[iRow].style.display = "none";
+//    }
+
+GetScalar
+
+x6 V1.4
+
+pars.GetTryValue("PasswordOld").TryToString();
+
+
+
+
+var fileName = event.args.file;
+            var extStart = fileName.lastIndexOf(".");
+            var ext = fileName.substring(extStart, fileName.length).toUpperCase();
+    debugger
+    if (ext == ".PDF") {
+        var file = args.file;
+        $("#WorkProve").val(file);
+        $("#hidWorkProve a").attr("href", file);
+        $("#hidWorkProve a").html("打开"); return;
+    } else {
+
+        $("#WorkProve").val(msg.WebPath);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if(row.UserId != null && row.UserId != ""){
+    return "<div class='row30 text-center'><a onclick=$.response.open($.action.url('index',null,'AttendanceDetail','Attendance'),{UserId:'"+row.UserId+"',startDate:'" + getValue_startDate() + "',endDate:'" + getValue_endDate() + "',status:'3'})>"+value+"</a></div>";
+}
+
+
+
+function(){
+ if($layoutPageLanguageVal!=1){
+   return true;
+  }else{
+  
+  }
+
+}
+
+/Vacation/EditAnnualLeave/index
+                                                                                                                                             ********判断日期是周末**************************                                                                                                             
+DateTime.Now.DayOfWeek
+        //////////               
+var day=new Araay()
+day[0]=“星期一”
+day[1]=“星期二”
+day[2]=“星期三”
+day[3]=“星期四”
+day[4]=“星期五”
+day[5]=“星期六”
+day[6]=“星期七”
+
+var dt = new Date();
+switch(dt.getDay()){
+case 0:alert(day[0]);break;
+case 1:alert(day[1]);break;
+.
+.
+.
+}
+
+
+
+ var startTime = $("#DateFrom").val();
+                                 var start = new Date(startTime.replace("-", "/").replace("-", "/"));
+                                 var endTime = $("#DateTo").val();
+                                 var end = new Date(endTime.replace("-", "/").replace("-", "/"));
+                                 if (end < start) {
+                                     jqxAlert("结束日期晚于起始日期！");return;
+                                 }
+
+
+
+
+
+
+ if ($.request.queryString().status == "2") {
+                             // uiEngineRedirect("/Personnel/MaintenanceBasicInfo/Index", [], ["VGUID", "status"+"="+"2"], "");
+                             $.response.open($.action.url('index', null, 'MaintenanceBasicInfo', 'Personnel'), { VGUID:$.request.queryString().VGUID,add : "2" })
+                         } else if ($.request.queryString().status == "8") {
+                             $.response.open($.action.url('index', null, 'MaintenanceBasicInfo', 'Personnel'), { VGUID: $.request.queryString().VGUID, add: '1' })
+                         }
+
+
+
+
+
+
+
+
+
+ var reval = false;
+            var userid = $("#mappingUserId").val();
+            $.ajax({
+                url: $.action.url("CheckTime", null, "overtimebilllistapply", "Selfservice"),
+                data: {
+                    
+                    dateFrom: getValue_DateFrom(),
+                    dateTo: getValue_DateTo(),
+                    timeFrom: getValue_TimeFrom(),
+                    timeTo: getValue_TimeTo(),
+                    userid: userid
+                },
+                async: false,
+                success: function (msg) {
+                    debugger
+                    if (msg.isSuccess && msg.responseInfo == true) {
+                        reval = true;
+                    }
+                    else {
+                        reval = false;
+                    }
+                }
+
+            })
+            return reval;
+
+
+ it.field == parValue.ObjToDate());
+
+
+
+ model.responseInfo = db.Queryable<X6_Attendance_OverTimeBill>().Any(i => i.UserId == userId && (i.ApplyStatus == 2 || i.ApplyStatus == 3) && i.DateFrom <= dateTo
+           || (i.DateFrom <= dateFrom && dateTo <= i.DateTo) || dateFrom <= i.DateTo);

@@ -1,0 +1,36 @@
+﻿@using System;
+@using System.Linq;
+@using System.Collections;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    var model = (List<SysBest_ElementAttr>)Model;
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var defaultValue = PubControlHelper.GetControlAttribute(model, "defaultValue");
+}
+
+<table class="editTable">
+    <tr>
+        <td class="first">宽度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@width" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">高度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@height" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">默认值：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@defaultValue"/>
+            <input name="attr.Key" type="hidden" value="defaultValue" />
+        </td>
+    </tr>
+</table>

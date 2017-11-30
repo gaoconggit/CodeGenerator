@@ -1,0 +1,54 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var src= PubControlHelper.GetControlAttribute(model, "src");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+}
+<table class="editTable">
+    <tr>
+        <td class="first">src：</td>
+        <td>
+            @*<input  type="file"   onchange="$('#imgUrl').val($(this).val())"  accept=".BMP,.JPG,,JPEG,.PNG,.GIF"   />*@
+            <input id="imgUrl" name="attr.Value" value="@src"/>
+            <input name="attr.Key" type="hidden" value="src" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">height：</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">width：</td>
+        <td>
+            <input name="attr.Value" value="@width" type="text" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+  
+</table>
+

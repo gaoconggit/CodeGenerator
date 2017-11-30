@@ -1,0 +1,62 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using SyntacticSugar
+@{
+    List<SysBest_ElementAttr> model = Model;
+
+
+    var checked_=PubControlHelper.GetControlAttribute(model, "checked");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+    var _defaultVal = PubControlHelper.GetControlAttribute(model, "_defaultVal");
+    var radName= PubControlHelper.GetControlAttribute(model, "radName");
+}
+<table class="editTable">
+    <tr>
+        <td class="first">Check：</td>
+        <td>
+
+            <select style=" margin-top:0 !important" name="attr.Value">
+                <option value="true" @((checked_ == "true").IIF("selected=selected", ""))>true</option>
+                <option value="false" @((checked_ == "false").IIF("selected=selected", ""))>false</option>
+            </select>
+            @*<select name="attr.Value" onchange="$(this).val($(this).find('option:selected').val())" >
+                <option value="true"  >true</option>
+                <option value="false" >false</option>
+            </select>*@
+
+            <input name="attr.Key" type="hidden" value="checked" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Name:</td>
+        <td>
+            <input name="attr.Value" value="@radName" type="text" />
+            <input name="attr.Key" type="hidden" value="radName" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">value:</td>
+        <td>
+            <input name="attr.Value" value="@_defaultVal" type="text" />
+            <input name="attr.Key" type="hidden" value="_defaultVal" />
+        </td>
+    </tr>
+</table>

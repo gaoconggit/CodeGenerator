@@ -1,0 +1,130 @@
+﻿@using System.Linq;
+@using SyntacticSugar;
+@using Best.Entities.Tables;
+@using Best.Infrastructure.DAL;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    var data = PubGet.GetList();
+    var dataStr = (data != null && data.Count() > 0) ? data.ModelToJson() : "[]";
+
+    var model = (List<SysBest_ElementAttr>)Model;
+    var itemCode = PubControlHelper.GetControlAttribute(model, "itemCode");
+    var gridId = PubControlHelper.GetControlAttribute(model, "gridId");
+    var filterItems = "";
+    if (itemCode.IsValuable())
+    {
+        string[] array = itemCode.Split(',');
+        if (array != null && array.Count() > 0)
+        {
+            List<string> arrList = array.ToList();
+            filterItems = arrList.ModelToJson();
+        }
+    }
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var click = PubControlHelper.GetControlAttribute(model, "click");
+}
+
+<table class="editTable">
+    <tr>
+        <td class="first">筛选项：</td>
+        <td>
+            <div id="jqxFilterItem">
+
+            </div>
+            <input name="attr.Value" value="@itemCode" type="hidden" id="filterItemCode" />
+            <input name="attr.Key" type="hidden" value="itemCode" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class：</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">GridId：</td>
+        <td>
+            <input name="attr.Value" value="@gridId" placeholder="填写表格的Id" type="text" />
+            <input name="attr.Key" type="hidden" value="gridId" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">click：</td>
+        <td class="eleName" style="padding:0">
+            <textarea style="margin: 0px; width: 415px; height: 71px;" name="attr.Value" placeholder="">@click</textarea>
+            <span data-type="textarea" style="position:relative; top:-10px; padding-right:7px; display:inline-block; margin-left:1px" onclick="$quickFactory('select-event',this)" title="快捷输入" class="icon-search"></span>
+            <input name="attr.Key" type="hidden" value="click" />
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    $(function () {
+        var pars = [];
+
+        var jsonData = @dataStr.ToHtmlDecode();
+        var languageId = $.request.queryString().languageId;
+        if (languageId == null || languageId == "" || languageId == undefined) {
+            languageId = 1;
+        }
+
+        $.each(jsonData,function(i,item){
+            if (item.LanguageId == languageId) {
+                pars.push(item);
+            }
+        });
+
+        if (pars.length > 0) {
+            loadFilterItems(pars);
+        }
+
+        $("#jqxFilterItem").on('checkChange', function (event) {
+            var items = $("#jqxFilterItem").jqxDropDownList('getCheckedItems');
+            var selectedItems = "";
+            $.each(items, function (i,item) {
+                selectedItems += this.value;
+                if (items.length - 1 != i) {
+                    selectedItems += ",";
+                }
+            });
+            $("#filterItemCode").val(selectedItems);
+        });
+
+        @if (filterItems != null && filterItems != "" && filterItems != "[]")
+        {
+            @:var dataItem = @filterItems.ToHtmlDecode();
+                    @:$().ready(function() {
+                            @:$.each(dataItem,function(i,item){
+                                    @:$("#jqxFilterItem").jqxDropDownList("checkItem",parseInt(item));
+                                @:});
+                        @:});
+                }
+    });
+
+    function loadFilterItems(obj) {
+        var dataAdapter = new $.jqx.dataAdapter({
+            dataType: "json",
+            datafields:  [
+                { name: "Name" },
+                { name: "Id"}
+            ],
+            async: false,
+            localdata:obj
+        });
+
+        $("#jqxFilterItem").jqxDropDownList({
+            width:418,
+            height:25,
+            checkboxes:true,
+            filterable: true,
+            selectedIndex: 0,
+            source:dataAdapter,
+            displayMember: "Name",
+            valueMember: "Id",
+            placeHolder:"请选择筛选项："
+        });
+    };
+
+</script>

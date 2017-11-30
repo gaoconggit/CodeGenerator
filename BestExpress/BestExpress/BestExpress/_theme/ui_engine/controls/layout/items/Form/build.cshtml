@@ -1,0 +1,22 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var id = attrList["name"];
+    var name = id;
+    string class_ = "";
+    if (attrList.ContainsKey("class"))
+    {
+        class_ = attrList["class"];
+    }
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+<!------------------@(name) BEGIN------------------>
+ <form id="@id" class="@class_.AppendString("windowbox"," ",false).AppendString("showClass"," ",false)">
+     请在表单里面写内容吧！！
+ </form>
+<!------------------@(name) END------------------>

@@ -1,0 +1,3 @@
+font-awesome.css
+
+Best.Infrastructure.DAL.X6Get.GetCurrentUser.VGUID

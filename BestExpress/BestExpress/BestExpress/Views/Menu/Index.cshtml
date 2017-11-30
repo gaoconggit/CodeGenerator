@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "菜单管理";
+    ViewBag.page = "menuManger";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.LogoIndex = 0;
+}
+
+@section header{
+    <link href="~/_theme/ico/menu.ico" rel="shortcut icon" type="image/x-icon" />
+}
+
+@section footer{
+    <div id="divEdit"></div>
+
+  
+<script src="~/Scripts/dependence/menu.js"></script>
+}
+
+@section nav{
+    <ul>
+        <li class="click"> <img src="~/_theme/admin/img/home.png" />菜单管理</li>
+        <li>></li>
+        <li class="current">@ViewBag.Title</li>
+    </ul>
+}
+
+<div id="content">
+    <!-- 按钮组 -->
+    <div id="default">
+        <button class="btn" title="新增" id="add_btn">新&nbsp;增</button>
+        <button class="btn" title="编辑" id="edit_btn">编&nbsp;辑</button>
+        <button class="btn" title="删除" id="del_btn">删&nbsp;除</button>
+        <button class="btn" title="移动" id="move_btn">移&nbsp;动</button>
+        <button class="btn" title="生成多语言" id="build_languages_btn">生成多语言</button>
+    </div>
+    <!-- 树形菜单 -->
+    <div id="jqxWidget" style="margin-top:10px;"></div>
+</div>
+
+<!-- 新增/修改表单 -->
+<div id="editbox" class="hide">
+    <div class="savetable">
+        <form id="frmtable" class="form">
+            <table class="tabs">
+                @Html.Hidden("isAdd", null)
+                @Html.Hidden("parentTreeId", null)
+                <tr>
+                    <td align="right">
+                        菜单名:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("menuName", null, new { @style = "height:24px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        图标:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("icon", null, new { @maxlength = "100", @style = "height:24px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        目录地址
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("MenuUrl", null, new { @maxlength = "100", @style = "height:24px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        排序号:
+                    </td>
+                    <td align="left">
+                        @Html.TextBox("sort", 0, new { @style = "height:24px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        内嵌:
+                    </td>
+                    <td align="left">
+                        @Html.DropDownList("isInnerPage", (ViewBag.IsInnerPageDataSource as SelectList))
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <br />
+                        <button type="button" id="save">保存</button>
+                        &nbsp;&nbsp;
+                        <button type="button" id="cancel">取消</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<!-- 移动表单 -->
+<div id="moveWindow" style="display:none">
+    <div>
+        <form target="form-iframe" id="moveForm">
+            <table>
+                @Html.Hidden("oldTreeId", "")
+                <tr>
+                    <td>移动至：</td>
+                    <td>
+                        @Html.TextBox("newId", "", new { @style = "height:24px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <button type="button" class="buttons" id="save_moveMenu">提交</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,186 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using SyntacticSugar
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Infrastructure.DAL;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Entities.UiEngine
+@{
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var listpars = PubGet.GetJaxTreeParas();
+    var attres = listpars.Where(it => it.SmallCategory == "Properties").OrderByDescending(it => it.IsOften).ToList();
+    var pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+    Dictionary<string, string> attr = new Dictionary<string, string>();
+    var type = PubControlHelper.GetControlAttributeByBuild(attrList, "type");
+    var dropDown = PubControlHelper.GetControlAttributeByBuild(attrList, "dropDown").TryToBoolean();
+    var valueField = PubControlHelper.GetControlAttributeByBuild(attrList, "valueField", "treeid");
+    var h100 = PubControlHelper.GetControlAttributeByBuild(attrList, "h100", "true");
+    var label = PubControlHelper.GetControlAttributeByBuild(attrList, "label", "title");
+    var parsReadElement = PubControlHelper.GetControlAttributeByBuild(attrList, "parsReadElement");
+    foreach (var item in attres)
+    {
+        var val = PubControlHelper.GetControlAttributeByBuild(attrList, item.Name);
+        var properties = PubControlHelper.GetControlAttributeByProperties(attres, item.Name, val);
+
+        if (properties.IsValuable())
+        {
+            switch (item.Category)
+            {
+                case "Number":
+                case "Boolean":
+                    attr.Add(item.Name, val);
+                    break;
+                case "String":
+                    attr.Add(item.Name, "'" + val + "'");
+                    break;
+                case "Number/String":
+                    attr.Add(item.Name, '"' + val + '"');
+                    break;
+            }
+        }
+    }
+    var sour = "";
+    foreach (var item in attr)
+    {
+        sour += item.Key + ":" + item.Value + ",";
+    }
+
+    var Events = listpars.Where(it => it.SmallCategory == "Events").OrderByDescending(it => it.IsOften).ToList();
+    var id = attrList["name"];
+    var name = attrList["name"];
+}
+    @using Best.Entities.UiEngine
+    @using SyntacticSugar
+
+<!------------------@(name) BEGIN------------------>
+<div id='@(name)dropDownButton'>
+   
+    <div id='@name' class="@((h100=="true").IIF("jqxTree100","").AppendString(showClass," ",false))">
+    </div>
+</div>
+<script>
+    function loadTree@(name)() {
+
+        var path='@Model.api';
+        var selector= { $jqxTree: function () { return $("#@(name)") }}
+        //请求数据
+        $.ajax(
+          {
+              id: 'id',
+              url:path,
+              data: @(pars.ToHtmlDecode()),
+              async: false,
+              dataType:"json",
+              success:function(msg) {
+                  var  source = msg.responseInfo;
+
+                  //判断是同步tree设置Map属性
+                  @if (type == "false")
+                  {
+                      @:    var jsonstr = "";
+                                                          @:    $.each(source, function(i) {
+                                                                      @:            var key = i;
+                                                                      @:            jsonstr = source[0];
+                                                                      @:            return;
+                                                                      @:    });
+                                                          @:        var datafield = []; //值数组
+                                                          @:    //获取到数josn中的列名KEY 保存在数组中==//
+                                                          @:    for (var keys in jsonstr)
+                                                                          @:        {
+                                                                          @:            datafield.push(keys);
+                                                                          @:        }
+                                                          @:        //======================================//
+                                                          @:        var dataArray = [];//tree 的数据集数组
+                                                          @:        var dataMap = [];//tree的map数组
+                                                          @:        var treeId = "";//tree的ID用于data中绑定
+                                                          @:        var treePid = "";//tree的parentid用于data中绑定
+                                                          @:    for(var val in datafield)
+                                                                          @:        {
+                                                                          @:            dic = { name: datafield[val] }; //定义临时对象设置键值
+                                                                          @:            dataArray.push(dic);//将对象存入数组中
+                                                                          @:                                //动态构造Map========================================================================================//
+                                                                          @:            var lowerval = datafield[val];//jquery区分大小写，将遍历得到的值转换成小写
+                                                                          @:
+                                                                          @:            //判断 id  parentid
+                                                                          @:            var isid = lowerval.toLocaleLowerCase() == "id";
+                                                                          @:            var ispid = lowerval.toLocaleLowerCase() == "parentid";
+                                                                          @:            treeId = isid ? datafield[val] : treeId;
+                                                                          @:            treePid = ispid ? datafield[val] : treePid;
+                                                                          @:            //设置ID的map为value   title的map 为label 。用作显示和值绑定。。其余的字段name=map
+                                                                          @:            dicMap = lowerval.toLocaleLowerCase() == "@label" ?{ name: datafield[val], map: 'label' } :
+                                                                              @:        (lowerval.toLocaleLowerCase() == "@valueField" ? { name: datafield[val], map: 'value' } :{ name: datafield[val], map: datafield[val] });
+                                                                      @:
+                                                                      @:            dataMap.push(dicMap);
+                                                                      @:            //=====================================================================================================//
+                                                                      @:        }
+                                                          @:    var data =
+                                                                  @:    {
+                                                                          @:      datatype: "json",
+                                                                  @:      datafields: dataArray,
+                                                                  @:      id: treeId,
+                                                                  @:   localdata: source
+                                                                  @:   };
+                                                      @:var dataAdapter = new $.jqx.dataAdapter(data);
+                                                      @:dataAdapter.dataBind();
+                                                      @:var records = dataAdapter.getRecordsHierarchy(treeId,treePid, 'items', dataMap);
+                                                      @: selector.$jqxTree().jqxTree({@sour source:records});
+                                        }
+    else
+    {
+    @:  selector.$jqxTree().jqxTree({@sour source: source });
+                                        }
+
+              },
+              error:jqxError
+          });
+
+    }
+   
+    $(function(){
+        @if(dropDown)
+        {
+
+             @:$("#@(name)dropDownButton").jqxDropDownButton({@sour});
+                      @:$("#@(name)dropDownButton").jqxDropDownButton({ height: 25 });
+            
+        }
+
+        var selector= { $jqxTree: function () { return $("#@(name)") }}
+        @if (parsReadElement.IsValuable())
+        {
+            @:$.action.elementValueReady("#@parsReadElement",function(){ loadTree@(name)()},500);
+                }else
+        {
+             @:loadTree@(name)();
+        }
+        @foreach (var item in Events)
+      {
+          var code = PubControlHelper.GetControlAttributeByBuild(attrList, item.Name);
+          if(code.IsValuable())
+          {
+              @: selector.$jqxTree().on("@item.Name", function (event) {
+                                          @: @(code)
+                                          @:});
+                                  }
+      }
+
+    })
+</script>
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+}
+}
+<!------------------@(name) END------------------>

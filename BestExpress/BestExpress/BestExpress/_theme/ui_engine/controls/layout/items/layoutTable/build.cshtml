@@ -1,0 +1,72 @@
+﻿@using SyntacticSugar;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+
+    <!-- 行(row)属性 -->
+    var rowVal = PubControlHelper.GetControlAttributeByBuild(attrList, "rowVal");
+    var rows = rowVal.IsValuable() ? rowVal.TryToInt() : 1;
+    <!-- 列(cell)属性 -->
+    var cellVal = PubControlHelper.GetControlAttributeByBuild(attrList, "cellVal");
+    var cells = cellVal.IsValuable() ? cellVal.TryToInt() : 1;
+    <!-- 生成DIV数量 -->
+    var numVal = rows * cells;
+
+    var name = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var cellWidth = PubControlHelper.GetControlAttributeByBuild(attrList, "cellWidth");
+    var cellHeight = PubControlHelper.GetControlAttributeByBuild(attrList, "cellHeight");
+    var cellAlign = PubControlHelper.GetControlAttributeByBuild(attrList, "cellAlign");
+    var cellPadding = PubControlHelper.GetControlAttributeByBuild(attrList, "cellPadding");
+    var cellClass = PubControlHelper.GetControlAttributeByBuild(attrList, "cellClass");
+    var cellStyle = PubControlHelper.GetControlAttributeByBuild(attrList, "cellStyle");
+
+    if (width.IsValuable())
+    {
+        width = (width.LastOrDefault() == ';') ? width : width + ";";
+    }
+
+    if (cellAlign.IsValuable())
+    {
+        cellAlign = (cellAlign.LastOrDefault() == ';' ? cellAlign : cellAlign + ";");
+    }
+
+    if (cellPadding.IsValuable())
+    {
+        cellPadding = (cellPadding.LastOrDefault() == ';' ? cellPadding : cellPadding + ";");
+    }
+
+    if (cellStyle.IsValuable())
+    {
+        cellStyle = (cellStyle.LastOrDefault() == ';' ? cellStyle : cellStyle + ";");
+    }
+}
+<!------------------@(name) BEGIN------------------>
+<div id="@name" style="@width" class="@showClass">
+    @for (int i = 1; i <= numVal; i++)
+    {
+        @:<div class="brick windowbox @cellClass" style="width: @(cellWidth)px;@(cellPadding)@(cellAlign)display: inline-block;@(cellStyle)">第@(i)个DIV</div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var free = new Freewall("#@name");
+        free.reset({
+            selector: '.brick',
+            animate: true,
+            cellW: @cellWidth,
+            cellH: @cellHeight,
+            fixSize: 0,
+            onResize: function () {
+                free.refresh();
+            }
+        });
+        free.fitWidth();
+    });
+</script>
+<!------------------@(name) END------------------>

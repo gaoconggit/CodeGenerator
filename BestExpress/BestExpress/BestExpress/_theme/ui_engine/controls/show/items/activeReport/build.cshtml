@@ -1,0 +1,40 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Infrastructure.DAL;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var name = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var mappingPars = PubControlHelper.GetControlAttributeByBuild(attrList, "mappingPars", "");
+    var id = name;
+    var appendClass = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    string reportId = "ReportFiles/" + PubControlHelper.GetControlAttributeByBuild(attrList, "reportId");
+    string style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    string directLoading = PubControlHelper.GetControlAttributeByBuild(attrList, "directLoading");
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+@using System.Linq;
+<div id="@id" name="@name" class="@appendClass" style="@style"></div>
+<script type="text/javascript" charset="utf-8" src="~/_theme/activeReport/bootstrap-3.0.0.js"></script>
+<link href="~/_theme/activeReport/bootstrap/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" charset="utf-8" src="~/_theme/activeReport/knockout-2.3.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="~/_theme/activeReport/GrapeCity.ActiveReports.Viewer.Html.js"></script>
+<script type="text/javascript">
+    function loadSelect@(name)() {
+        var viewer = GrapeCity.ActiveReports.Viewer({
+            element:'#@(name)',
+            reportService:{ url:'/ActiveReportService.asmx'},
+            uiType: 'desktop',
+            report:{
+                @if(mappingPars.IsValuable()){
+                    @:parameters:@mappingPars,
+                                                                                                                                    }
+                id:'@reportId',
+            },
+            localeUri: '/_theme/activeReport/i18n/Localeuri.txt',
+        });
+    };
+    @if(directLoading.IsValuable()&& directLoading == "true") {
+    @:loadSelect@(name)();
+        }
+
+</script>

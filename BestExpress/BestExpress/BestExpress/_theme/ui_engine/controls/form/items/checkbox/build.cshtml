@@ -1,0 +1,76 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var txtVal = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var id = txtVal;
+    var name = txtVal;
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+    var checked_ = PubControlHelper.GetControlAttributeByBuild(attrList, "checked");
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyattr = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, "readonly=readonly", "");
+
+    var eventList = (Dictionary<string, string>)Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit" };
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset_checked", name = name });
+}
+<!------------------@(name) BEGIN------------------>
+@if (checked_.TryToBoolean())
+{
+    <input type="checkbox" @onlyattr id="@name" class="@class_.AppendString(showClass," ",false)" name="@name" checked="@checked_" value="@defaultValue" width="@width" height="@height" style="@style" />
+} else {
+    <input type="checkbox" @onlyattr id="@name" class="@class_.AppendString(showClass," ",false)" name="@name" value="@defaultValue" width="@width" height="@height" style="@style" />
+}
+@@if(isShow@(Model.elementId)){
+<script type="text/javascript">
+    $(function () {
+        @foreach (var item in EventManager.GetInstance.GetEeventList) {
+            var isSpecialEvent=item.Name.IsIn(specialEvents);
+            if (isSpecialEvent)
+            {
+                switch (item.Name)
+                {
+                    case "callBack":
+                        @: @(GetEvent(item.Name, eventList))
+                                break;
+                    case "preinit":
+                        @: @(GetEvent(item.Name, eventList))
+                                break;
+                }
+            }
+            else {
+                if (eventList.ContainsKey(item.Name))
+                {
+                @: $("#@name").on("@item.Name", function () {
+                            @: @(GetEvent(item.Name, eventList))
+                            @:
+                            @:});
+                }
+             }
+        }
+    });
+    @finallyThisIsMyParsedTemplate
+</script>
+}
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+    if (eventList.ContainsKey(eventName))
+    {
+        @: @eventList[eventName]
+    }
+}
+<!------------------@(name) END------------------>

@@ -1,0 +1,45 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var Rows = PubControlHelper.GetControlAttribute(model, "Rows");
+    var column = PubControlHelper.GetControlAttribute(model, "column");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+}
+
+
+<table class="editTable">
+    <tr>
+        <td class="first">行数:</td>
+        <td>
+            <input name="attr.Value" value="@Rows" type="text" />
+            <input name="attr.Key" type="hidden" value="Rows" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">列数:</td>
+        <td>
+            <input name="attr.Value" value="@column" type="text" />
+            <input name="attr.Key" type="hidden" value="column" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">行height:</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+</table>

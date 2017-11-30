@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "预览";
+    if (Model.IsValuable())
+    {
+        Layout = Model.Layout;
+    }
+
+}
+@model PreviewModel
+@using Best.Site.Areas.BestPalace.Controllers
+@using SyntacticSugar
+
+
+@Html.Raw(RazorEngine.Razor.Parse(Model.Html))

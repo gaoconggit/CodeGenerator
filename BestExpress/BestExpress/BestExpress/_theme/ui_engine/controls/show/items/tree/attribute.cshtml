@@ -1,0 +1,177 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using SyntacticSugar
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Infrastructure.DAL;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Entities.UiEngine
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var listpars = PubGet.GetJaxTreeParas();
+    var Properties = listpars.Where(it => it.SmallCategory == "Properties").OrderByDescending(it => it.IsOften).ToList();
+    var Events = listpars.Where(it => it.SmallCategory == "Events").OrderByDescending(it => it.IsOften).ToList();
+    var classNum = "td" + RandomSugar.GetRandomNum(10);
+    var classth = "th" + RandomSugar.GetRandomNum(10);
+    var pars = PubControlHelper.GetControlAttribute(model, "pars");
+    var type = PubControlHelper.GetControlAttribute(model, "type");
+    var dropDown = PubControlHelper.GetControlAttribute(model, "dropDown");
+    var h100 = PubControlHelper.GetControlAttribute(model, "h100","true");
+    var valueField= PubControlHelper.GetControlAttribute(model, "valueField");
+    var label = PubControlHelper.GetControlAttribute(model, "label");
+       var parsReadElement = PubControlHelper.GetControlAttribute(model, "parsReadElement");
+    foreach (var item in Properties)
+    {
+        var pname = item.Name;
+        pname = PubControlHelper.GetControlAttribute(model, '"' + pname + '"');
+    }
+
+    var parCategories = new string[] {"属性", "事件" };
+
+}
+<style>
+    .@classNum{
+           color: red;
+     }
+    .@classNum td{ border:0;padding:5px 0 5px 0; }
+    .@classth span{ float:right ;cursor: pointer}
+    .@classth span:hover{color:#174452}
+    .@classth {
+    font-size: 15px;
+    background: #9AB1C5;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;}
+</style>
+<table cellpadding="editTable">
+    <tr>
+        <td style="width:100px; overflow:hidden;    padding-left: 39px; display:block">API</td>
+        <td style="text-align:left"><a target="_blank" href="http://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxtree/jquery-tree-api.htm?search=jqwtree">点击查看</a></td>
+    </tr>
+   
+</table>
+<table class="editTable">
+    <tr>
+        <td class="first">参数:</td>
+        <td>
+            <input id="txtJson" name="attr.Value" value='@(pars.ToHtmlDecode().TryToString().Replace("\'","\""))' type="text" style="width:310px;" />
+            <input name="attr.Key" type="hidden" value="pars" />
+            <span class="icon-search" onclick="$quickFactory('json-data', '#divJsonBox', '#txtJson')"></span>
+        </td>
+    </tr>
+    <tr>
+        <td class="first">文本:</td>
+        <td>
+            <input name="attr.Value" placeholder="选中后需要显示的文本字段，默认title" value='@(label)' type="text" style="width:310px;" />
+            <input name="attr.Key" type="hidden" value="label" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">值字段:</td>
+        <td>
+            <input  name="attr.Value" placeholder="选中后需要存储的字段，默认TreeId" value='@(valueField)' type="text" style="width:310px;" />
+            <input name="attr.Key" type="hidden" value="valueField" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">延时控件ID：</td>
+        <td>
+            <input name="attr.Value" placeholder="控件id"  value="@parsReadElement" type="text" style="width:310px;" />
+            <input name="attr.Key" type="hidden" value="parsReadElement" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">异步加载:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((type=="false").IIF("selected=selected","")) value="false">否</option>
+                <option @((type== "true").IIF("selected=selected","")) value="true">是</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="type" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">100%高度:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((h100=="true").IIF("selected=selected","")) value="true">是</option>
+                <option @((h100=="false").IIF("selected=selected",""))  value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="h100" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">下拉框树:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((dropDown == "false").IIF("selected=selected", "")) value="false">否</option>
+                <option @((dropDown == "true").IIF("selected=selected", "")) value="true">是</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="dropDown" />
+        </td>
+    </tr>
+    @foreach (var cg in parCategories)
+    {
+        <tr>
+            <th align="left" colspan="2" class="@classth">
+                @{
+                    string key = "";
+                    List<SysBest_JqxTreeParas> treepars = new List<SysBest_JqxTreeParas>();
+                    switch (cg)
+                    {
+                        case "属性":
+                            treepars = Properties; key = "Properties";
+
+                            break;
+                        case "事件":
+                            treepars = Events; key = "Events";
+                            break;
+                    }
+                }
+                @cg <span class="icon-plus " onclick="$('.@(key)trIsNotOften').toggle();$(this).toggleClass('icon-minus')">显示全部</span>
+            </th>
+        </tr>
+       
+                    foreach (var it in treepars)
+                    {
+                        var value = PubControlHelper.GetControlAttribute(model, it.Name, it.DefaultValue);
+
+                        <tr class="@(it.IsOften.IIF(classNum,key+"trIsNotOften hide"))">
+                            <td title="@it.Name" class="first" style="width:200px; overflow:hidden; text-align:right; display:block">@it.Name.ToCutString(12, "..")：</td>
+                            <td>
+                                @GetAttrControl(it.Name, it.Category, value)
+                                <input name="attr.Key" type="hidden" value="@it.Name" />
+                            </td>
+                        </tr>
+                        }
+                    }
+</table>
+
+
+@helper GetAttrControl(string name, string category, string value)
+{
+
+if (category == "Boolean")
+{
+        <select style="width:315px; margin-top:0 !important" name="attr.Value">
+            <option value="true" @((value == "true").IIF("selected=selected", ""))>true</option>
+            <option value="false" @((value == "false").IIF("selected=selected", ""))>false</option>
+        </select>
+}
+else if (category == "Object")
+{
+        <input style="width:310px" name="attr.Value"  value="@value" />
+}
+else if (category == "function" || category == "Event")
+{
+        <textarea style="width:307px" name="attr.Value">@value</textarea>
+        <span data-type="textarea" style="position:relative; top:-10px" onclick="$quickFactory('select-event',this)" title="快捷输入" class="icon-search btnSearchEvent "></span>
+}
+else if (category == "Number/String")
+{
+        <input style="width:310px" name="attr.Value"  value="@value" />
+}else {
+        <input style="width:310px" name="attr.Value"  value="@value" />
+}
+}

@@ -1,0 +1,97 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string rule1 = "";
+    string rule2 = "";
+    string rule3 = "";
+    string tip1 = "";
+    string tip2 = "";
+    string tip3 = "";
+    Func<string, string> getRule = it => {
+        if (it == null) return it;
+        var isRegex =it.IsMatch(@"^\^.+\$$");
+        var isFunc = it.IsMatch(@"^function(.|\n)+\}$");
+        if (isRegex)
+        {
+            it = @"function(input){{  var isReg=/{0}/; return  isReg.test(input.val());  }}".ToFormat(it);
+        }
+        else if (isFunc)
+        {
+            return it;
+        }
+        else {
+            return "'{0}'".ToFormat(it);
+        }
+        return it;
+    };
+    if (model.Any(it => it.key == "rule1"))
+    {
+        rule1 = model.Single(it => it.key == "rule1").value;
+    }
+
+    if (model.Any(it => it.key == "rule2"))
+    {
+        rule2 = model.Single(it => it.key == "rule2").value;
+    }
+
+    if (model.Any(it => it.key == "rule3"))
+    {
+        rule3 = model.Single(it => it.key == "rule3").value;
+    }
+
+    if (model.Any(it => it.key == "tip1"))
+    {
+        tip1 = model.Single(it => it.key == "tip1").value;
+    }
+
+    if (model.Any(it => it.key == "tip2"))
+    {
+        tip2 = model.Single(it => it.key == "tip2").value;
+    }
+
+    if (model.Any(it => it.key == "tip3"))
+    {
+        tip3 = model.Single(it => it.key == "tip3").value;
+    }
+    string eleId = Model.id;
+
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+var form=$("#@(eleId)").closest("form");
+var formData=[];
+@if (rule1 != "") {
+    rule1 = getRule(rule1);
+@: var thisRule1 = { input: '#@(eleId)', message: '@tip1', action: 'keyup, blur', rule: @rule1 };
+    @:if (form.data("validateKey") != null) {
+    @:   formData = form.data("validateKey");
+    @:}
+@: formData.push(thisRule1);
+@: formData = form.data("validateKey", formData);
+
+}
+@if (rule2 != "") {
+    rule2 = getRule(rule2);
+@:var thisRule2= { input: '#@(eleId)', message: '@tip2', action: 'keyup, blur', rule: @rule2 };
+    @:if(form.data("validateKey")!=null){
+    @: formData=form.data("validateKey");
+    @:}
+@:  formData.push(thisRule2);
+@:formData=form.data("validateKey",formData);
+}
+
+@if (rule3 != "")
+{
+    rule3 = getRule(rule3);
+//@:{ mod by wing 2016-07-20 生成rule3时多了一个大括号
+@: var thisRule3 = { input: '#@(eleId)', message: '@tip3', action: 'keyup, blur', rule: @rule3 };
+    @:if (form.data("validateKey") != null)
+    @:{
+    @:  formData = form.data("validateKey");
+    @:}
+@:formData.push(thisRule3);
+@:formData = form.data("validateKey", formData);
+}
+
+
+ 

@@ -1,0 +1,70 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+
+    var specialEvents = new string[] { "callBack", "preinit" };
+    var id = attrList["name"];
+    var name = PubControlHelper.GetControlAttributeByBuild(attrList, "radName");
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyattr = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, "readonly=readonly", "");
+
+    var checked_ = PubControlHelper.GetControlAttributeByBuild(attrList, "checked");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var _defaultVal = PubControlHelper.GetControlAttributeByBuild(attrList, "_defaultVal");
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset_radio", name = name });
+
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+
+@if (checked_ == "true")
+{
+    <input type="radio" @onlyattr id="@id" name="@name" value="@_defaultVal" @(@checked_ == "true" ? "checked=checked" : "") class="@class_.AppendString(showClass," ",false)" style="@style" />
+}
+else
+{
+    <input type="radio" @onlyattr id="@id" name="@name" value="@_defaultVal" class="@class_.AppendString(showClass," ",false)" style="@style" />
+}
+@@if(isShow@(Model.elementId)){
+<script>
+    $(function () {
+
+        @foreach (var item in EventManager.GetInstance.GetEeventList) {
+
+            bool isOnEvent = (item.Name != "callBack" || item.Name != "preinit" ) ;
+            if (isOnEvent)
+            {
+               @: $("#@id").on("@item.Name",function(){
+               @:     @(GetEvent(item.Name, eventList))
+               @:  });
+            }
+            else
+            {
+                @: @(GetEvent(item.Name,eventList))
+            }
+        }
+    })
+    //set公共函数
+
+     @finallyThisIsMyParsedTemplate
+
+</script>
+}
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+  }
+}

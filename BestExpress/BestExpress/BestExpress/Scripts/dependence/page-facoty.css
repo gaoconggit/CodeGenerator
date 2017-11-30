@@ -1,0 +1,31 @@
+﻿.editTable{width: 570px;border-collapse:collapse;border-spacing:0;}
+.buttonBox{text-align: center; padding-top:15px; padding-bottom:15px;}
+.buttonBox input{  padding: 5px 25px; font-size:13px; height:30px; margin:0 20px; cursor:pointer}
+.buttonBox input:hover{ background:#fefefe}
+.editTable td{height: 30px;}
+.editTable input{width: 415px; height: 20px;} .editTable input.paras, .editTable textarea.paras{width: 280px;}
+.editTable .divEventParBox{background: #F3D7D5; width: 380px; padding:0 20px;    background: rgb(50, 102, 149); color:white}
+.editTable .tbEventParBox { padding-top:3px; padding-bottom:3px}
+.editTable .tbEventParBox  .icon-search{ position:relative; top:-2px; font-size:16px; cursor:pointer ; padding:0; background:inherit }
+.editTable .icon-search {    font-size: 15px !important;  position: relative;  top: 1px;   color: aquamarine;  cursor: pointer;  background: #3D4C7A;  color: #fff; padding: 7px 8px; text-align: center;}
+.editTable .tbEventParBox .icon-search:hover { color:#f60}
+.editTable [name='event.Value']{ width:420px !important}
+.editTable select{width: 420px; height: 30px; margin-top:10px;}
+.eleName span.icon-search { font-size:15px !important; margin-left:5px; position:relative; top:1px; color:aquamarine; cursor:pointer;    background: #3D4C7A; color:#fff;padding:7px 8px}
+.eleName span.icon-search:hover{ background:rgb(50, 102, 149)}
+.eleName [readonly="readonly"]{  background:#ccc}
+.eleName input[type="text"]{width:415px}
+.eleName{padding-left:40px; padding-bottom:5px;} .eleName [name="eleName"], .eleName [name="ApiText"], .eleName [name="Description"]{height: 25px; margin-left: 20px;} .eleName [name="Description"]{margin-left:32px} .eleName input[type="button"]{height:32px; margin-left:3px; cursor:pointer}
+.editTable .first{width: 100px; padding-left: 40px;}
+.pageTable { width:100%}
+.pageTable h3, .pageTable ul, .pageTable li{display: block !important; color: #333; font-weight: bold;}
+.pageTable ul{padding: 10px;}
+.pageTable h3{background: #ccc; padding-left: 10px; padding-top: 10px;} .pageTable h3 span{display: inline-block; position: relative; top: -6px; margin-left: 5px;}
+.pageTable ul li{float: inherit !important; color: #333; width: 100%; font-weight: 100; cursor: pointer;} .pageTable ul li:hover{color: #f60;} .pageTable ul li img{width: 16px;}
+.pageTable li span{display: inline-block; position: relative; top: -5px; margin-left: 8px;}
+.edui-default .edui-toolbar .edui-combox-body div.edui-button-body, .edui-combox-body{color: #333 !important; line-height: 20px !important;}
+.pageTable .tablelayout{color: #000;} .pageTable .tablelayout select{ height:30px}
+.jqx-widget-content{height: inherit !important; max-height:inherit !important;}
+.savetable select{width:140px;}
+.winbox .jqx-widget-header {  height:30px; line-height:30px; font-weight:bold; font-size:13px}
+.winbox .jqx-icon-close { margin-top:6px}

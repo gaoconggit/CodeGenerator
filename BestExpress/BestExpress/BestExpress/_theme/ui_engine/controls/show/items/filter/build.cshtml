@@ -1,0 +1,192 @@
+﻿@using SyntacticSugar;
+@using Best.Infrastructure.DAL;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var pagId = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var name = pagId;
+    var appendClass = PubControlHelper.GetControlAttributeByBuild(attrList, "pageClass");
+    var pagClass = "pageClass" + RandomSugar.GetRandomNum(11);
+    var showOverFun = "showOverFun" + RandomSugar.GetRandomNum(11);
+    var itemCode = PubControlHelper.GetControlAttributeByBuild(attrList, "itemCode");
+    var menuList = (itemCode.IsNullOrEmpty()) ? null : PubGet.GetFilterListById(itemCode);
+    var gridId = PubControlHelper.GetControlAttributeByBuild(attrList, "gridId");
+    var click = PubControlHelper.GetControlAttributeByBuild(attrList, "click");
+    var randomNum = RandomSugar.GetRandomNum(10);
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+}
+<!------------------@(name) BEGIN------------------>
+@if (menuList != null && menuList.Count > 0)
+{
+    <div class="@showClass">
+        <ul id="@pagId" class="@pagClass @appendClass">
+            @foreach (var menu in menuList)
+            {
+                var menuIndex = menuList.IndexOf(menu);
+                var isHideOver = menuIndex > 2;
+                var countOverThree = menuList.Count >3;
+                var isThree=menuIndex == 2;
+                var isLast = menu == menuList.Last();
+                <li class="select-list @(isHideOver?" hide ":"")">
+             
+                    @{
+                        <!-- 获取循环的下标 -->
+                        var i = menuList.IndexOf(menu);
+                        <!-- 获取筛选菜单的Item -->
+                        var itemList = PubGet.GetPubModelList(menu.Id);
+                    }
+                    <dl id="select@(i)" class="dl">
+                        <!-- 筛选菜单名称 -->
+                        <dt>@menu.Name：</dt>
+                        @*<dd class="select-all selected filterItem"><a href="javascript:void(0);" value="">全部</a></dd>*@
+                        @if (itemList != null && itemList.Count > 0)
+                        {
+                            <!-- 遍历输出筛选菜单的Item -->
+                            foreach (var item in itemList)
+                            {
+                                <dd class="filterItem"><a href="javascript:void(0);"  groupId="@menu.Id" value="@item.Value">@item.Key</a></dd>
+                            }
+                        }
+                        @if (countOverThree && isThree)
+                        {
+                            <dd>
+                                <span onclick="@(showOverFun)(true)" class="icon-double-angle-down overicon"></span>
+                            </dd>
+                        }
+                        @if (isLast && isHideOver)
+                        {
+                            <dd>
+                                <span onclick="@(showOverFun)(false)" class="icon-double-angle-up overicon"></span>
+                            </dd>
+                        }
+                    </dl>
+                         <input type="hidden" data-filter-gridId="@gridId.TrimStart('#')" data-filter-operator="EQUAL" data-filter="@(menu.Id)"  />
+                </li>
+             }
+        </ul>
+    </div>
+}
+
+<style type="text/css">
+    .@pagClass .overicon{
+        color: #fff;
+        width: 25px;
+        font-size: 20px;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        background: #ff9900;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+    .@pagClass .overicon:hover{
+        background:#f60
+    }
+    .@pagClass {
+        font-size:12px;
+        padding:5px 10px;
+        border:#ddd 1px solid;
+        border-radius:4px;
+        margin:0;
+    }
+    .@pagClass li {
+        list-style:none;
+        padding: 0px 0 0px 100px;
+    }
+    .@pagClass .select-list {
+        min-height: 31px;
+        border-bottom:#eee 1px dashed;
+    }
+    .@pagClass dl {
+        zoom:1;
+        position:relative;
+        line-height:24px;
+    }
+    .@pagClass dl:after {
+        height:0;
+        content:" ";
+        display:block;
+        clear:both;
+        overflow:hidden
+    }
+    .@pagClass dt {
+        width:100px;
+        height:24px;
+        margin-bottom:5px;
+        position:absolute;
+        top:0;
+        left:-100px;
+        text-align:right;
+        color:#666;
+        line-height:24px
+    }
+    .@pagClass dd {
+        float:left;
+        display:inline;
+        margin:0 0 5px 5px;
+    }
+    .@pagClass a {
+        height:24px;
+        display:inline-block;
+        white-space:nowrap;
+        padding:0 10px;
+        text-decoration:none;
+        color:#039;
+        border-radius:2px;
+    }
+    .@pagClass a:hover {
+        color:#f60;
+        background-color:#f3edc2;
+    }
+    .@pagClass .selected a {
+        color:#fff;
+        background-color:#09c;
+    }
+</style>
+
+<script type="text/javascript">
+    function @(showOverFun)(isShow){
+        if(isShow){
+            $(".@pagClass .hide").show(300);
+            $(".@pagClass .icon-double-angle-down").hide(500);
+        }else{
+            $(".@pagClass .hide").hide(300);
+            $(".@pagClass .icon-double-angle-down").show(500);
+        }
+    }
+
+    $(function () {
+        var state = "selected";
+
+        var obj = $("#@pagId").find(".dl").children(".filterItem");
+        $(obj).on("click", function (event) {
+            var th = $(this);
+
+            //当前元素选中，其余删除选中样式
+            th.addClass(state).siblings("dd").removeClass(state);
+
+            //获取父级索引index
+            var index = th.parents(".select-list").index();
+
+            //获取当前商品信息
+            var item = th.children("a");
+            var itemKey = item.text();
+            var itemVal = item.attr("value");
+            var itemGroup = item.attr("groupId");
+            th.closest("li").find("[data-filter]").val(itemVal)
+
+            @click
+            @if (gridId.IsValuable())
+            {
+               @:  $("#@(gridId.TrimStart('#'))").jqxGrid('updatebounddata', 'filter');
+                                                            }
+            //输出选择的信息
+            console.log("当前选中组ID:" + itemGroup + ", ID:" + itemVal + ", Value:" + itemKey);
+        });
+    });
+</script>
+<!------------------@(name) END------------------>

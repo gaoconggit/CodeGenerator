@@ -1,0 +1,14 @@
+﻿@{
+    List<EventActionTypeParas> model = Model.Data;
+    string id = "";
+    if (model.Any(it => it.key == "id"))
+    {
+        id = model.Single(it => it.key == "id").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+@if (id.IsValuable())
+{
+    @:  getValue_@(id.TrimStart('#'))();
+}

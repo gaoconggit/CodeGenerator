@@ -1,0 +1,53 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using SyntacticSugar
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Infrastructure.DAL;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Entities.UiEngine
+@{
+    List<SysBest_ElementAttr> model = Model;
+    string mappingPars = PubControlHelper.GetControlAttribute(model, "mappingPars");
+  
+    string reportId = PubControlHelper.GetControlAttribute(model, "reportId");
+    string style = PubControlHelper.GetControlAttribute(model, "style");
+    string directLoading = PubControlHelper.GetControlAttribute(model, "directLoading");
+}
+
+<table cellpadding="editTable">
+    <tr>
+        <td class="first" style="padding-left: 37px;">参数关联：</td>
+        <td class="eleName " style="padding:0">
+            <textarea style="margin: 0px; width: 400px; height: 71px;" name="attr.Value" placeholder="[{'name':'参数字段1','value':'参数值1'}]">@mappingPars</textarea>
+            <span data-type="textarea" style="position:relative; top:-10px; padding-right:7px; display:inline-block; margin-left:1px" onclick="var th = $(this); var txt = th.prev(); txt.val(txt.attr('placeholder'))" title="快捷输入" class="icon-search icon-plus"></span>
+            <input name="attr.Key" type="hidden" value="mappingPars" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">style</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">报表ID</td>
+        <td>
+            <input name="attr.Value" value="@reportId" type="text" />
+            <input name="attr.Key" type="hidden" value="reportId" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">直接加载</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((directLoading == "true").IIF("selected=selected", "")) value="true">是</option>
+                <option @((directLoading == "false").IIF("selected=selected", "")) value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="directLoading" />
+        </td>
+    </tr>
+</table>
+

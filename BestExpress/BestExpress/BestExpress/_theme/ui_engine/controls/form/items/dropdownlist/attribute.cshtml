@@ -1,0 +1,133 @@
+﻿@{
+    var hasVal = Model != null;
+    List<SysBest_ElementAttr> model = Model;
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+    string defaultKey = PubControlHelper.GetControlAttribute(model, "defaultKey");
+    string defaultValue = PubControlHelper.GetControlAttribute(model, "defaultValue");
+    string pars = PubControlHelper.GetControlAttribute(model, "pars");
+    string apiKey = PubControlHelper.GetControlAttribute(model, "apiKey"); ;
+    string apiValue = PubControlHelper.GetControlAttribute(model, "apiValue");
+    var parsReadElement = PubControlHelper.GetControlAttribute(model, "parsReadElement");
+    string innerHtml = PubControlHelper.GetControlAttribute(model, "innerHtml");
+    var filterable = PubControlHelper.GetControlAttribute(model, "filterable", "true");
+    var searchMode = PubControlHelper.GetControlAttribute(model, "searchMode");
+    var selectedIndex = PubControlHelper.GetControlAttribute(model, "selectedIndex");
+}
+@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+@using Best.Site.Areas.BestPalace.Controllers
+<table class="editTable">
+
+    <tr>
+        <td class="first">宽度:</td>
+        <td>
+            <input name="attr.Value" type="text" value="@width" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">高度:</td>
+        <td>
+            <input name="attr.Value" type="text" value="@height" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">是否筛选:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((filterable == "true").IIF("selected=selected", "")) value="true">是</option>
+                <option @((filterable == "false").IIF("selected=selected", "")) value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="filterable" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">筛选方式:</td>
+        <td>
+            @*<input name="attr.Value" value="@searchMode" type="text" placeholder="contains,containsignorecase,equals,equalsignorecase,startswithignorecase,startswith,endswithignorecase,endswith" />*@
+            <select name="attr.Value" style="width:310px;">
+                <option @((searchMode == "contains").IIF("selected=selected", "")) value="contains">包含</option>
+                <option @((searchMode == "containsignorecase").IIF("selected=selected", "")) value="containsignorecase">包含(忽略大小写)</option>
+                <option @((searchMode == "equals").IIF("selected=selected", "")) value="equals">等于</option>
+                <option @((searchMode == "equalsignorecase").IIF("selected=selected", "")) value="equalsignorecase">等于(忽略大小写)</option>
+                <option @((searchMode == "startswith").IIF("selected=selected", "")) value="startswith">从头匹配</option>
+                <option @((searchMode == "startswithignorecase").IIF("selected=selected", "")) value="startswithignorecase">从头匹配(忽略大小写)</option>
+                <option @((searchMode == "endswith").IIF("selected=selected", "")) value="endswith">从尾匹配</option>
+                <option @((searchMode == "endswithignorecase").IIF("selected=selected", "")) value="endswithignorecase">从尾匹配(忽略大小写)</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="searchMode" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">索引号:</td>
+        <td>
+            <input name="attr.Value" value="@selectedIndex" type="text" placeholder="请填写数字"/>
+            <input name="attr.Key" type="hidden" value="selectedIndex" />
+        </td>
+    </tr>
+    @*<tr>
+        <td class="first">默认值:</td>
+        <td>
+            <input name="attr.Value" value="@defaultKey" type="text" />
+            <input name="attr.Key" type="hidden" value="defaultKey" />
+        </td>
+    </tr>*@
+    @*<tr>
+        <td class="first">InnerHtml:</td>
+        <td>
+            <input name="attr.Value" value="@innerHtml" type="text" />
+            <input name="attr.Key" type="hidden" value="innerHtml" />
+        </td>
+    </tr>*@
+    <tr>
+        <td class="first">默认文本:</td>
+        <td>
+            <input name="attr.Value" value="@defaultValue" type="text" />
+            <input name="attr.Key" type="hidden" value="defaultValue" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">接口值:</td>
+        <td>
+            <input name="attr.Value" value="@apiKey" type="text" />
+            <input name="attr.Key" type="hidden" value="apiKey" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">接口文本:</td>
+        <td>
+            <input name="attr.Value" value="@apiValue" type="text" />
+            <input name="attr.Key" type="hidden" value="apiValue" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">参数:</td>
+        <td>
+            <input id="txtJson" name="attr.Value" value='@pars.ToHtmlDecode().TryToString().Replace("'","\"")' type="text" />
+            <input name="attr.Key" type="hidden" value="pars" />
+            <span class="icon-search" onclick="$quickFactory('json-data', '#divJsonBox', '#txtJson')"></span>
+        </td>
+    </tr>
+</table>

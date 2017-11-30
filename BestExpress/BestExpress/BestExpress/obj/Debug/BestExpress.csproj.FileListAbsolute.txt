@@ -1,0 +1,218 @@
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\ApplicationInsights.config
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\csc.exe
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\Microsoft.CodeAnalysis.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\Microsoft.CSharp.Core.targets
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\Microsoft.VisualBasic.Core.targets
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\System.Collections.Immutable.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\System.Reflection.Metadata.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\vbc.exe
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\VBCSCompiler.exe
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\roslyn\VBCSCompiler.exe.config
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\BestExpress.dll.config
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\BestExpress.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\BestExpress.pdb
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Antlr3.Runtime.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\EntityFramework.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\EntityFramework.SqlServer.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.Agent.Intercept.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.DependencyCollector.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.PerfCounterCollector.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.ServerTelemetryChannel.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.Web.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.WindowsServer.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.ApplicationInsights.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Core.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Owin.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Host.SystemWeb.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Cookies.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Facebook.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Google.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.OAuth.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Twitter.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Web.Infrastructure.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Newtonsoft.Json.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Owin.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Helpers.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Mvc.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Optimization.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Razor.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.WebPages.Deployment.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.WebPages.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.WebPages.Razor.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\WebGrease.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.DependencyCollector.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.ServerTelemetryChannel.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.Web.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AI.WindowsServer.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.ApplicationInsights.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Helpers.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Mvc.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Optimization.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.Razor.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.WebPages.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.WebPages.Deployment.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\System.Web.WebPages.Razor.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Antlr3.Runtime.pdb
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Newtonsoft.Json.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\EntityFramework.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\EntityFramework.SqlServer.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Core.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Owin.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Host.SystemWeb.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Facebook.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Cookies.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.OAuth.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Google.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Twitter.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.Helpers.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.Mvc.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.Optimization.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.Razor.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.WebPages.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\EntityFramework.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\obj\Debug\BestExpress.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\obj\Debug\BestExpress.pdb
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Newtonsoft.Json.pdb
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Autofac.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Autofac.Integration.Mvc.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\SqlSugar.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\SyntacticSugar.dll
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Autofac.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\Autofac.Integration.Mvc.xml
+g:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\bin\SqlSugar.xml
+G:\users\kim.gao\documents\visual studio 2015\Projects\BestExpress\BestExpress\obj\Debug\BestExpress.csprojResolveAssemblyReference.cache
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\ApplicationInsights.config
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\csc.exe
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\System.Collections.Immutable.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\System.Reflection.Metadata.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\vbc.exe
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\VBCSCompiler.exe
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\roslyn\VBCSCompiler.exe.config
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\BestExpress.dll.config
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\BestExpress.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\BestExpress.pdb
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Antlr3.Runtime.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Autofac.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Autofac.Integration.Mvc.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\EntityFramework.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\EntityFramework.SqlServer.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.Agent.Intercept.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.DependencyCollector.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.PerfCounterCollector.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.ServerTelemetryChannel.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.Web.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.WindowsServer.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.ApplicationInsights.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Core.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Owin.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Host.SystemWeb.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Cookies.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Facebook.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Google.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.OAuth.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Twitter.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Web.Infrastructure.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Newtonsoft.Json.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Owin.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\SqlSugar.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\SyntacticSugar.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Helpers.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Mvc.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Optimization.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Razor.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.WebPages.Deployment.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.WebPages.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.WebPages.Razor.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\WebGrease.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Autofac.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Autofac.Integration.Mvc.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.DependencyCollector.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.ServerTelemetryChannel.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.Web.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AI.WindowsServer.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.ApplicationInsights.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\SqlSugar.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Helpers.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Mvc.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Optimization.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.Razor.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.WebPages.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.WebPages.Deployment.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\System.Web.WebPages.Razor.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Antlr3.Runtime.pdb
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Newtonsoft.Json.pdb
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Newtonsoft.Json.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\EntityFramework.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\EntityFramework.SqlServer.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Core.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.Owin.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Host.SystemWeb.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Facebook.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Cookies.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.OAuth.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Google.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.Twitter.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.Helpers.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.Mvc.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.Optimization.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.Razor.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.WebPages.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\EntityFramework.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\obj\Debug\BestExpress.csprojResolveAssemblyReference.cache
+G:\源码学习\BestExpress\BestExpress\BestExpress\obj\Debug\BestExpress.dll
+G:\源码学习\BestExpress\BestExpress\BestExpress\obj\Debug\BestExpress.pdb

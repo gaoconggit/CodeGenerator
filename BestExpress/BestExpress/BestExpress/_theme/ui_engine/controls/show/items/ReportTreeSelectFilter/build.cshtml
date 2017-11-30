@@ -1,0 +1,150 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var txtVal = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var id = txtVal;
+    var name = txtVal;
+    var divId = PubControlHelper.GetControlAttributeByBuild(attrList, "divName");
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+    var pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+    var parsReadElement = PubControlHelper.GetControlAttributeByBuild(attrList, "parsReadElement");
+
+    var eventList = (Dictionary<string, string>)Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit" };
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset", name = name });
+}
+<!------------------@(name) BEGIN------------------>
+
+<input type="hidden" id="@name" name="@name" value="@defaultValue" width="@width" height="@height" style="@style" />
+
+<div width="@width" height="@height" id="div@(id)" class="tags">
+
+
+    <style type="text/css">
+        .tags {
+            background-color: #fff;
+            border: 1px solid #d5d5d5;
+            color: #777;
+            display: inline-block;
+            padding: 4px 6px;
+            vertical-align: middle;
+            width: 206px;
+        }
+
+            .tags:hover {
+                border-color: #f59942;
+                outline: 0 none;
+            }
+
+            .tags[class*="span"] {
+                float: none;
+                margin-left: 0;
+            }
+
+            .tags input[type="text"], .tags input[type="text"]:focus {
+                border: 0 none;
+                box-shadow: none;
+                display: inline;
+                line-height: 14px;
+                margin: 0;
+                outline: 0 none;
+                padding: 0;
+                width: 100%;
+            }
+
+            .tags .tag {
+                background-color: #91b8d0;
+                color: #fff;
+                display: inline-block;
+                font-size: 12px;
+                font-weight: normal;
+                margin-bottom: 3px;
+                margin-right: 3px;
+                padding: 4px 22px 5px 9px;
+                position: relative;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+                transition: all 0.2s ease 0s;
+                vertical-align: baseline;
+                white-space: nowrap;
+            }
+
+                .tags .tag .close {
+                    bottom: 0;
+                    color: #fff;
+                    float: none;
+                    font-size: 12px;
+                    line-height: 20px;
+                    opacity: 1;
+                    position: absolute;
+                    right: 0;
+                    text-align: center;
+                    text-shadow: none;
+                    top: 0;
+                    width: 18px;
+                }
+
+                    .tags .tag .close:hover {
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+
+        .close {
+            color: #000;
+            float: right;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 1;
+            opacity: 0.2;
+            text-shadow: 0 1px 0 #fff;
+        }
+
+            .close:hover, .close:focus {
+                color: #000;
+                cursor: pointer;
+                opacity: 0.5;
+                text-decoration: none;
+            }
+
+        button.close {
+            background: transparent none repeat scroll 0 0;
+            border: 0 none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .tags .tag-warning {
+            background-color: #ffb752;
+        }
+    </style>
+
+    <script type="text/javascript">
+        @finallyThisIsMyParsedTemplate
+
+        $("#div@(id)").on("click", ".close", function () {
+            var id = $(this).prev().val();
+            var ids = $(this).parent().parent().prev().val();
+            var value = $.action.replaceAll(ids, id + ",", "");
+            $(this).parent().parent().prev().val(value);
+            $(this).parent(".tag").remove();
+        });
+        function addTag(id, item, value) {
+            var ids = $("#" + id).val();
+            if (ids.indexOf(value) > 0) {
+                return false;
+            }
+            $("#div" + id).append("<span class='tag'>" + item + "<input type='text' class='orgItems' value='" + value + "' style='display:none;'/><button class='close' type='button'>×</button></span>"); //添加标签
+
+            $("#" + id).val(ids + value + ",");
+
+        }
+
+
+    </script>
+    <!------------------@(name) END------------------>

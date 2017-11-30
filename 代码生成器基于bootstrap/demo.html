@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="title" content="LayoutIt! - 所见即所得代码生成器">
+    <meta name="description" content="LayoutIt! 所见即所得代码生成器">
+    <meta name="keywords" content="可视化,布局,系统">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>所见即所得代码生成器</title>
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <!-- Le styles -->
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="css/layoutit.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+   
+</head>
+<body>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="Phot" class="col-sm-1 control-label col-md-1">照片</label>
+            <div class="col-sm-4 col-md-4">
+
+                <img id="Phot-img-Show" style="width:200px;height:200px;" src="https://images2017.cnblogs.com/news/24442/201708/24442-20170820221446818-622910693.jpg" class="img-responsive img-rounded" alt="照片">
+                <br />
+                <button type="button" id="CertificateAttachment-upload" class="btn btn-info">更改图片</button>
+                <input type="hidden" class="form-control" id="Phot" name="Phot">
+            </div>
+            <label for="ApplyPosition" class="col-sm-1 control-label col-md-1">申请职位</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="ApplyPosition" name="ApplyPosition" placeholder="申请职位">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="AvailabilityDate" class="col-sm-1 control-label col-md-1">可到任日期</label>
+            <div class="col-sm-4 col-md-4">
+
+                <div class="input-group date">
+                    <input id="AvailabilityDate" name="AvailabilityDate" class="form-control" type="text" value="" placeholder="可到任日期" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <label for="UserName" class="col-sm-1 control-label col-md-1">姓名</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="UserName" name="UserName" placeholder="姓名">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="Gender" class="col-sm-1 control-label col-md-1">性别</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="Gender" name="Gender" placeholder="性别">
+            </div>
+            <label for="Birthday" class="col-sm-1 control-label col-md-1">出生日期</label>
+            <div class="col-sm-4 col-md-4">
+
+                <div class="input-group date">
+                    <input id="Birthday" name="Birthday" class="form-control" type="text" value="" placeholder="出生日期" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="Hometown" class="col-sm-1 control-label col-md-1">籍贯</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="Hometown" name="Hometown" placeholder="籍贯">
+            </div>
+            <label for="Nation" class="col-sm-1 control-label col-md-1">民族</label>
+            <div class="col-sm-4 col-md-4">
+
+                <select id="Nation" name="Nation" class="form-control"></select>
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="WorkDate" class="col-sm-1 control-label col-md-1">参加工作日期</label>
+            <div class="col-sm-4 col-md-4">
+
+                <div class="input-group date">
+                    <input id="WorkDate" name="WorkDate" class="form-control" type="text" value="" placeholder="参加工作日期" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <label for="GraduateInstitution" class="col-sm-1 control-label col-md-1">毕业学校</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="GraduateInstitution" name="GraduateInstitution" placeholder="毕业学校">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="Majo" class="col-sm-1 control-label col-md-1">专业</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="Majo" name="Majo" placeholder="专业">
+            </div>
+            <label for="DegreeOfEducation" class="col-sm-1 control-label col-md-1">文化程度</label>
+            <div class="col-sm-4 col-md-4">
+
+                <select id="DegreeOfEducation" name="DegreeOfEducation" class="form-control"></select>
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="MaritalStatus" class="col-sm-1 control-label col-md-1">婚姻状况</label>
+            <div class="col-sm-4 col-md-4">
+
+                <select id="MaritalStatus" name="MaritalStatus" class="form-control"></select>
+            </div>
+            <label for="PoliticalLandscape" class="col-sm-1 control-label col-md-1">政治面貌</label>
+            <div class="col-sm-4 col-md-4">
+
+                <select id="PoliticalLandscape" name="PoliticalLandscape" class="form-control"></select>
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="OriginalWorkUnit" class="col-sm-1 control-label col-md-1">原工作单位</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="OriginalWorkUnit" name="OriginalWorkUnit" placeholder="原工作单位">
+            </div>
+            <label for="OriginalTelephone" class="col-sm-1 control-label col-md-1">原单位联系电话</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="OriginalTelephone" name="OriginalTelephone" placeholder="原单位联系电话">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="OriginalUnitSalary" class="col-sm-1 control-label col-md-1">原单位薪酬</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="OriginalUnitSalary" name="OriginalUnitSalary" placeholder="原单位薪酬">
+            </div>
+            <label for="HomeAndCode" class="col-sm-1 control-label col-md-1">家庭地址及邮政编码</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="HomeAndCode" name="HomeAndCode" placeholder="家庭地址及邮政编码">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="Email" class="col-sm-1 control-label col-md-1">邮箱</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="Email" name="Email" placeholder="邮箱">
+            </div>
+            <label for="MailingAndCode" class="col-sm-1 control-label col-md-1">通讯地址及邮政编码</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="MailingAndCode" name="MailingAndCode" placeholder="通讯地址及邮政编码">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="MobileNumber" class="col-sm-1 control-label col-md-1">移动电话</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" placeholder="移动电话">
+            </div>
+            <label for="EmergencyContact" class="col-sm-1 control-label col-md-1">紧急联系人</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="EmergencyContact" name="EmergencyContact" placeholder="紧急联系人">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="RelationshipWithMe" class="col-sm-1 control-label col-md-1">与本人关系</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="RelationshipWithMe" name="RelationshipWithMe" placeholder="与本人关系">
+            </div>
+            <label for="Contact" class="col-sm-1 control-label col-md-1">联系电话</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="Contact" name="Contact" placeholder="联系电话">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="MyIdNumber" class="col-sm-1 control-label col-md-1">本人身份证号码</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="MyIdNumber" name="MyIdNumber" placeholder="本人身份证号码">
+            </div>
+            <label for="Domici" class="col-sm-1 control-label col-md-1">户籍所在地</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="Domici" name="Domici" placeholder="户籍所在地">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="FileLocation" class="col-sm-1 control-label col-md-1">档案所有地</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="FileLocation" name="FileLocation" placeholder="档案所有地">
+            </div>
+            <label for="FileAgency" class="col-sm-1 control-label col-md-1">档案代理机构</label>
+            <div class="col-sm-4 col-md-4">
+
+                <input type="text" class="form-control" id="FileAgency" name="FileAgency" placeholder="档案代理机构">
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-1 col-md-1"></div>
+            <label for="ResearchWWritings" class="col-sm-1 control-label col-md-1">科研成果或著作</label>
+            <div class="col-sm-4 col-md-4">
+
+                <textarea id="ResearchWWritings" name="ResearchWWritings" placeholder="科研成果或著作" class="form-control" rows="3"></textarea>
+
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+        </div>
+    </form>
+</body>
+</html>

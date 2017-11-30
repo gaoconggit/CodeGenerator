@@ -1,0 +1,26 @@
+﻿@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit", "setValue", "getValue" };
+    var id = attrList["name"];
+    var name = attrList["name"];
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var text = PubControlHelper.GetControlAttributeByBuild(attrList, "text");
+    string icon = PubControlHelper.GetControlAttributeByBuild(attrList, "icon");
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyClass = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, "readonly", "");
+}
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+
+<!------------------@(name) BEGIN------------------>
+<button type="button" id="@name" name="@name">
+    @if (icon != "")
+    {
+        <span class="@icon"></span>
+    }
+    @(text)
+</button>
+<!------------------@(name) END------------------>

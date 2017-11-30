@@ -1,0 +1,207 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Infrastructure.DAL;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    string pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "");
+    string values = PubControlHelper.GetControlAttributeByBuild(attrList, "values", "");
+    string valcolumn = PubControlHelper.GetControlAttributeByBuild(attrList, "valcolumn", "");
+    string[] vcolumn = null;
+    if (valcolumn.IsValuable())
+    {
+        vcolumn = valcolumn.Split(',');
+
+    }
+    if (values.IsValuable())
+    {
+        values = "," + values.TrimStart('{').TrimEnd('}');
+    }
+    string sortExtend = PubControlHelper.GetControlAttributeByBuild(attrList, "sortExtend", "");
+    string jsDataColumu = PubControlHelper.GetControlAttributeByBuild(attrList, "jsDataColumu", "");
+    string addrow = PubControlHelper.GetControlAttributeByBuild(attrList, "addrow","");
+    string apiKey = PubControlHelper.GetControlAttributeByBuild(attrList, "apiKey");
+    string apiValue = PubControlHelper.GetControlAttributeByBuild(attrList, "apiValue");
+    var h100 = PubControlHelper.GetControlAttributeByBuild(attrList, "h100", "true");
+    var listpars = PubGet.GetJqxGridParas();
+    var name = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var mappingPars = PubControlHelper.GetControlAttributeByBuild(attrList, "mappingPars", "[]");
+    var id = name;
+    var columnsInfo = PubControlHelper.GetControlAttributeByBuild(attrList, "columns").JsonToModel<List<GridColumnsModel>>();
+    var events = listpars.Where(it => it.Category == "Event").ToList();
+    var isInitLoading = PubControlHelper.GetControlAttributeByBuild(attrList, "isInitLoading", "true");
+    var columnNames = columnsInfo.GroupBy(it => it.columnName)
+.Select(it =>
+{
+    int sort = columnsInfo.Single(info => info.attrKey == "sort" && info.columnName == it.Key).attrValue.TryToInt();
+    string columnType = columnsInfo.Single(info => info.attrKey == "dataFields" && info.columnName == it.Key).attrValue;
+    return new { columnName = it.Key, sort = sort, columnType = columnType };
+})
+.OrderBy(it => it.sort).ToList();
+    var attrKeys = columnsInfo.GroupBy(it => it.attrKey).Select(it => it.Key);
+    var columnAtts = columnsInfo.GroupBy(it => it.attrKey)
+        .Select(it =>
+        {
+            string valueType = columnsInfo.First(info => info.attrKey == it.Key).valueType;
+            return new { attrKey = it.Key, attrType = valueType };
+        }).Where(it => it.attrType != "type").ToList();
+    var attrs = listpars.Where(it => it.Category != "Event" && it.Name != "columns").ToList();
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+@using System.Linq;
+<div id="@id" class="@((h100=="true").IIF("jqxGrid100","").AppendString(showClass," ",false))"></div>
+<script>
+    function loadGrid@(id)(){
+        $(function () {
+            var source =
+            {
+                url: "@Model.api",
+                datafields:
+                [
+                     @foreach (var it in columnNames) {
+                         var isLast = it == columnNames.Last();
+                         var result = false;
+                         if (vcolumn!=null&&vcolumn.Length>0)
+                         {
+                             foreach (var item in vcolumn)
+                             {
+                                 result = it.columnName == item;
+                                 if (result)
+                                 {
+                                     break;
+                                 }
+                             }
+                         }
+                         var isAny = result == true ? values : null;
+                         @: { name: '@it.columnName', type: '@(it.columnType)' @isAny}@isLast.IIF("", ",")
+
+                     }
+                ],
+                @if (sortExtend.IsNullOrEmpty() || sortExtend == "否")
+                {
+                     @:sort: function() {
+                                                                                                        @:// update the grid and send a request to the server.
+                                                                                                        @:$("#@id").jqxGrid('updatebounddata', 'sort');
+                                                                                                     @:},
+                                                                                }
+                addrow: function (rowid, rowdata, position, commit) {
+                    @addrow
+                    commit(true);
+                },
+                filter: function () {
+                    // update the grid and send a request to the server.
+                    $("#@id").jqxGrid('updatebounddata', 'filter');
+                },
+                datatype: "json",
+                beforeprocessing: function (data) {
+                    source.totalrecords = data.totalRows;
+                },
+                formatdata: function (data) {
+                    @pars
+                    $("[data-filter-gridId='@id']").each(function(){
+                        var th=$(this);
+                        var val=th.val();
+                        var categoryId=th.attr("data-filter");
+                        var operator=th.attr("data-filter-operator");
+                        var mappingFieldArray=@mappingPars;
+                        var appendFilter=[];
+                        if(val!=null&&val!=""&&mappingFieldArray.length>0){
+                            var mappingField=$.linq.where(mappingFieldArray,function(v){
+                                return v.filterValue==categoryId;
+                            });
+                            if(mappingField.length==1){
+                                appendFilter.push({filterField:mappingField[0].filterField,value:val,operator:operator});
+                            }
+                        }
+                        if(appendFilter.length>0){
+                            var filterBeginIndex=data.filterscount;
+                            data.filterscount+=appendFilter.length;
+                            $(appendFilter).each(function(i,v){
+                                data["filtercondition"+(filterBeginIndex+i)]= v.operator;
+                                data["filterdatafield"+(filterBeginIndex+i)]= v.filterField;
+                                data["filteroperator"+(filterBeginIndex+i)]= 1;
+                                data["filtervalue"+(filterBeginIndex+i)]=v.value;
+                            });
+                        }
+                    });
+                }
+            };
+            var dataColumu;
+            //创建ad
+            var columns = [
+            @foreach (var column in columnNames) {
+            var isLast = column == columnNames.Last();
+            @:{
+                                                                                                                                                @:datafield:"@column.columnName",
+                                                                                                                                                foreach (var attr in columnAtts) {
+                    string columnValue = columnsInfo.Single(info => info.attrKey ==attr.attrKey && info.columnName == column.columnName).attrValue;
+                    if (columnValue.IsNullOrEmpty() || columnValue == "null") {
+                        continue;
+                    }
+                    var isListAttr = attr == columnAtts.Last();
+                    columnValue = attr.attrType
+                    .Switch()
+                    .Case("function", columnValue.IsValuable()? @"function(index, column, value,html,cellInfo,row){{
+                     {0}
+                    }}".ToFormat(columnValue):"null")
+                    .Case("string", "\"{0}\"".ToFormat(columnValue))
+                    .Case("bool", columnValue)
+                    .Case("functionDev", columnValue)
+                    .Break();               @:@attr.attrKey :@columnValue @isListAttr.IIF("", ",")
+                                                                                                                                                                                                    }
+            @:}@isLast.IIF("", ",")
+            }
+            ];
+
+            @if (jsDataColumu.IsValuable())
+            {
+                @:dataColumu =@jsDataColumu;
+            }
+            else
+            {
+                @:dataColumu = columns;
+            }
+
+            var dataAdapter = new $.jqx.dataAdapter(source);
+
+
+            //创建grid
+            $("#@id").jqxGrid({
+                source: dataAdapter,
+                @foreach (var it in attrs) {
+                    var value = PubControlHelper.GetControlAttributeByBuild(attrList, it.Name);
+                    var isFunc = value.IsValuable() && value.StartsWith("$pubLayout");
+                    if (value.IsValuable() && value != "null") {
+            @: @it.Name : @(((it.Category.IsIn("String", "Number/String")&& isFunc==false).IIF("\"" + value + "\"", value))),
+                                                                                                                                                                                                                                                                                                        } }
+                columns:dataColumu
+            });
+
+            $("#@id").on('pagechanged',function(){
+                $("#@id").jqxGrid('clearselection');
+            })
+            //生成事件
+            @foreach (var it in events) {
+
+             var eventCode = PubControlHelper.GetControlAttributeByBuild(attrList, it.Name);
+            if (eventCode.IsValuable()) {
+            @:  $("#@id").on("@it.Name", function (event) {
+                                                                                                                                                                                                                                                                                            @:
+                                                                                                                                                                                                                                                                                            @: @eventCode
+                                                                                                                                                                                                                                                                                            @:
+                                                                                                                                                                                                                                                                                @:});
+                                                                                                                                                                                                     }
+        }
+
+
+        })//$end
+
+    }
+    @if (isInitLoading == "true") {
+       @: loadGrid@(id)();
+                                                        }
+</script>

@@ -1,0 +1,39 @@
+﻿header, #divLeft, .box > .nav {
+    display: none;
+}
+
+article .right {
+    margin: auto;
+}
+
+.best-widow-close {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align:right;
+    z-index:1;
+    height:0
+ 
+}
+
+    .best-widow-close .icon-remove {
+        font-size: 50px;
+        cursor: pointer;
+        color: #0090bb;
+        margin-right:16px;
+        margin-bottom:16px;
+    }
+
+        .best-widow-close .icon-remove:hover {
+            color: #00679c;
+        }
+
+html {
+    background: #FAFAFA;
+}
+#container {
+ position:relative;
+ top:36px;
+ height:calc(100% - 36px) !important
+}

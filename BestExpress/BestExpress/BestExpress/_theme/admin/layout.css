@@ -1,0 +1,77 @@
+﻿ html,body,div,h1,h2,h3,h4,h5,h6,ul,li{  margin:0; padding:0;}
+ html{     background: linear-gradient(to bottom, #0E4554 , #34403D); padding-bottom:50px}
+ .head{ height:145px; background:#092900}
+ .head .top{ height:90px; min-width:960px; margin:auto; text-decoration:none;}
+ .head .top .top-top{ height:30px; border:0; line-height:30px; position: relative;top: 20px;}
+ .head .top .top-bottom{ height:60px; border:0; width:80px; float:right; margin-right:10px; margin-top:-10px}
+ .head .top .top-bottom .user { width:70px;  position:relative; text-align:center;float:right;top:-10px}
+ .head .top .top-bottom .user img{ width:65px;}
+ .head .top .top-bottom .user label{color: wheat; display:block; font-size:12px;  position:relative;}
+ .head .top .top-bottom .title{ font-size:25px; color:White; font-weight:bold; width:200px; float:left}
+ .head .top .top-bottom .title img{ position:relative; top:10px; }
+ .head .top .title label{ font-size:12px; display:block;color:#E0D1C8}
+ .head .top .top-top .title{ left:300px;width:500px;font-size:25px; color:White; position:relative; top:0px; margin-left:38px;font-weight: bold;}
+
+ .head .main-menu{ background:#317DAA; height:55px;padding-left:20px}
+ .head .main-menu ul{  min-width:960px; margin:auto; text-decoration:none;}
+ .head .main-menu ul li{   float:left;list-style:none;display: inline-block;font-size: 15px;font-weight: bold;  text-transform: uppercase; border-right: 1px solid #006391; line-height:55px;   }
+ .head .main-menu ul li a{ color:White; font-size:15px; font-weight:bold; text-decoration:none; margin:15px; margin-right:25px}
+ .head .main-menu ul li:hover{ background:#73A165}
+ .head .main-menu ul li.first{border-left: 1px solid #006391; } 
+ .head .main-menu ul li.hover{ background:#73A165}
+ .head .main-menu ul li.more{ float:right; border-right:0;padding:0 10px; background:#5A86B0; height:55px; position:relative; z-index:10 }
+ .head .main-menu ul li.more img{ margin:18px 5px;margin:18px 5px\9;margin:15px 5px -5px 5px\0;*margin:5px 5px; width:25px}
+
+ .body{ background:#fff; min-width:960px; margin:auto; text-decoration:none; }
+ .body .navigation-bar2 { background:#fff; height:30px; border-bottom:1px solid #ccc; line-height:30px; font-size:12px; color:#333;  height:100%}
+ .body .navigation-bar2 .navItems ul li{ list-style:none; float:left;  display:inline-block;  margin:0 5px}
+ .body .navigation-bar2 .navItems ul li img{ margin-right:2px; position:relative;top:4px}
+ .body .navigation-bar2 .navItems ul li:hover{ color:#538586}
+ .body .navigation-bar2 .navItems ul li.current{ color: #538586}
+ .body .box{  clear:both; padding:5px; font-size:12px;background:#e3e3e3; height:100%}
+ .body .box ul li{float:none;display:inherit}
+ 
+ .html{ background:#222;linear-gradient(#222, #ccc); overflow:hidden}
+  
+ .footer{ background:#006391; color:White; height:35px; text-align:center; line-height:35px; font-size:12px; position:fixed; bottom:0; width:100%; z-index:11111}
+ 
+ .click{ cursor:pointer}
+ .clear{  clear:both}
+ .hide{ display:none}
+ .more-box{ background:#5A86B0; position:absolute;cursor:pointer;  }
+ .more-box .title{ color:White; font-weight:bold; font-size:15px; padding-bottom:15px}
+ .more-box a{ color:#adcee4; font-size:13px;  cursor:pointer;    }
+ .more-box a:hover, .more-box .title:hover{ text-decoration:underline}
+ .more-box .box{ padding:20px}
+.jqx-window-content .body {  min-width:100px !important; padding-top:5px; padding-left:5px}
+ .btn {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px #177094;
+	-webkit-border-radius: .1em; 
+	-moz-border-radius: .1em;
+	border-radius: .1em;
+	-webkit-box-shadow: 0 1px 2px #177094;
+	-moz-box-shadow: 0 1px 2px #177094;
+	box-shadow: 0 1px 2px #177094;
+    border:none;
+    background:#177094;
+    color:white;
+    font-weight:bold
+}
+.btn:hover {
+	text-decoration: none;
+    background:#5A86B0
+}
+.btn:active {
+	position: relative;
+	top: 1px;
+}
+.jqx-loader-modal,.jqx-loader-icon,#jqxGlobalLoader {
+ z-index:10000000 !important;
+}

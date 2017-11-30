@@ -1,0 +1,112 @@
+﻿@using SyntacticSugar
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    List<SysBest_ElementAttr> model = Model;
+    //默认
+    var pars = PubControlHelper.GetControlAttribute(model, "pars");
+    var type = PubControlHelper.GetControlAttribute(model, "type");
+    var label = PubControlHelper.GetControlAttribute(model, "label");
+    var value = PubControlHelper.GetControlAttribute(model, "value");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+    //回绑
+    var dataLoadApiId = PubControlHelper.GetControlAttribute(model, "dataLoadApiId");
+    var dataLoadApiPars = PubControlHelper.GetControlAttribute(model, "dataLoadApiPars");
+    //其他
+    var itemAssembleName = PubControlHelper.GetControlAttribute(model, "itemAssembleName");
+}
+<style rel="stylesheet">
+    .areaTitle {
+        font-size: 15px;
+        background: #9AB1C5;
+        color: white;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+</style>
+<table class="editTable">
+    <tr>
+        <td class="first">参数：</td>
+        <td>
+            <input id="txtJson" name="attr.Value" value='@(pars.ToHtmlDecode().TryToString().Replace("\'","\""))' type="text" />
+            <input name="attr.Key" type="hidden" value="pars" />
+            <span class="icon-search" onclick="$quickFactory('json-data', '#divJsonBox', '#txtJson')"></span>
+        </td>
+    </tr>
+    <tr>
+        <td class="first">异步加载:</td>
+        <td>
+            <select name="attr.Value">
+                <option @((type == "false").IIF("selected=selected", "")) value="false">否</option>
+                <option @((type == "true").IIF("selected=selected", "")) value="true">是</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="type" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">接口文本：</td>
+        <td>
+            <input name="attr.Value" placeholder="选中后需要显示的文本字段" value='@(label)' type="text" />
+            <input name="attr.Key" type="hidden" value="label" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">接口值：</td>
+        <td>
+            <input name="attr.Value" placeholder="选中后需要存储的字段" value='@(value)' type="text" />
+            <input name="attr.Key" type="hidden" value="value" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class：</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style：</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <br />
+    <tr>
+        <th align="left" colspan="2" class="areaTitle">
+            回绑
+        </th>
+    </tr>
+    <tr>
+        <td class="first">接口：</td>
+        <td>
+            <input readonly="readonly" id="dataLoadApiId" name="dataLoadApiId" type="hidden">
+            <input readonly="readonly" id="dataLoadApiText" name="dataLoadApiText" type="text">
+            <span class="icon-search" onclick="$quickFactory('data-api', this, 'dataLoadApiText', 'dataLoadApiId')"></span>
+        </td>
+    </tr>
+    <tr>
+        <td class="first">参数:</td>
+        <td>
+            <input name="attr.Value" value='@(dataLoadApiPars.ToHtmlDecode().TryToString().Replace("\'","\""))' type="text" id="txtdataLoadApiJson" />
+            <input name="attr.Key" type="hidden" value="dataLoadApiPars" />
+            <span class="icon-search" onclick="$quickFactory('json-data', '#divJsonBox', '#txtdataLoadApiJson')"></span>
+        </td>
+    </tr>
+    <br />
+    <tr>
+        <th align="left" colspan="2" class="areaTitle">
+            其它
+        </th>
+    </tr>
+    <tr>
+        <td class="first">名称:</td>
+        <td>
+            <input name="attr.Value" value='@itemAssembleName' type="text" />
+            <input name="attr.Key" type="hidden" value="itemAssembleName" />
+        </td>
+    </tr>
+</table>
+
+

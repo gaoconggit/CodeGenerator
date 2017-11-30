@@ -1,0 +1,80 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    Dictionary<string, string> eventList = Model.eventList;
+    Dictionary<string, string> attrList = Model.attrList;
+    var keyAndName = attrList["name"];
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var fileInputName = PubControlHelper.GetControlAttributeByBuild(attrList, "fileInputName");
+    var text = PubControlHelper.GetControlAttributeByBuild(attrList, "text", "导入");
+    var xmlConfig = PubControlHelper.GetControlAttributeByBuild(attrList, "xmlConfig");
+    var allowSize = PubControlHelper.GetControlAttributeByBuild(attrList, "allowSize", "20");
+    var useTransaction = PubControlHelper.GetControlAttributeByBuild(attrList, "useTransaction", "true");
+    var importType = PubControlHelper.GetControlAttributeByBuild(attrList, "importType", "0");
+}
+<div type="button" id="@keyAndName" class="@showClass"></div>
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        var buttonText = {
+            browseButton: '@text',
+            uploadButton: $layoutPageLanguage.jsdotjsSubmit,
+            cancelButton: $layoutPageLanguage.jsdotjsClear,
+            uploadFileTooltip: $layoutPageLanguage.jsdotjsImport,
+            cancelFileTooltip: $layoutPageLanguage.jsdotjsDelete
+        };
+        $('#@keyAndName').jqxFileUpload({ width: '@width', height: '@height', fileInputName: '@fileInputName', browseTemplate: 'success', uploadTemplate: 'primary', cancelTemplate: 'danger', localization: buttonText, multipleFilesUpload: false });
+        $("#@keyAndName").on("select", function (event) {
+            @(GetEvent("click", eventList))
+        });
+        $("#@keyAndName").on("uploadStart", function (event) {
+            var fileName = event.args.file; //获取文件名
+            var extStart = fileName.lastIndexOf(".");
+            var ext = fileName.substring(extStart, fileName.length).toUpperCase(); //判断是文件还是图片
+            if (ext == ".XLS" || ext == ".XLSX") {
+                var xmlConfigPars = '@xmlConfig';
+                if (xmlConfigPars == '') {
+                    xmlConfigPars = $(".xmlType").val();
+                }
+                xmlConfigPars = encodeURI(xmlConfigPars);
+                var allowSizePars = parseFloat('@allowSize');
+                var useTransactionPars = ('@useTransaction' == 'true') ? true : false;
+                var importTypePars = parseInt('@importType');
+                $('#@keyAndName').jqxFileUpload({ uploadUrl: '/CommonX6Api/ExcelOperation/ImportExcelData?xmlConfig=' + xmlConfigPars + '&allowSize=' + allowSizePars + '&useTransaction=' + useTransactionPars + '&importType=' + importTypePars });
+            }
+            @(GetEvent("preinit", eventList))
+        });
+        $("#@keyAndName").on("uploadEnd", function (event) {
+            var args = event.args;
+            try {
+                var response = $.trim($(args.response).html());
+                var msg = $.convert.strToJson($.convert.strToJson(response).responseInfo);
+                var obj = msg.Value;
+                switch (msg.Key) {
+                    case 0: jqxAlert($layoutPageLanguage.jsdotjsOperationSuccess); break;
+                    case 1: jqxAlert($errorPageLanguage.ConfigCountIsZore); break;
+                    case 2: jqxAlert($errorPageLanguage.ColumnIsNull.replace("{0}", obj.HeaderText)); break;
+                    case 3: jqxAlert($errorPageLanguage.ColumnAndColumnTypeNotConsistent.replace("{0}", obj.HeaderText).replace("{1}", obj.DataType)); break;
+                    case 4: jqxAlert($errorPageLanguage.ColumnAndColumnLengthNotConsistent.replace("{0}", obj.HeaderText).replace("{1}", obj.DataLength.toString())); break;
+                    case 5: jqxAlert($errorPageLanguage.NoCorrespondingCodeTableValue); break;
+                    case 6: jqxAlert($errorPageLanguage.NoXmlFiles); break;
+                    case 7: jqxAlert($errorPageLanguage.NoExcelFiles); break;
+                    default: jqxAlert($errorPageLanguage.UnknownAnomaly); break;
+                }
+                @(GetEvent("callBack", eventList))
+            } catch (e) {
+                jqxAlert($errorPageLanguage.UnknownAnomaly);
+            } finally {
+                console.clear();
+            }
+        });
+    });
+</script>
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+        if (eventList.ContainsKey(eventName))
+        {
+            @: @eventList[eventName]
+        }
+}

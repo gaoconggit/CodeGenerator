@@ -1,0 +1,65 @@
+﻿@if (Model.key == "getset")
+{
+    @: function setValue_@(Model.name)(val) { if(/\/Date\(\d+\)\//.test(val)){ return $("#@(Model.name)").val($.convert.jsonReductionDate(val,"yyyy-MM-dd hh:mm:ss")); }else{ return $("#@(Model.name)").val(val);} };
+
+        @: function getValue_@(Model.name)() { return $("#@(Model.name)").val(); };
+}
+else if (Model.key == "getsetdate")
+{
+    @: function setValue_@(Model.name)(val) { if(val.lastIndexOf("/Date")==-1){ return $("#@(Model.name)").val(val);}else{  return $("#@(Model.name)").val($.convert.jsonReductionDate(val,"yyyy-MM-dd hh:mm:ss"));} };
+
+        @: function getValue_@(Model.name)() { return $("#@(Model.name)").val(); };
+}
+else if (Model.key == "getset_editor")
+{
+    @: function setValue_@(Model.name)(val) {  var editor =UE.getEditor('@Model.name'); editor.ready(function() { editor.setContent(val); })};
+
+        @: function getValue_@(Model.name)() { return UE.getEditor("@(Model.name)").getContent(); };
+}
+else if (Model.key == "getset_html")
+{
+    @: function setValue_@(Model.name)(val) { if(/\/Date\(\d+\)\//.test(val)){  return $("#@(Model.name)").html($.convert.jsonReductionDate(val,"yyyy-MM-dd hh:mm:ss")); }else{ return $("#@(Model.name)").html(val);} };
+
+        @: function getValue_@(Model.name)() { return $("#@(Model.name)").html(); };
+}
+else if (Model.key == "getset_multiselect")
+{
+    @: function setValue_@(Model.name)(val) { 
+                                              @:$("#@(Model.name)").jqxDropDownList('uncheckAll');
+                                              @:$.each(val,function(i,item){
+                                                    @:$("#@(Model.name)").jqxDropDownList("checkItem",item);
+                                              @:});
+                                          @:};
+
+        @: function getValue_@(Model.name)() { return $("#@(Model.name)").jqxDropDownList('getCheckedItems'); };
+}
+else if (Model.key == "getset_combobox")
+{
+    @: function setValue_@(Model.name)(val) { 
+                                                @: $("#@(Model.name)").jqxComboBox('clearSelection');
+                                                @: $.each(val, function(i, item){
+                                                @: $("#@(Model.name)").jqxComboBox("selectItem", item);
+                                         @: });
+    @: };
+    @: function getValue_@(Model.name)() { return $("#@(Model.name)").jqxComboBox('getSelectedItems'); };
+}
+else if (Model.key == "getset_checked")
+{
+    @: function setValue_@(Model.name)(val) {
+            @: if ( $("#@(Model.name)").val() == val) { 
+                @: $("#@(Model.name)").prop("checked", true)
+            @: } else { 
+                @: $("#@(Model.name)").removeAttr("checked") 
+            @: };
+        @: };
+
+    @: function getValue_@(Model.name)() { return $("#@(Model.name)").val(); };
+}
+else if (Model.key == "getset_radio")
+{
+    @: function setValue_@(Model.name)(val) {
+        @: $("[name='@(Model.name)'][value='"+val+"']").prop("checked",true);
+    @: };
+
+    @: function getValue_@(Model.name)() { return $("[name='@(Model.name)']:checked").val(); };
+}

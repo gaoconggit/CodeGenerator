@@ -1,0 +1,133 @@
+html{
+	-webkit-user-select: none;
+	user-select:none;
+	overflow: hidden;
+}
+
+body{
+	min-height:600px;
+}
+
+*{
+	cursor:default !important;
+	/*pointer-events:none;*/
+}
+
+inline-character{
+	/* Make sure that pointer events are always enabled */
+	pointer-events:all;
+}
+
+inline-wrapper{
+	pointer-events:all;
+}
+
+a{
+	cursor:text;
+}
+
+/* Giving sizes to some elements.
+   Todo: is this correct? Think of a way to not need to do this,
+   as this will introduce differences with the styling of the 
+   exported page.
+ */
+
+
+div[class*="col-"]:empty:before,
+form:empty:before,
+.row:empty:before,
+.container:empty:before, 
+.container-fluid:empty:before{
+	background-color:#eee;
+	content:'Empty Row';
+	line-height:40px;
+	text-align: center;
+	display:block;
+	line-height:80px;
+	font-size:24px;
+	color:#aaa;
+	font-weight:bold;
+}
+
+div[class*="col-"]:empty:before{
+	content:'Empty Column';
+}
+
+form:empty:before{
+	content:'Empty Form';
+}
+
+.container:empty:before, 
+.container-fluid:empty:before{
+	content:'Empty Container';
+}
+ 
+img:not([src]){
+	background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIg0KCXhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIg0KCXdpZHRoPSIxNjVweCIgaGVpZ2h0PSIxNjVweCIgdmlld0JveD0iMCAwIDE2NSAxNjUiPg0KPHBhdGggZmlsbFJ1bGU9ImV2ZW5vZGQiIGQ9Ik0gMC43OSAyLjIxQyAwLjc5IDIuMjEgMi4yMSAwLjc5IDIuMjEgMC43OSAyLjIxIDAuNzkgMTY0LjIxIDE2Mi43OSAxNjQuMjEgMTYyLjc5IDE2NC4yMSAxNjIuNzkgMTYyLjc5IDE2NC4yMSAxNjIuNzkgMTY0LjIxIDE2Mi43OSAxNjQuMjEgMC43OSAyLjIxIDAuNzkgMi4yMVoiIGZpbGw9InJnYigxOTMsMTk1LDE5NSkiLz48cGF0aCBmaWxsUnVsZT0iZXZlbm9kZCIgZD0iTSAxNjIuNzkgMC43OUMgMTYyLjc5IDAuNzkgMTY0LjIxIDIuMjEgMTY0LjIxIDIuMjEgMTY0LjIxIDIuMjEgMi4yMSAxNjQuMjEgMi4yMSAxNjQuMjEgMi4yMSAxNjQuMjEgMC43OSAxNjIuNzkgMC43OSAxNjIuNzkgMC43OSAxNjIuNzkgMTYyLjc5IDAuNzkgMTYyLjc5IDAuNzlaIiBmaWxsPSJyZ2IoMTkyLDE5NCwxOTUpIi8+PC9zdmc+');
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	background-repeat:no-repeat;
+}
+
+.thumbnail img:not([src]){
+	background-repeat: no-repeat;
+    background-size: 100% 85%;
+    background-position-y: 50%;
+    width: 100%;
+	height: 180px;
+}
+
+
+/* This is needed because the li items are 0x0px by default,
+and bootstrap studio can't select them */
+
+.pagination>li {
+  float: left;
+}
+
+/* Iframes without src are colored in gray */
+.embed-responsive iframe:not([src]){
+	background-color:#ddd;
+}
+
+/* This is needed, otherwise split buttons in input groups break into two lines. */
+
+.input-group-btn .btn-group > .btn{
+	float:none;
+}
+
+/* Stopping css animations on the stage */
+
+*{
+	transition:none !important;
+	transition-duration: 0s !important;
+}
+
+[bs-dragged]{
+	opacity:0.3;
+}
+
+/* Inline editing */
+
+[bs-inline-edited] inline-character {
+	cursor: text !important;
+}
+
+inline-character.space:after{
+	content:'';
+	display:inline-block;
+}
+
+inline-character.selected,
+inline-wrapper.selected,
+inline-wrapper.selected > * {
+	background-color:#1F82E2;
+	color:#fff;
+	text-decoration-color: #fff;
+	-webkit-text-decoration-color: #fff;
+}
+
+[bs-inline-edited] inline-wrapper > * {
+	box-shadow: 0 0 0 1px #1F82E2;
+}

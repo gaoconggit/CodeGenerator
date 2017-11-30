@@ -1,0 +1,67 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+@using Best.Site.Areas.BestPalace.Controllers
+@{
+    var hasVal = Model != null;
+    var model = (List<SysBest_ElementAttr>)Model;
+    var width= PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+    string pars = PubControlHelper.GetControlAttribute(model, "pars");
+    var content = PubControlHelper.GetControlAttribute(model, "content");
+}
+
+<table class="editTable">
+
+    <tr>
+        <td class="first">width:</td>
+        <td>
+            <input name="attr.Value" value="@width" type="text" tip="请填写数字,或者数字加px或%" reg="^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">height:</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text"   />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+  
+    <tr>
+        <td class="first">参数:</td>
+        <td>
+            <input id="txtJson" name="attr.Value" value="@pars.ToHtmlEncode()" type="text" />
+            <input name="attr.Key" type="hidden" value="pars" />
+            <span class="icon-search" onclick="$quickFactory('json-data', '#divJsonBox', '#txtJson')"></span>
+        </td>
+    </tr>
+    <tr>
+        <td class="first">NG Html:</td>
+        <td >
+            <textarea id="htmlCode" style="width:412px;" rows="20" name="attr.Value">@content
+            </textarea>
+            <input name="attr.Key" type="hidden" value="content" />
+            <span class="icon-search" onclick="$quickFactory('html-code', '#divHtmlCodeBox', '#htmlCode')" style="top:-10px"></span>
+        </td>
+    </tr>
+</table>

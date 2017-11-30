@@ -1,0 +1,146 @@
+﻿@using Best.Entities.UiEngine
+@using Best.Entities.Tables
+@using SyntacticSugar
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using SyntacticSugar;
+using Best.Infrastructure.DAL;
+using Best.Entities.Tables;
+using SqlSugar;
+using Best.Entities.Common;
+namespace @(Model.siteName).Areas.@(Model.areaName).Controllers
+{
+    public partial class @(Model.controllerName)Controller : Controller
+    {
+
+
+    public ActionResult @(Model.actionName)()
+    {
+    return View();
+    }
+    @if (Model.apiList != null)
+    {
+        foreach (SysBest_DataApi api in Model.apiList)
+        {
+
+            var isSearch = DataApiTypeManager.GetInstance.GetDataActionApiType[0].tid == api.ApiActionType;
+            if (isSearch)
+            {
+                var isPars = api.Parameters.TryToString().Trim().IsValuable();
+                @:  public JsonResult @(api.ActionName)()
+                @:  {
+                @:     ActionResultModel<List<@(api.T)>> model = new ActionResultModel<List<@(api.T)>>();
+    if (isPars)
+ {
+  @:     if(Request.QueryString.Count==0&&Request.Form.Count==0) return Json(new ActionResultModel<bool>(),JsonRequestBehavior.AllowGet);
+    }
+  @:     model.responseInfo=_.apiService.GetApi<@(api.T)>(@@"@api.Code","@api.FilterKey");
+  @:     model.isSuccess=true;
+  @:     var reval= Json(model, JsonRequestBehavior.AllowGet);
+  @:     reval.MaxJsonLength = int.MaxValue;
+  @:     return  reval;
+  @:  }
+            }
+
+            var isInsert = DataApiTypeManager.GetInstance.GetDataActionApiType[1].tid == api.ApiActionType;
+            if (isInsert) {
+                                if (api.AllowHtml) {
+  @:  [ValidateInput(false)]
+                }
+  @:  public JsonResult @(api.ActionName)(@(api.T) insObj)
+  @:  {
+  @:     ActionResultModel<object> model = new ActionResultModel<object>();
+  @:     model.responseInfo=_.apiService.InsertApi<@(api.T)>(insObj);
+  @:     model.isSuccess=true;
+  @:     return Json(model, JsonRequestBehavior.AllowGet);
+  @:  }
+            }
+
+            var isEdit = DataApiTypeManager.GetInstance.GetDataActionApiType[2].tid == api.ApiActionType;
+            if (isEdit) {
+                                if (api.AllowHtml) {
+  @:  [ValidateInput(false)]
+                }
+  @:  public JsonResult @(api.ActionName)(@(api.T) editObj)
+  @:  {
+  @:     ActionResultModel<bool> model = new ActionResultModel<bool>();
+  @:     model.responseInfo=_.apiService.EditApi<@(api.T)>(editObj);
+  @:     model.isSuccess=true;
+  @:     return Json(model, JsonRequestBehavior.AllowGet);
+  @:  }
+            }
+
+            var isDelete = DataApiTypeManager.GetInstance.GetDataActionApiType[3].tid == api.ApiActionType;
+            if (isDelete) {
+  @:  public JsonResult @(api.ActionName)(Guid [] id)
+  @:  {
+  @:     if(id==null) return Json(new ActionResultModel<bool>(),JsonRequestBehavior.AllowGet);
+  @:     ActionResultModel<bool> model = new ActionResultModel<bool>();
+  @:     model.responseInfo=_.apiService.DeleteApi<@(api.T)>(id);
+  @:     model.isSuccess=true;
+  @:     return Json(model, JsonRequestBehavior.AllowGet);
+  @:  }
+            }
+
+            var isFalseDelete = DataApiTypeManager.GetInstance.GetDataActionApiType[4].tid == api.ApiActionType;
+            if (isFalseDelete) {
+  @:  public JsonResult @(api.ActionName)(Guid [] id)
+  @:  {
+  @:     ActionResultModel<bool> model = new ActionResultModel<bool>();
+  @:     model.responseInfo=_.apiService.FalseDeleteApi<@(api.T)>(id);
+  @:     model.isSuccess=true;
+  @:     return Json(model, JsonRequestBehavior.AllowGet);
+  @:  }
+            }
+            var isEditStatus = DataApiTypeManager.DataActionApiType.编辑状态.GetValue<int>() == api.ApiActionType;
+            if (isEditStatus) {
+  @:  public JsonResult @(api.ActionName)(Guid [] id,string value)
+  @:  {
+  @:     ActionResultModel<bool> model = new ActionResultModel<bool>();
+  @:     model.responseInfo=_.apiService.EditApiStatus<@(api.T)>(id,value);
+  @:     model.isSuccess=true;
+  @:     return Json(model, JsonRequestBehavior.AllowGet);
+  @:  }
+            }
+
+            var isDyamaic = DataApiTypeManager.GetInstance.GetDataActionApiType[5].tid == api.ApiActionType;
+            var tIsDynamic = isDyamaic && api.T.TryToString().ToLower().Contains("exec ");
+            if (tIsDynamic)
+            {
+                api.T = "dynamic";
+            }
+            var parString = api.TPars.IsValuable().IIF(api.TPars+" parsObj","");
+            if (isDyamaic) {
+                if (api.AllowHtml) {
+  @:  [ValidateInput(false)]
+}
+  @:  public @(tIsDynamic.IIF("string", "JsonResult")) @(api.ActionName)(@parString)
+  @:  {
+  @:     ActionResultModel<@(api.T)> model = new ActionResultModel<@(api.T)>();
+  @:     _.apiService.DynamicApi<@(api.T)>((db,pars)=>{
+  @:       @api.Code
+  @:     },"@api.FilterKey");
+  @:     model.isSuccess=true;
+    if (tIsDynamic)
+                {
+  @:       var reval = model.ModelToJson();
+  @:       reval = reval.Replace(":\"[", ":[").Replace("]\",", "],").Replace("\\\"", "\"");
+  @:       return reval;
+                }
+                else
+                {
+  @:     var reval= Json(model, JsonRequestBehavior.AllowGet);
+  @:     reval.MaxJsonLength = int.MaxValue;
+  @:     return  reval;
+               }
+  @:  }
+            }
+
+
+        }
+    }
+  }
+}

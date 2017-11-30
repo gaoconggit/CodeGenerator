@@ -1,0 +1,17 @@
+﻿<!--二级联动-->
+<script>
+    $(function () {
+        $(@(Model["selector"])).change(function () {
+            $.ajax({
+                url: "@Model["url"]",
+                dataType:"json",
+                success: function (msg) {
+                    alert("2级联动哈哈")
+                },
+                error: function (msg) {
+                    console.log(msg);
+                }
+            })
+        })
+    })
+</script>

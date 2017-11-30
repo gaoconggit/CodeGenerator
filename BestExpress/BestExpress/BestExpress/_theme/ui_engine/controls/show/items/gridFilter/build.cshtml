@@ -1,0 +1,170 @@
+﻿@using SqlSugar;
+@using SyntacticSugar;
+@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    var eventList = Model.eventList as Dictionary<string, string>;
+    /*********************************************** 华丽的分割线 ***********************************************/
+    var attrList = Model.attrList as Dictionary<string, string>;
+    //默认
+    var elementName = attrList["name"];
+    var pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+    var type = PubControlHelper.GetControlAttributeByBuild(attrList, "type");
+    var label = PubControlHelper.GetControlAttributeByBuild(attrList, "label");
+    var value = PubControlHelper.GetControlAttributeByBuild(attrList, "value");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    //回绑
+    var dataLoadApiId = PubControlHelper.GetControlAttributeByBuild(attrList, "dataLoadApiId");
+    var dataLoadApiPars = PubControlHelper.GetControlAttributeByBuild(attrList, "dataLoadApiPars", "{}");
+    //其他
+    var itemAssembleName = PubControlHelper.GetControlAttributeByBuild(attrList, "ItemAssembleName", null);
+}
+<div id="@(elementName)Div">
+    <form class="frm" id="frm@(elementName)">
+        <table>
+            <tr class="firstRow">
+                <td valign="middle" align="center">名称</td>
+                <td valign="middle" align="left">
+                    <input type="text" id="ItemAssembleName" name="ItemAssembleName" class="ItemAssembleName" value="@itemAssembleName" @(itemAssembleName.IsValuable()?"readonly='readonly'":null) />
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center"></td>
+                <td valign="middle" align="left">
+                    <div id="@elementName" @(style) class="@class_"></div>
+                </td>
+            </tr>
+            <tr class="none">
+                <td valign="middle" align="left" colspan="2">
+                    <input type="hidden" name="fields" id="fields" class="fields" />
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="center" colspan="2">
+                    <!-- 操作按钮 -->
+                    
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<style rel="stylesheet">
+   #@elementName{ 
+      width:300px;
+      height:400px;
+   }
+</style>
+<script type="text/javascript" charset="utf-8">
+    var existJsonData = [];
+    function loadExistDataSource() {
+        $.ajax({
+            url: '@dataLoadApiId',
+            async: false,
+            dataType: "json",
+            data: @(dataLoadApiPars.ToHtmlDecode()),
+            success: function (msg) {
+                existJsonData = msg.responseInfo;
+            },
+            error: jqxError
+        });
+        return existJsonData;
+    };
+
+    function loadTreeBy@(elementName)() {
+        $.ajax({
+            url: "@Model.api",
+            async: false,
+            dataType: "json",
+            data: @(pars.ToHtmlDecode()),
+            success: function (msg) {
+                var source = msg.responseInfo;
+                //判断是同步tree设置Map属性
+                @if (type == "false")
+                {
+                     @:    $.each(source, function(i) {
+                                                                  @:            var key = i;
+                                                                  @:            jsonstr = source[0];
+                                                                  @:            return;
+                                                                  @:    });
+                                                      @:        var datafield = []; //值数组
+                                                      @:    //获取到数josn中的列名KEY 保存在数组中==//
+                                                      @:    for (var keys in jsonstr)
+                                                                      @:        {
+                                                                      @:            datafield.push(keys);
+                                                                      @:        }
+                                                      @:        //======================================//
+                                                      @:        var dataArray = [];//tree 的数据集数组
+                                                      @:        var dataMap = [];//tree的map数组
+                                                      @:        var treeId = "";//tree的ID用于data中绑定
+                                                      @:        var treePid = "";//tree的parentid用于data中绑定
+                                                      @:    for(var val in datafield)
+                                                                      @:        {
+                                                                      @:            dic = { name: datafield[val] }; //定义临时对象设置键值
+                                                                      @:            dataArray.push(dic);//将对象存入数组中
+                                                                      @:                                //动态构造Map========================================================================================//
+                                                                      @:            var lowerval = datafield[val];//jquery区分大小写，将遍历得到的值转换成小写
+                                                                      @:
+                                                                      @:            //判断 id  parentid
+                                                                      @:            var isid = lowerval.toLocaleLowerCase() == "id";
+                                                                      @:            var ispid = lowerval.toLocaleLowerCase() == "parentid";
+                                                                      @:            treeId = isid ? datafield[val] : treeId;
+                                                                      @:            treePid = ispid ? datafield[val] : treePid;
+                                                                      @:            //设置ID的map为value   title的map 为label 。用作显示和值绑定。。其余的字段name=map
+                                                                      @:            dicMap = lowerval.toLocaleLowerCase() == "@label" ?{ name: datafield[val], map: 'label' } :
+                                                                          @:        (lowerval.toLocaleLowerCase() == "@value" ? { name: datafield[val], map: 'value' } :{ name: datafield[val], map: datafield[val] });
+                                                                  @:
+                                                                  @:            dataMap.push(dicMap);
+                                                                  @:            //=====================================================================================================//
+                                                                  @:        }
+                                                      @:    var data =
+                                                              @:    {
+                                                                      @:      datatype: "json",
+                                                              @:      datafields: dataArray,
+                                                              @:      id: treeId,
+                                                              @:   localdata: source
+                                                              @:   };
+                                                  @:var dataAdapter = new $.jqx.dataAdapter(data);
+                                                  @:dataAdapter.dataBind();
+                                                  @:var records = dataAdapter.getRecordsHierarchy(treeId, treePid, 'items', dataMap);
+                                                  @:source = records;
+                                                }
+                $("#@(elementName)").jqxTree({ checkboxes: true, hasThreeStates: true, source: source });
+
+                if (existJsonData.length > 0) {
+                    var isInJson = false;
+                    //回绑数据（勾选复选框）
+                    var items = $('#@(elementName)').jqxTree('getItems');
+                    $.each(items,function(i,x){
+                        isInJson = $.linq.where(existJsonData, function (item) {
+                            return item.value == x.value;
+                        }).length > 0;
+                        if (isInJson) {
+                            $('#@(elementName)').jqxTree('checkItem', x.element, true);
+                        }
+                    });
+                }
+            },
+            error: jqxError
+        });
+    };
+
+    function GetCheckedItems(){
+        var dataJson = [];
+        var items =$('#@elementName').jqxTree('getCheckedItems');
+        if (items.length>0) {
+            $.each(items,function(i,x){
+                dataJson.push({
+                    label:x.label,
+                    value:x.value
+                });
+            });
+            var dataJsonStr = $.convert.jsonToStr(dataJson).replace(/[,]/g, '$^douhao^$');
+            $("#fields").val(encodeURI(dataJsonStr));
+        }
+    };
+
+    $(function () {
+        loadExistDataSource(); //读取已有数据,进行回绑
+        loadTreeBy@(elementName)();
+    });
+</script>

@@ -1,0 +1,35 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string gridId = "";
+    if (model.Any(it => it.key == "gridId"))
+    {
+        gridId = model.Single(it => it.key == "gridId").value;
+    }
+    string callBack = "null";
+    if (model.Any(it => it.key == "callBack"))
+    {
+        callBack = "function(msg){{ {0} }}";
+        callBack = callBack.ToFormat(model.Single(it => it.key == "callBack").value);
+    }
+    var apiId = "";
+    if (model.Any(it => it.key == "apiId"))
+    {
+        apiId = model.Single(it => it.key == "apiId").value;
+    }
+    var value = "";
+    if (model.Any(it => it.key == "value"))
+    {
+        value = model.Single(it => it.key == "value").value;
+    }
+    var message = "";
+    if (model.Any(it => it.key == "message"))
+    {
+        message = model.Single(it => it.key == "message").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+@using Best.Infrastructure.DAL
+@using Best.Entities.Tables
+uiEngineGridUpdateStauts("@gridId.TryToString().TrimStart('#')",$.action.url("@PubGet.GetApiUrl(apiId.TryToInt()).ActionName",'HidUrlAction'),@(callBack),"@message",@value) 

@@ -1,0 +1,17 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@using System.Web.Mvc;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var languagePars = PubControlHelper.GetControlAttributeByBuild(attrList, "languagePars", "{}");
+
+}
+
+@if (languagePars.IsValuable())
+{
+    @: @@Html.PageLanguage(new @languagePars )
+}
+

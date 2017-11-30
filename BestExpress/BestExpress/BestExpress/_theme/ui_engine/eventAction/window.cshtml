@@ -1,0 +1,51 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string id = "";
+    string width = "";
+    string type = "";
+    string title = "";
+    string okClick = "";
+    string callBack = "";
+    string validateFun = "null";
+    if (model.Any(it => it.key == "id"))
+    {
+        id = model.Single(it => it.key == "id").value;
+    }
+    if (model.Any(it => it.key == "width"))
+    {
+        width = model.Single(it => it.key == "width").value;
+    }
+    if (model.Any(it => it.key == "type"))
+    {
+        type = model.Single(it => it.key == "type").value;
+    }
+    if (model.Any(it => it.key == "title"))
+    {
+        title = model.Single(it => it.key == "title").value;
+    }
+    if (model.Any(it => it.key == "okClick"))
+    {
+        okClick = model.Single(it => it.key == "okClick").value;
+    }
+    if (model.Any(it => it.key == "callBack"))
+    {
+        callBack = model.Single(it => it.key == "callBack").value;
+    }
+    if (model.Any(it => it.key == "valiFun"))
+    {
+        validateFun = model.Single(it => it.key == "valiFun").value;
+        if (validateFun.IsNullOrEmpty()) {
+            validateFun = "return true;";
+        }
+        validateFun = @"function(){{
+               {0}
+         }}".ToFormat(validateFun);
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+ uiEngineWindow("@(id)","@(width)","@(type)","@(title)",function(){
+@okClick
+},@validateFun);
+@callBack

@@ -1,0 +1,25 @@
+﻿@{
+    List<EventActionTypeParas> model = Model.Data;
+    string id = "";
+    if (model.Any(it => it.key == "id"))
+    {
+        id = model.Single(it => it.key == "id").value;
+    }
+    string value = "";
+    if (model.Any(it => it.key == "value"))
+    {
+        value = model.Single(it => it.key == "value").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+@if (id.IsValuable())
+{
+    if (value.StartsWith("getValue_"))
+    {
+    @:  setValue_@(id.TrimStart('#'))(@value);
+    }
+    else {
+    @:  setValue_@(id.TrimStart('#'))("@value");
+    }
+}

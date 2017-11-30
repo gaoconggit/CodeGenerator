@@ -1,0 +1,96 @@
+﻿@{
+    List<EventModel> eventAttrs = Model.Key;//配置文件里面所有事件集合
+    List<SysBest_ElementEvent> eventValues = Model.Value;
+}
+@using Best.Entities.Tables
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+<table class="editTable">
+
+    @foreach (var item in eventAttrs)
+    {
+        <tr>
+            <td class="first">事件</td>
+            <td>
+                <input type="hidden" name="eventKey" value="@item.Name" />
+                <input type="hidden" name="eventPars" value="@item.Name" />
+                <!--存储参数的键值-->
+                <input type="hidden" name="eventEventType" value="@item.Id" />
+                <select class="selEvent" name="event_Value">
+                    <option value="">==选择事件类型==</option>
+                    @foreach (var itItem in item.ActionTypeList)
+                    {
+                        var selected = eventValues.Any(ev => ev.Value.ToString() == itItem.key && ev.EventType == item.Id);
+                        if (selected)
+                        {
+                    <option selected="selected" value="@itItem.key">@itItem.value</option>
+                        }
+                        else {
+                    <option value="@itItem.key">@itItem.value</option>
+                        }
+                    }
+                </select>
+                <div class="boxAll">
+                    @foreach (var itItem in item.ActionTypeList)
+                    {
+                        var selected = eventValues.Any(ev => ev.Value.ToString() == itItem.key && ev.EventType == item.Id);
+                        List<EventActionTypeParas> parsOfViewModel = new List<EventActionTypeParas>();
+                        if (selected)
+                        {
+                            var eleEvent = eventValues.Single(ev => ev.Value.ToString() == itItem.key && ev.EventType == item.Id);
+                            parsOfViewModel = eleEvent.Pars.JsonToModel<List<EventActionTypeParas>>();
+                        }
+                    <div id="div@(itItem.key)" class="divEventParBox @((selected?"":"hide"))">
+                        @{
+                                var pars = itItem.paras;
+                                if (pars != null)
+                                {
+
+                                    foreach (var par in pars)
+                                    {
+                                        if (parsOfViewModel.Any(ep => ep.key == par.key))
+                                        {
+                                            var parOfViewModel = parsOfViewModel.Single(ep => ep.key == par.key);
+                                            par.value = parOfViewModel.value;
+                                        }
+
+                            <table class="tbEventParBox">
+                                <tr>
+                                    <td width="60">@par.key</td>
+                                    <td>
+                                        <div id="div@(par.key)">
+                                            @{
+
+                                                            var disabledString = selected ? "" : "disabled=disabled";
+                                            }
+
+                                            @if (par.category == "textarea")
+                                                        {
+                                                        <textarea @disabledString tip="@par.tip" reg="@par.reg" class="paras" required="@par.required" placeholder="@par.description" name="para.value" rows="5">@par.value</textarea>
+                                                        }
+                                                        else {
+                                                        <input @disabledString name="para.value" value="@par.value" class="paras" tip="@par.tip" reg="@par.reg" required="@par.required" placeholder="@par.description" />
+                                                        }
+                                            <span data-type="@par.category" title="快捷输入" class="hide icon-search btnSearchEvent"></span>
+                                            <input @disabledString type="hidden" name="para.key" value="@par.key" />
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                                                                }
+                                                            }
+                                                            else {
+
+                                                            }
+                        }
+                    </div>
+                                                            }
+                </div>
+            </td>
+        </tr>
+
+
+                                                    break;
+                                                }
+</table>

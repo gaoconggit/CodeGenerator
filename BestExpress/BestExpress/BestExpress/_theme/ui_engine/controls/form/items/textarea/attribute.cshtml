@@ -1,0 +1,73 @@
+﻿@{
+    var rows = "";
+    var cols = "";
+    var class_ = "";
+    var style = "";
+    var defaultValue = "";
+    var hasVal = Model != null;
+    List<SysBest_ElementAttr> model = Model;
+    if (model != null)
+    {
+        if (model.Any(it => it.Key == "rows"))
+        {
+            rows = model.Single(it => it.Key == "rows").Value;
+        };
+        if (model.Any(it => it.Key == "cols"))
+        {
+            cols = model.Single(it => it.Key == "cols").Value;
+        };
+        if (model.Any(it => it.Key == "class"))
+        {
+            class_ = model.Single(it => it.Key == "class").Value;
+        };
+        if (model.Any(it => it.Key == "style"))
+        {
+            style = model.Single(it => it.Key == "style").Value;
+        };
+        if (model.Any(it => it.Key == "defaultValue"))
+        {
+            defaultValue = model.Single(it => it.Key == "defaultValue").Value;
+        };
+    }
+}
+@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+<table class="editTable">
+    <tr>
+        <td class="first">列数：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@cols" tip="请填写数字,或者数字加px或%" reg="^\d*$" />
+            <input name="attr.Key" type="hidden" value="cols" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">行数：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@rows" tip="请填写数字" reg="^\d*$" />
+            <input name="attr.Key" type="hidden" value="rows" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">默认值:</td>
+        <td>
+            <input name="attr.Value" value="@defaultValue" type="text" />
+            <input name="attr.Key" type="hidden" value="defaultValue" />
+        </td>
+    </tr>
+</table>

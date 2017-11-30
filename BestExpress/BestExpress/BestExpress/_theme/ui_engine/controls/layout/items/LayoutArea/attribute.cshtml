@@ -1,0 +1,61 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var title = PubControlHelper.GetControlAttribute(model, "title");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var icon = PubControlHelper.GetControlAttribute(model, "icon");
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+}
+
+
+<table class="editTable">
+    <tr>
+        <td class="first">Title:</td>
+        <td>
+            <input name="attr.Value" value="@title" type="text" />
+            <input name="attr.Key" type="hidden" value="title" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Icon:</td>
+        <td>
+            <input name="attr.Value" value="@icon" type="text" />
+            <input name="attr.Key" type="hidden" value="icon" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">width:</td>
+        <td>
+            <input name="attr.Value" value="@width" type="text" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">height:</td>
+        <td>
+            <input name="attr.Value" value="@height" type="text" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+</table>

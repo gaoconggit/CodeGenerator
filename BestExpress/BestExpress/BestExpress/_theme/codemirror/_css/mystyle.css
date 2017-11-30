@@ -1,0 +1,40 @@
+﻿
+span.cm-punctuation {
+    color: green !important;
+}
+
+span.cm-operator {
+    color: purple !important;
+}
+
+span.cm-keyword {
+    color: blue !important;
+}
+
+span.cm-atom {
+    color: brown !important;
+}
+
+span.cm-def {
+    color: black !important;
+}
+
+span.cm-variabledef {
+    color: #0000FF !important;
+}
+
+span.cm-localvariable {
+    color: #004499 !important;
+}
+
+span.cm-property {
+    color: black !important;
+}
+
+span.cm-comment {
+    color: green !important;
+}
+
+span.cm-string {
+    color: red !important;
+}

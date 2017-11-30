@@ -1,0 +1,14 @@
+﻿@{
+    List<EventActionTypeParas> model = Model.Data;
+    string gridId = "";
+    if (model.Any(it => it.key == "gridId"))
+    {
+        gridId = model.Single(it => it.key == "gridId").value;
+    }
+ }
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+@if (gridId.IsValuable())
+{
+    @:  $("#@(gridId.TrimStart('#'))").jqxGrid('updatebounddata', 'filter');
+}

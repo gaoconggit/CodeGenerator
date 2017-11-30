@@ -1,0 +1,36 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@using SyntacticSugar;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var id = attrList["name"];
+    var name = id;
+    var title = PubControlHelper.GetControlAttributeByBuild(attrList, "title");
+    var icon = PubControlHelper.GetControlAttributeByBuild(attrList, "icon");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    if (width.IsValuable()) {
+        width = "width:"+width;
+    }
+    if (height.IsValuable())
+    {
+        height = "height:" + height;
+    }
+
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+<!------------------@(name) BEGIN------------------>
+<div id="@id" style="@width.AppendString(height,";",false).AppendString(style,";",false)" class="@("layout_area windowbox".AppendString(showClass," ",false).AppendString(class_," ",false))">
+    <div id="div_title" class="layout_area_title"> <span class="@icon"> </span>  @title</div>
+    <div id="div_body" class="layout_area_body" style="height:auto;min-height:40px;overflow:hidden">
+        <div>  请在此写！</div>
+
+    </div>
+</div>
+<!------------------@(name) END------------------>

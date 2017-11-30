@@ -1,0 +1,195 @@
+﻿@using System;
+@using System.Collections;
+@using System.Linq;
+@using SyntacticSugar
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Infrastructure.DAL;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using Best.Entities.UiEngine
+@{
+    List<SysBest_ElementAttr> model = Model;
+    var listpars = PubGet.GetJqxGridParas();
+    var em = ElementManager.GetInstance;
+    string extendPars = PubControlHelper.GetControlAttribute(model, "pars");
+    string values = PubControlHelper.GetControlAttribute(model, "values");
+    string valcolumn = PubControlHelper.GetControlAttribute(model, "valcolumn");
+    string sortExtend = PubControlHelper.GetControlAttribute(model, "sortExtend");
+    string jsDataColumu = PubControlHelper.GetControlAttribute(model, "jsDataColumu");
+    string addrow= PubControlHelper.GetControlAttribute(model, "addrow");
+    var mappingPars = PubControlHelper.GetControlAttribute(model, "mappingPars");
+    var appearancePars = listpars.Where(it => it.SmallCategory == "Appearance").OrderByDescending(it => it.IsOften).ToList();
+    var layoutPars = listpars.Where(it => it.SmallCategory == "Layout").OrderByDescending(it => it.IsOften).ToList();
+    var behaviorPars = listpars.Where(it => it.SmallCategory == "Behavior").OrderByDescending(it => it.IsOften).ToList();
+    var eventPars = listpars.Where(it => it.SmallCategory == "Event").OrderByDescending(it => it.IsOften).ToList();
+    var classNum = "td" + RandomSugar.GetRandomNum(10);
+    var classth = "th" + RandomSugar.GetRandomNum(10);
+    var parCategories = new string[] { "外观", "布局", "行为", "事件" };
+    var h100 = PubControlHelper.GetControlAttribute(model, "h100", "true");
+    var isInitLoading = PubControlHelper.GetControlAttribute(model, "isInitLoading", "true");
+}
+<style>
+    .@classNum{
+           color: red;
+     }
+    .@classNum td{ border:0;padding:5px 0 5px 0; }
+    .@classth span{ float:right ;cursor: pointer}
+    .@classth span:hover{color:#174452}
+    .@classth {
+    font-size: 15px;
+    background: #9AB1C5;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;}
+</style>
+<table cellpadding="editTable">
+    <tr>
+        <td style="width:100px; overflow:hidden;    padding-left: 39px; display:block">API</td>
+        <td style="text-align:left"><a target="_blank" href="http://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgrid/jquery-grid-api.htm?search=">点击查看</a></td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">扩展参数：</td>
+        <td class="eleName " style="padding:0">
+            <textarea style="margin: 0px; width: 415px; height: 71px;" name="attr.Value" placeholder="例如: data.xx=$('#xx').val();data.yy=$('#yy').val()">@extendPars</textarea>
+            <span data-type="textarea" style="position:relative; top:-10px; padding-right:7px; display:inline-block; margin-left:1px" onclick="$quickFactory('select-event',this)" title="快捷输入" class="icon-search"></span>
+            <input name="attr.Key" type="hidden" value="pars" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">参数关联：</td>
+        <td class="eleName " style="padding:0">
+            <textarea style="margin: 0px; width: 415px; height: 71px;" name="attr.Value" placeholder="[{'filterField':'xxId','filterValue':'1'}]">@mappingPars</textarea>
+            <span data-type="textarea" style="position:relative; top:-10px; padding-right:7px; display:inline-block; margin-left:1px" onclick="var th = $(this); var txt = th.prev(); txt.val(txt.attr('placeholder'))" title="快捷输入" class="icon-search icon-plus"></span>
+            <input name="attr.Key" type="hidden" value="mappingPars" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">values</td>
+        <td>
+            <input name="attr.Value" style="width:310px;" value="@values" />
+            <input name="attr.Key" type="hidden" value="values" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">设置values列</td>
+        <td>
+            <input name="attr.Value" style="width:310px;" value="@valcolumn" placeholder="列1,列2"/>
+            <input name="attr.Key" type="hidden" value="valcolumn" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">100%高度:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((h100 == "true").IIF("selected=selected", "")) value="true">是</option>
+                <option @((h100 == "false").IIF("selected=selected", "")) value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="h100" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">是否显示:</td>
+        <td>
+            <select name="attr.Value" style="width:310px;">
+                <option @((isInitLoading == "true").IIF("selected=selected", "")) value="true">是</option>
+                <option @((isInitLoading == "false").IIF("selected=selected", "")) value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="isInitLoading" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">指定数据源:</td>
+        <td>
+            
+            <input name="attr.Value" style="width:310px;" value="@jsDataColumu" placeholder="function  dataColumu()" />
+            <input name="attr.Key" type="hidden" value="jsDataColumu" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">自定义排序</td>
+        <td>
+            <input name="attr.Value" style="width:310px;" value="@sortExtend" placeholder="“是”或“否”,默认:“否”"/>
+            <input name="attr.Key" type="hidden" value="sortExtend" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first" style="padding-left: 37px;">addrow</td>
+        <td>
+            <textarea style="margin: 0px; width: 415px; height: 71px;" name="attr.Value" placeholder="(rowid, rowdata, position, commit)例如: rowdata.xx   ">@addrow</textarea>
+            @*<input name="attr.Value" style="width:310px;" value="@addrow" placeholder="function (rowid, rowdata, position, commit)" />*@
+            <input name="attr.Key" type="hidden" value="addrow" />
+        </td>
+    </tr>
+</table>
+<table class="editTable">
+
+    @foreach (var cg in parCategories)
+    {
+
+        <tr>
+            <th align="left" colspan="2" class="@classth">
+                @{
+                    string key = "";
+                    List<SysBest_JqxGridParas> pars = new List<SysBest_JqxGridParas>();
+                    switch (cg)
+                    {
+                        case "外观": pars = appearancePars; key = "appearancePars"; break;
+                        case "布局": pars = layoutPars; key = "layoutPars"; break;
+                        case "行为": pars = behaviorPars; key = "behaviorPars"; break;
+                        case "事件": pars = eventPars; key = "eventPars"; break;
+                    }
+                }
+                @cg <span class="icon-plus " onclick="$('.@(key)trIsNotOften').toggle();$(this).toggleClass('icon-minus')">显示全部</span>
+            </th>
+        </tr>
+
+                    foreach (var it in pars)
+                    {
+                        var value = PubControlHelper.GetControlAttribute(model, it.Name, it.DefaultValue);
+                        var regTip = em.GetJqxAttrTipRegString(it.Category);
+                        <tr class="@(it.IsOften.IIF(classNum,key+"trIsNotOften hide"))">
+                            <td title="@it.Name" class="first" style="width:200px; overflow:hidden; text-align:right; display:block">@it.Name.ToCutString(12, "..")：</td>
+                            <td title="@it.Remark">
+                                @GetAttrControl(it.Name, it.Category, value, regTip)
+                                <input name="attr.Key" type="hidden" value="@it.Name" />
+                            </td>
+                        </tr>
+                        }                   }
+</table>
+
+
+@helper GetAttrControl(string name, string category, string value, string regTip)
+{
+if (name == "columns")
+{
+        <textarea style="width:307px" data-columns="columns" name="attr.Value">@value</textarea>
+        <span data-type="textarea" style="position:relative; top:-10px" onclick="$quickFactory('js-grid', '#divJsGridBox',this)" title="快捷输入" class="icon-search btnSearchEvent "></span>
+}
+else if (name == "height")
+{
+        <input style="width:310px; " name="attr.Value"    value="@value" />
+}
+else if (category == "Boolean")
+{
+        <select style="width:315px; margin-top:0 !important" name="attr.Value">
+            <option value="true" @((value == "true").IIF("selected=selected", ""))>true</option>
+            <option value="false" @((value == "false").IIF("selected=selected", ""))>false</option>
+        </select>
+}
+else if (category == "Object")
+{
+        <input style="width:310px" name="attr.Value" @regTip value="@value" />
+}
+else if (category == "function" || category == "Event")
+{
+        <textarea style="width:307px" name="attr.Value">@value</textarea>
+        <span data-type="textarea" style="position:relative; top:-10px" onclick="$quickFactory('select-event',this)" title="快捷输入" class="icon-search btnSearchEvent "></span>
+}
+else if (category == "fNumber/String")
+{
+        <input style="width:310px" name="attr.Value" @regTip value="@value" />
+}
+else {
+        <input style="width:310px" name="attr.Value" @regTip value="@value" />
+}
+}

@@ -1,0 +1,85 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.Common;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using RazorEngine;
+@using RazorEngine.Templating;
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var txtVal = PubControlHelper.GetControlAttributeByBuild(attrList, "name");
+    var id = txtVal;
+    var name = txtVal;
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+    string onlyClass = PubUiEngineGet.IIF("isReadOnly" + Model.elementId, ",disabled:true", ",disabled:false");
+
+    var defaultValue = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultValue");
+    if (defaultValue.IsValuable())
+    {
+    }
+    else {
+        defaultValue = "[]";
+    }
+    var defaultKey = PubControlHelper.GetControlAttributeByBuild(attrList, "defaultKey");
+
+    var apiKey = PubControlHelper.GetControlAttributeByBuild(attrList, "apiKey");
+    var apiValue = PubControlHelper.GetControlAttributeByBuild(attrList, "apiValue");
+    var pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+
+    var eventList = (Dictionary<string, string>)Model.eventList;
+    string finallyThisIsMyParsedTemplate = RazorEngineExtension.RazorPars(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir, FileSugar.FileToString(PubUiEngineGet.GetUiEngineBuildCodePvControlEventDir), new { key = "getset_multiselect", name = name });
+}
+<!------------------@(name) BEGIN------------------>
+<div id="@id" name="@name" class="@class_.AppendString(showClass," ",false)" style="@style"></div>
+
+<script type="text/javascript">
+    $(function () {
+        @if (Model.api!=null&& Model.api!="") {
+         @:$.ajax({
+                                                @:url: "@Model.api",
+                                                @:dataType:"json",
+                                                @:data:@pars,
+                                                @:success: function (obj) {
+                                                                 @:var option = {dataType:"json",localdata:obj};
+                                                                 @:var dataAdapter = new $.jqx.dataAdapter(option)
+                                                                 @:$("#@name").jqxDropDownList({ source: dataAdapter,checkboxes: true,placeHolder:"@defaultValue",displayMember: "@apiValue",valueMember: "@apiKey",width: "@width",height:"@height" @onlyClass});
+                                                                 @:setCheckItems('@defaultKey')
+                                                            @:},
+                                                @:error:jqxError
+                                             @:});
+
+         @:$("#@name").on("bindingComplete",function(event){
+                                                @:@(GetEvent("callBack", eventList))
+                                             @:});
+
+         @:$("#@name").on("checkChange",function(event){
+                                                @:@(GetEvent("change",eventList))
+                                             @:});
+                               }
+    });
+
+    function setCheckItems(defaultVal){
+        if (defaultVal != null && defaultVal != "") {
+            $.each(defaultVal,function(i,item){
+                $("#@name").jqxDropDownList('checkItem',item);
+            });
+        }
+    };
+
+    @finallyThisIsMyParsedTemplate
+
+</script>
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+    }
+}
+<!------------------@(name) END------------------>

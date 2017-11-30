@@ -1,0 +1,84 @@
+﻿@using SyntacticSugar;
+@using Best.Entities.Common;
+@using Best.Entities.UiEngine;
+@using Best.Site.Areas.BestPalace.Controllers;
+@using SyntacticSugar
+@{
+    var attrList = (Dictionary<string, string>)Model.attrList;
+    var eventList = (Dictionary<string, string>)Model.eventList;
+    var specialEvents = new string[] { "callBack", "preinit" };
+    var id = attrList["name"];
+    var name = attrList["name"];
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var content = PubControlHelper.GetControlAttributeByBuild(attrList, "content");
+    string pars = PubControlHelper.GetControlAttributeByBuild(attrList, "pars", "{}");
+    var ranNum = RandomSugar.GetRandomNum(10);
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+}
+<!------------------@(name) BEGIN------------------>
+<script type="text/javascript" >
+    $.pageHelper.referenceFile('/_theme/tool/angular.min.js', 'js')
+
+</script>
+
+<div id="@(ranNum)" ng-app="myApp@(ranNum)" class="@showClass">
+    <div  class="@class_" style="width:@width;height:@height;@style" ng-controller="myCtrl@(ranNum)" >
+        @content
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var isoRegEx@(ranNum) = /[\/][\w]{0,4}[\(][\0-9]{0,15}/;
+        function fnConverDate@(ranNum)(input) {
+            if (typeof input !== "object") return input;
+
+            for (var key in input) {
+                if (!input.hasOwnProperty(key)) continue;
+
+                var value = input[key];
+                var type = typeof value;
+                var match;
+                if (type == 'string' && (match = value.match(isoRegEx@(ranNum)))) {
+                    input[key] = $.convert.jsonReductionDate(value)
+                }
+                else if (type == "boolean") {
+                    input[key] = true ? "是" : "否";
+                }
+                else if (type === "object") {
+                    fnConverDate@(ranNum)(value);
+                }
+            }
+        }
+            var app@(ranNum) = angular.module("myApp@(ranNum)", []);
+            app@(ranNum).controller("myCtrl@(ranNum)", function ($scope, $http) {
+                var url = '@Model.api?' + $.param(@pars.ToHtmlDecode());
+                //$http.post(url).success(function (msg) {
+                //   $scope.msg = msg.responseInfo;
+                //});
+                $http.post(url).then(function (msg) {
+                    fnConverDate@(ranNum)(msg.data.responseInfo);
+                    $scope.msg = msg.data.responseInfo;
+                });
+            });
+            angular.bootstrap(angular.element("#@(ranNum)"), ["myApp@(ranNum)"]);
+    })
+</script>
+
+@helper GetId(string eventName, string id)
+{
+    @: @eventName@("_")@id
+}
+
+@helper GetEvent(string eventName, Dictionary<string, string> eventList)
+{
+if (eventList.ContainsKey(eventName))
+{
+        @: @eventList[eventName]
+  }
+}
+<!------------------@(name) END------------------>

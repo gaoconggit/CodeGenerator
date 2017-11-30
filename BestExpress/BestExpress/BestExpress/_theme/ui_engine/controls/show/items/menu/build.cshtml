@@ -1,0 +1,35 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+
+    var id = attrList["name"];
+    var name = attrList["name"];
+    var html = PubControlHelper.GetControlAttributeByBuild(attrList, "html");
+    var style = PubControlHelper.GetControlAttributeByBuild(attrList, "style");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var width = PubControlHelper.GetControlAttributeByBuild(attrList, "width");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height","100%");
+    if (height.IsContainsIn("%", "px")) {
+        height = "\""+height + "\"";
+    }
+    var index= PubControlHelper.GetControlAttributeByBuild(attrList,"index", "1").TryToInt()-1;
+}
+@using Best.Entities.UiEngine
+@using RazorEngine;
+@using RazorEngine.Templating;
+@using SyntacticSugar
+<!------------------@(name) BEGIN------------------>
+<div id="@id" name="@id" class="@class_.AppendString(showClass," ",false).AppendString("jqx-menu-control"," ",false)" style="@style"  >@html</div>
+<script>
+    $(function () {
+        $("#@id").jqxMenu({ width: '@width', mode: 'vertical', height: @height });
+        $("#@id").find("li:eq(@index)").css({"background":"#09c"});
+        $("#@id").find("li:eq(@index) a").addClass("hover");
+        
+    })
+</script>
+<!------------------@(name) END------------------>

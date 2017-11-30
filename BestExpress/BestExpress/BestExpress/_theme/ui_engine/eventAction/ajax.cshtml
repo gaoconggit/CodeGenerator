@@ -1,0 +1,28 @@
+﻿@{
+
+    List<EventActionTypeParas> model = Model.Data;
+    string success = "";
+    string data = "null";
+    string url = "";
+    if (model.Any(it => it.key == "success"))
+    {
+        success = model.Single(it => it.key == "success").value;
+    }
+    if (model.Any(it => it.key == "data"))
+    {
+        data = model.Single(it => it.key == "data").value;
+    }
+    if (model.Any(it => it.key == "url"))
+    {
+        url = model.Single(it => it.key == "url").value;
+    }
+}
+@using SyntacticSugar
+@using Best.Entities.UiEngine
+$.ajax({
+   url:"@url",
+   data:@data,
+   success:function(msg){
+       @success
+   },error:jqxError
+})

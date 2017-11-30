@@ -1,0 +1,25 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+
+    var specialEvents = new string[] { "callBack", "preinit" };
+
+    var id = attrList["name"];
+    var name = attrList["name"];
+
+    var fileUrl = PubControlHelper.GetControlAttributeByBuild(attrList, "fileUrl");
+    var type = PubControlHelper.GetControlAttributeByBuild(attrList, "type");
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+@if (type == "js")
+{
+    <script src="~@fileUrl"></script>
+}
+else {
+    <link href="~@fileUrl" rel="stylesheet" />
+}
+
+ 
+ 

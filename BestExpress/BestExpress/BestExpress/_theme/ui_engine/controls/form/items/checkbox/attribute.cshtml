@@ -1,0 +1,63 @@
+﻿@using System;
+@using System.Linq;
+@using System.Collections;
+@using Best.Entities.Tables;
+@using Best.Site.Areas.BestPalace.Controllers;
+
+@{
+    var model = (List<SysBest_ElementAttr>)Model;
+    var width = PubControlHelper.GetControlAttribute(model, "width");
+    var height = PubControlHelper.GetControlAttribute(model, "height");
+    var class_ = PubControlHelper.GetControlAttribute(model, "class");
+    var style = PubControlHelper.GetControlAttribute(model, "style");
+    var defaultValue = PubControlHelper.GetControlAttribute(model, "defaultValue");
+}
+
+<table class="editTable">
+    <tr>
+        <td class="first">宽度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@width" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">高度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@height" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class：</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style：</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">默认值：</td>
+        <td>
+            <input name="attr.Value" value="@defaultValue" type="text" />
+            <input name="attr.Key" type="hidden" value="defaultValue" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">状态：</td>
+        <td>
+            <select name="attr.Value" onchange="return $(this).val($(this).find(' option:selected').val());">
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select>
+            <input name="attr.Key" type="hidden" value="checked" />
+        </td>
+    </tr>
+</table>
+

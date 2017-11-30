@@ -1,0 +1,36 @@
+﻿@using Best.Site.Areas.BestPalace.Controllers;
+@using SyntacticSugar;
+@{
+    Dictionary<string, string> attrList = Model.attrList;
+    Dictionary<string, string> eventList = Model.eventList;
+    var id = attrList["name"];
+    var name = id;
+    var Rows = PubControlHelper.GetControlAttributeByBuild(attrList, "Rows");
+    var column = PubControlHelper.GetControlAttributeByBuild(attrList, "column");
+    var class_ = PubControlHelper.GetControlAttributeByBuild(attrList, "class");
+    var height = PubControlHelper.GetControlAttributeByBuild(attrList, "height");
+    var elementNumber = Rows.TryToInt() * column.TryToInt();
+    var width = (100 / column.TryToInt()).TryToInt();
+    var divheight = (height.TryToInt() - 32)/2;
+    var elementdiv = (height.TryToInt() - divheight);
+
+    @PubUiEngineGet.GetElementStatusNetObj(Model.elementId + "", Model.addressId, Model.elementId)
+    string showClass = PubUiEngineGet.IIF("isHide" + Model.elementId, "hide", "");
+}
+@using Best.Entities.UiEngine
+@using SyntacticSugar
+<!------------------@(name) BEGIN-----控件高度32------------->
+
+<div id="@(name)" style="width:100%; height:auto;">
+    @for (int i = 1; i <= elementNumber; i++)
+    {
+        <div id="div@(i)" style="float:left;width:@(width)%;height:@(height)px;height:auto" class="windowbox2">
+            <div style="float:left;width:30%;height:@(height)px;line-height:@(height)px;text-align:right;position:relative;right:20px">lable@(i)</div>
+            <div style="float:left;width:70%;height:@(height)px;height:auto"  data-parent="div@(i)">
+                <div style="padding-top:@divheight; height:@(elementdiv)px;line-height:@(@elementdiv-@divheight)px; height:auto">element@(i)</div>
+            </div>
+        </div>
+    } 
+</div>
+
+<!------------------@(name) END------------------>

@@ -1,0 +1,132 @@
+﻿@{
+
+ 
+
+    var titles = new string[] {
+        "心情 - 心情不好尽量克制自已，否则会引影响团队",
+        "共益 - 团队中对个人利益暂时与集体的根本利益不完全重合的同志，要给予选择机会",
+        "公平 - 贡献论报酬的公平原则",
+        "目标 - 共同目标的好差，直接影响团队的风气、精神和凝聚力，共同目标",
+        "互助 - 帮助别人的时同也是自已对技术的总结和表达的提升",
+        "无敌 - 融洽的团队本身就是个奇迹，所以能够创建奇迹",
+        "独行 - 一个独行的人得到的利益是有限的",
+        "力量 - 一个好的团队的力量远远超过同数量的个体力量，否则适得其反",
+        "收入 - 别人的付自已也会享受到一些提成，哪怕自已是拿的最少的",
+        "回亿 - 遗憾、成就和喜悦,就是没有后悔，因为我们努力过",
+        "质量 - 不能使用的功能你付出在多也个垃圾，不好用只能当备胎",
+        "信念 - 不要否定自已，也不要否定别人"
+      };
+    var logos = new List<KeyValuePair<string, string>>()
+    {
+        new KeyValuePair<string,string>("logo","#092900"),
+        new KeyValuePair<string,string>("logo2","#2f3649"),
+        new KeyValuePair<string,string>("logo3","#071433"),
+        new KeyValuePair<string,string>("logo4","#837a80")
+    };
+    var title = titles[new Random().Next(0, titles.Length)];
+    var logo= logos[new Random().Next(0, logos.Count)];
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/_theme/admin/layout.css")" />
+    @Styles.Render("~/min/css")
+    @Scripts.Render("~/min/js")
+    @RenderSection("header", false)
+    <script type="text/javascript" src="@Url.Content("~/_theme/admin/layout.js")"></script>
+</head>
+<body>
+    <div id="jqxGlobalLoader">
+    </div>
+    <div class="head" style="background:@logo.Value">
+        <img src="~/_theme/admin/img/@(logo.Key).png" height="90" style="position:absolute;" />
+        <div class="top">
+            <div class="top-top">
+                <div class="title">Best无码平台 -  为梦想而努力！ <label>@title</label></div>
+            </div>
+            <div class="top-bottom">
+                <div class="title"></div>
+                <div class="user">
+                    <img src="@Url.Content("~/_theme/admin/img/avatar.jpg")" alt="" /><label></label>
+                </div>
+            </div>
+        </div>
+        <div class="main-menu">
+            <ul>
+                <li class="first">
+                    <a class="m4" href="~/MenuAddress/Index">地址管理</a>
+                </li>
+                <li class="">
+                    <a class="m6" href="~/BestPalace/DataSource/DataApi">数据接口</a>
+                </li>
+                <li class="first ">
+                    <a class="m3" href="~/Menu/Index">菜单管理</a>
+                </li>
+
+                <li class="">
+                    <a class="m5" href="~/BestPalace/ElementPackage/Index">元素包管理</a>
+                </li>
+                <li class="">
+                    <a class="m5" onclick="jqxAlert('期待。。。')">数据管理</a>
+                </li>
+                <li class="">
+                    <a class="m5" onclick="jqxAlert('期待。。。')">文档管理</a>
+                </li>
+                <li class="">
+                    <a class="m5" onclick="jqxAlert('期待。。。')">缓存管理</a>
+                </li>
+                <li class="">
+                    <a class="m5" onclick="jqxAlert('期待。。。')">项目管理</a>
+                </li>
+                <li class="more click">
+                    <img id="imgMore" class="click" src="@Url.Content("~/_theme/admin/img/more.png")" alt="" />
+                    <img id="imgClose" class="click hide" src="@Url.Content("~/_theme/admin/img/close.png")" alt="" />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="body">
+        <div class="navigation-bar2">
+            <div class="navItems">
+                @RenderSection("nav", false)
+            </div>
+            <div class="box">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        上海蓝灯软件数据股份有限公司
+    </div>
+    <div>
+
+    </div>
+
+    @RenderSection("footer", false)
+</body>
+</html>
+<div class="more-box hide">
+    <div class="box">
+        <div class="title">
+            我的功能
+        </div>
+        <div class="items">
+            <a href="/BestPalace/Login">注销</a>
+            <a href="/">进入企业系统</a>
+        </div>
+    </div>
+</div>
+<div class="menu-box hide">
+    <div class="m1">
+    </div>
+    <div class="m2">
+    </div>
+    <div class="m3">
+    </div>
+    <div class="m4">
+    </div>
+</div>

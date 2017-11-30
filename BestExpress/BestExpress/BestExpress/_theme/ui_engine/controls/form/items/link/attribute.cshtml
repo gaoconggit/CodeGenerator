@@ -1,0 +1,62 @@
+﻿@{
+    var style = "";
+    var class_ = "";
+    var text = "";
+    string icon = "";
+    var hasVal = Model != null;
+    List<SysBest_ElementAttr> model = Model;
+    if (model != null)
+    {
+        if (model.Any(it => it.Key == "icon"))
+        {
+            icon = model.Single(it => it.Key == "icon").Value;
+        };
+        if (model.Any(it => it.Key == "class"))
+        {
+            class_ = model.Single(it => it.Key == "class").Value;
+        };
+        if (model.Any(it => it.Key == "style"))
+        {
+            style = model.Single(it => it.Key == "style").Value;
+        };
+        if (model.Any(it => it.Key == "text"))
+        {
+            text = model.Single(it => it.Key == "text").Value;
+        };
+    }
+}
+@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+<table class="editTable">
+    <tr>
+        <td class="first">文本：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@text"   />
+            <input name="attr.Key" type="hidden" value="text" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">icon：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@icon" />
+            <input name="attr.Key" type="hidden" value="icon" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Style:</td>
+        <td>
+            <input name="attr.Value" value="@style" type="text" />
+            <input name="attr.Key" type="hidden" value="style" />
+        </td>
+    </tr>
+ 
+</table>

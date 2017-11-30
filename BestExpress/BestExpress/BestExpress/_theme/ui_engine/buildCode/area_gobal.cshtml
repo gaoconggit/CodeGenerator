@@ -1,0 +1,24 @@
+﻿using System.Web.Mvc;
+
+namespace @(Model.projectName).Areas.@(Model.area)
+{
+    public class TestAreaRegistration : AreaRegistration
+    {
+        public override string AreaName
+        {
+            get
+            {
+                return "@Model.area";
+                }
+                }
+
+                public override void RegisterArea(AreaRegistrationContext context)
+                {
+                context.MapRoute(
+                "@(Model.area)_default",
+                "@(Model.area)/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional }
+                );
+            }
+    }
+}

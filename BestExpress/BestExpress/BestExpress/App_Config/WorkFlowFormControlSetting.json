@@ -1,0 +1,37 @@
+﻿[
+  {
+    "Key": "$input$",
+    "Text": "单行文本",
+    "HtmlTemplate": "/_theme/workFlow/template/textBox",
+    "Icon": "/_theme/workflow/img/textBox.png",
+    "Type": "save"
+  },
+  {
+    "Key": "$inputDate$",
+    "Text": "日历",
+    "HtmlTemplate": "/_theme/workFlow/template/textBoxDate",
+    "Icon": "/_theme/workflow/img/textBoxDate.png",
+    "Type": "save"
+  },
+  {
+    "Key": "$textare$",
+    "Text": "多行文本",
+    "HtmlTemplate": "/_theme/workFlow/template/textarea",
+    "Icon": "/_theme/workflow/img/textBox.png",
+    "Type": "save"
+  },
+  {
+    "Key": "$select$",
+    "Text": "下拉列表",
+    "HtmlTemplate": "/_theme/workFlow/template/select",
+    "Icon": "/_theme/workflow/img/textBox.png",
+    "Type": "save"
+  },
+  {
+    "Key": "$lable$",
+    "Text": "文本",
+    "HtmlTemplate": "/_theme/workFlow/template/label",
+    "Icon": "/_theme/workflow/img/textBox.png",
+    "Type": "show"
+  }
+]

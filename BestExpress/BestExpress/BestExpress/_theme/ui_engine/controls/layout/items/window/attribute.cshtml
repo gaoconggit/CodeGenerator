@@ -1,0 +1,61 @@
+﻿@{
+    var width = "";
+    var height = "";
+    var class_ = "";
+    var html = "";
+    var hasVal = Model != null;
+    List<SysBest_ElementAttr> model = Model;
+    if (model != null)
+    {
+        if (model.Any(it => it.Key == "width"))
+        {
+            width = model.Single(it => it.Key == "width").Value;
+        };
+        if (model.Any(it => it.Key == "height"))
+        {
+            height = model.Single(it => it.Key == "height").Value;
+        };
+        if (model.Any(it => it.Key == "class"))
+        {
+            class_ = model.Single(it => it.Key == "class").Value;
+        };
+        if (model.Any(it => it.Key == "html"))
+        {
+            html = model.Single(it => it.Key == "html").Value;
+        };
+    }
+}
+@using System;
+@using System.Collections;
+@using System.Linq;
+@using Best.Entities.Tables;
+<table class="editTable">
+    <tr>
+        <td class="first">宽度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@width" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="width" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">高度：</td>
+        <td>
+            <input name="attr.Value" type="text" value="@height" tip="请填写数字,或者数字加px或%" reg="^\d*$|^\d+px$|^\d+\%$" />
+            <input name="attr.Key" type="hidden" value="height" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Class:</td>
+        <td>
+            <input name="attr.Value" value="@class_" type="text" />
+            <input name="attr.Key" type="hidden" value="class" />
+        </td>
+    </tr>
+    <tr>
+        <td class="first">Content:</td>
+        <td>
+            <input name="attr.Value" value="@html" type="text" />
+            <input name="attr.Key" type="hidden" value="html" />
+        </td>
+    </tr>
+</table>
